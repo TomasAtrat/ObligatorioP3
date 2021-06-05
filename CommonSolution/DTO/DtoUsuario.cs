@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonSolution.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CommonSolution.Dto
 {
-    public class DtoUsuario
+    public class DtoUsuario : IDto
     {
         public string nombre;
         public string apellido;

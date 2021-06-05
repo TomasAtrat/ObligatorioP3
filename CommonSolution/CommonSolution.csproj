@@ -48,6 +48,7 @@
     <Compile Include="DTO\DtoTipoReclamo.cs" />
     <Compile Include="DTO\DtoUsuario.cs" />
     <Compile Include="DTO\DtoZona.cs" />
+    <Compile Include="Interfaces\IDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
