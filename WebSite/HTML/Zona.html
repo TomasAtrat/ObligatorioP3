@@ -7,7 +7,7 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
     <title>Ayuntamiento de Toledo</title>
-
+    <script type="text/javascript" src="../JS/IniciarMapa.js"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
     <!-- Bootstrap core CSS -->
@@ -32,7 +32,13 @@
         #camposFormulario {
             width: 70%;
             margin: auto;
-            background-color: yellow;
+            padding-left: 15px;
+        }
+
+        #map {
+            height: 300px;
+            width: 65%;
+            margin: auto;
         }
     </style>
     <!-- Custom styles for this template -->
@@ -70,32 +76,42 @@
         </div>
     </nav>
 
-    <main role="main" class="container" style="background-color:red">
+    <main role="main" class="container">
 
-        <div class="starter-template">
+        <div class="starter-template" style="margin-top: -20px">
             <h1>Nueva zona</h1>
+            <hr />
             <p class="lead">Los campos requeridos están marcados con un *</p>
         </div>
         <form>
             <div id="camposFormulario">
-                <label>Nombre de la zona</label>
+                <label>Nombre de la zona *</label>
                 <br />
                 <input type="text" />
                 <br />
-                <label>Color para la zona</label>
+                <br />
+                <label>Color para la zona *</label>
                 <br />
                 <input type="color" />
                 <br />
-                <div id="map">
-                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2tVrQux02pwBZDsMYN9ILseEWWofaYNU&callback=initMap&libraries=visualization&v=weekly"
-                            async></script>
-                </div>
                 <br />
-                <input type="button" value="Submit" />
+                <label>Define los límites de la zona *</label>
+                <br />
+                <p style="font-size: 12px">Para definir los límites haz click derecho en cada punto</p>
             </div>
+            <div id="map">
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2tVrQux02pwBZDsMYN9ILseEWWofaYNU&callback=initMap&libraries=visualization&v=weekly"
+                        async></script>
+            </div>
+            <br />
+            <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
+                <input type="button" id="Submit" value="Submit" />
+            </div>
+            
+
         </form>
     </main><!-- /.container -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script>
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JS/bootstrap.bundle.min.js"></script>
 </html>
