@@ -1,11 +1,4 @@
-﻿var map;
-window.onload = load;
-
-function load() {
-    initMap();
-}
-
-function initMap() {
+﻿function initMap() {
 
     var ubicacion = { lat: 39.8568, lng: -4.02448 };
 

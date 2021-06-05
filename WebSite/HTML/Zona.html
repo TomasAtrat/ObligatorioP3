@@ -8,6 +8,7 @@
     <meta name="generator" content="Jekyll v4.1.1">
     <title>Ayuntamiento de Toledo</title>
     <script type="text/javascript" src="../JS/IniciarMapa.js"></script>
+    <script src="../JS/Zona.js"></script>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/starter-template/">
 
     <!-- Bootstrap core CSS -->
@@ -87,12 +88,12 @@
             <div id="camposFormulario">
                 <label>Nombre de la zona *</label>
                 <br />
-                <input type="text" />
+                <input type="text" id="nombreZona"/>
                 <br />
                 <br />
                 <label>Color para la zona *</label>
                 <br />
-                <input type="color" />
+                <input type="color" id="ColorPicker" />
                 <br />
                 <br />
                 <label>Define los límites de la zona *</label>
@@ -105,7 +106,7 @@
             </div>
             <br />
             <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
-                <input type="button" id="Submit" value="Submit" />
+                <input type="button" id="submit" value="Submit" onclick="submit()"/>
             </div>
             
 
