@@ -74,6 +74,7 @@
     <Content Include="CSS\bootstrap.css" />
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\starter-template.css" />
+    <Content Include="HTML\h.html" />
     <Content Include="HTML\Zona.html" />
     <Content Include="IMG\outline_gps_fixed_black_24dp.png" />
     <Content Include="JS\bootstrap.bundle.js" />
