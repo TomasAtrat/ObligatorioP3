@@ -9,7 +9,9 @@ namespace CommonSolution.Dto
 {
     public class DtoPunto :IDto
     {
-        public float lat;
-        public float lng;
+        public long id;
+        public long idZona;
+        public double lat;
+        public double lng;
     }
 }
