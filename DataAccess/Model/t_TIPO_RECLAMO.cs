@@ -7,24 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+namespace DataAccess.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class t_CUADRILLA_ZONA
+    public partial class t_TIPO_RECLAMO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public t_CUADRILLA_ZONA()
+        public t_TIPO_RECLAMO()
         {
             this.t_RECLAMO = new HashSet<t_RECLAMO>();
         }
     
-        public long IDCuadrilla { get; set; }
-        public long IDZona { get; set; }
+        public long ID { get; set; }
+        public string Nombre { get; set; }
+        public string Descripcion { get; set; }
     
-        public virtual t_CUADRILLA t_CUADRILLA { get; set; }
-        public virtual t_ZONA t_ZONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_RECLAMO> t_RECLAMO { get; set; }
     }

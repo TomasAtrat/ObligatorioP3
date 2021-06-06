@@ -1,4 +1,6 @@
 ﻿using CommonSolution.Dto;
+using DataAccess.Mapper;
+using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,6 +17,8 @@ namespace DataAccess.Repository
         {
 
         }
+
+        private ZonaMapper zonaMapper;
 
         public void AltaZona(DtoZona dto)
         {

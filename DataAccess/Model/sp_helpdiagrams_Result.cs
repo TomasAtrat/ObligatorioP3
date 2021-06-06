@@ -7,18 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+namespace DataAccess.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class t_PUNTO
+    public partial class sp_helpdiagrams_Result
     {
-        public long ID { get; set; }
-        public long IDZona { get; set; }
-        public double Latitud { get; set; }
-        public double Longitud { get; set; }
-    
-        public virtual t_ZONA t_ZONA { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }
