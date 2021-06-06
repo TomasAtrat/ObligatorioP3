@@ -20,15 +20,15 @@ function AddLocation(lat, lng) {
     const marker = new google.maps.Marker({
         position: location,
         icon: icon,
+        draggable: true,
         map: map
     })
     markers.push(marker);
-    locations.push(location)
 }
 
 function drawPolygon() {
     const polygon = new google.maps.Polygon({
-        path: locations,
+        path: GetLocationsFromMarkers(),
         map: map,
         fillColor: document.getElementById("ColorPicker").value,
     });
@@ -45,4 +45,14 @@ function clearFields() {
     for (i in markers) {
         markers[i].setMap(null);
     }
+}
+
+function GetLocationsFromMarkers() {
+    for (marker in markers) {
+        var lat = markers[marker].getPosition().lat();
+        var lng = markers[marker].getPosition().lng();
+        var location = { lat, lng };
+        locations.push(location);
+    }
+    return locations;
 }
