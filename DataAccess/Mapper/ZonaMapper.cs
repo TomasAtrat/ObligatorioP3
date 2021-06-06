@@ -10,13 +10,20 @@ namespace DataAccess.Mapper
 {
     public class ZonaMapper
     {
+        public ZonaMapper()
+        {
+            this.puntoMapper = new PuntoMapper();
+        }
+
+        private PuntoMapper puntoMapper;
+
         public DtoZona mapToDto(t_ZONA en)
         {
             DtoZona dto = new DtoZona();
             dto.id = en.ID;
             dto.nombre = en.Nombre;
             dto.color = en.Color;
-
+            dto.colPuntos = this.puntoMapper.mapToDto(en.t_PUNTO.ToList());
             return dto;
         }
 
@@ -26,7 +33,7 @@ namespace DataAccess.Mapper
             zona.ID = dto.id;
             zona.Nombre = dto.nombre;
             zona.Color = dto.color;
-
+            zona.t_PUNTO = this.puntoMapper.mapToEntity(dto.colPuntos);
             return zona;
         }
     }

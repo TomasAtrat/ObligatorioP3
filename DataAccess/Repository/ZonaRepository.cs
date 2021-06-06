@@ -22,12 +22,23 @@ namespace DataAccess.Repository
 
         public void AltaZona(DtoZona dto)
         {
-            t_ZONA zona = new t_ZONA();
+            t_ZONA zona = this.zonaMapper.mapToEntity(dto);
+
             using (Context context= new Context())
             {
                 using (DbContextTransaction tran= context.Database.BeginTransaction(IsolationLevel.ReadCommitted) )
                 {
-
+                    try
+                    {
+                        context.t_ZONA.Add(zona);
+                        context.SaveChanges();
+                        tran.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        tran.Rollback();
+                        throw e;
+                    }
                 }
             }
         }
