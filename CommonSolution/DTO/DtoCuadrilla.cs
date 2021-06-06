@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CommonSolution.Dto
 {
-    class DtoCuadrilla : IDto
+    public class DtoCuadrilla : IDto
     {
         public long id;
         public string encargado;

@@ -12,5 +12,7 @@ namespace CommonSolution.Dto
         public long id;
         public string nombre;
         public string color;
+        public List<DtoPunto> colPuntos;
+        public List<DtoCuadrilla> colCuadrillas;
     }
 }
