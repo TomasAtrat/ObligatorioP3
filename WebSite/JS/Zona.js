@@ -1,5 +1,6 @@
 ﻿var map;
 var locations = [];
+var markers = [];
 
 window.onload = load;
 
@@ -21,6 +22,7 @@ function AddLocation(lat, lng) {
         icon: icon,
         map: map
     })
+    markers.push(marker);
     locations.push(location)
 }
 
@@ -30,7 +32,7 @@ function drawPolygon() {
         map: map,
         fillColor: document.getElementById("ColorPicker").value,
     });
-
+    
     //Las ublicaciones hay que guardarlas en la base de datos y posteriormente eliminarlas de memoria para seguir ingresando
 }
 
@@ -40,4 +42,7 @@ function submit() {
 
 function clearFields() {
     $("#nombreZona").val("");
+    for (i in markers) {
+        markers[i].setMap(null);
+    }
 }
