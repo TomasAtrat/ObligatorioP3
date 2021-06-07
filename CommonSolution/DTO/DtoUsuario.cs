@@ -9,12 +9,14 @@ namespace CommonSolution.Dto
 {
     public class DtoUsuario : IDto
     {
-        public string nombre;
-        public string apellido;
-        public string telefono;
-        public string mail;
-        public string nombreUsuario;
-        public string contrasena;
-        public bool esFuncionario;
+        public string NombreUsuario ;
+        public string Password ;
+        public string Nombre ;
+        public string Apellido ;
+        public string Email ;
+        public string Telefono ;
+        public bool EsFuncionario ;
+
+        public List<DtoReclamo> colReclamos;
     }
 }
