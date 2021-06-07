@@ -73,9 +73,17 @@
     <Content Include="CSS\bootstrap-reboot.min.css" />
     <Content Include="CSS\bootstrap.css" />
     <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="CSS\login.css" />
+    <Content Include="CSS\RecuperarContraseña.css" />
     <Content Include="CSS\starter-template.css" />
+    <Content Include="HTML\login.html" />
+    <Content Include="HTML\RestablecerContraseña.html" />
     <Content Include="HTML\Zona.html" />
+    <Content Include="IMG\escudoToledo.png" />
+    <Content Include="IMG\MaquinaEsc.png" />
     <Content Include="IMG\outline_gps_fixed_black_24dp.png" />
+    <Content Include="IMG\toledoFondo.jpg" />
+    <Content Include="IMG\ToledoFondoIngreso.jpg" />
     <Content Include="JS\bootstrap.bundle.js" />
     <Content Include="JS\bootstrap.bundle.min.js" />
     <Content Include="JS\bootstrap.js" />
