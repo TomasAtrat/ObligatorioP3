@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    class ControllerZona : IControllers
+    public class ControllerZona : IControllers
     {
 
         public ControllerZona()
