@@ -14,7 +14,5 @@ namespace BussinesLogic.Interfaces
         List<string> Baja(IDto dto);
 
         List<string> Modificacion(IDto dto);
-
-        List<IDto> Listado();
     }
 }

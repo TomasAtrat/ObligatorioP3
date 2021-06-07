@@ -36,5 +36,13 @@ namespace DataAccess.Mapper
             zona.t_PUNTO = this.puntoMapper.mapToEntity(dto.colPuntos);
             return zona;
         }
+
+        public List<DtoZona> mapToDto(List<t_ZONA> zonas)
+        {
+            List<DtoZona> colDtos = new List<DtoZona>();
+            if (zonas != null)
+                zonas.ForEach(i => colDtos.Add(this.mapToDto(i)));
+            return colDtos;
+        }
     }
 }

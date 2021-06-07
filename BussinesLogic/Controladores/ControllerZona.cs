@@ -39,17 +39,21 @@ namespace BussinesLogic.Controladores
 
         public List<string> Baja(IDto dto)
         {
-            throw new NotImplementedException();
+            List<string> colErrores = new List<string>();
+            this.repository.ZonaRepository.BajaZona((DtoZona)dto);
+            return colErrores;
         }
 
-        public List<IDto> Listado()
+        public List<DtoZona> Listado()
         {
-            throw new NotImplementedException();
+            return this.repository.ZonaRepository.ListarZonas();
         }
 
         public List<string> Modificacion(IDto dto)
         {
-            throw new NotImplementedException();
+            List<string> colErrores = new List<string>();
+            this.repository.ZonaRepository.ModificarZona((DtoZona)dto);
+            return colErrores;
         }
 
         private List<string> Validate(DtoZona dto)
