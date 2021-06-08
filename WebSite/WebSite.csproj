@@ -67,38 +67,51 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSS\bootstrap-grid.css" />
-    <Content Include="CSS\bootstrap-grid.min.css" />
-    <Content Include="CSS\bootstrap-reboot.css" />
-    <Content Include="CSS\bootstrap-reboot.min.css" />
-    <Content Include="CSS\bootstrap.css" />
-    <Content Include="CSS\bootstrap.min.css" />
-    <Content Include="CSS\starter-template.css" />
+    <Content Include="CSS\Boostrap\bootstrap-grid.css" />
+    <Content Include="CSS\Boostrap\bootstrap-grid.min.css" />
+    <Content Include="CSS\Boostrap\bootstrap-reboot.css" />
+    <Content Include="CSS\Boostrap\bootstrap-reboot.min.css" />
+    <Content Include="CSS\Boostrap\bootstrap.css" />
+    <Content Include="CSS\Boostrap\bootstrap.min.css" />
+    <Content Include="CSS\Boostrap\starter-template.css" />
+    <Content Include="CSS\Style\Style.css" />
+    <Content Include="CSS\Style\StyleNavegation.css" />
     <Content Include="HTML\h.html" />
+    <Content Include="HTML\PaginaDeNavegar.html" />
     <Content Include="HTML\Zona.html" />
+    <Content Include="IMG\escudoToledo.png" />
+    <Content Include="IMG\face2.png" />
+    <Content Include="IMG\images.jfif" />
+    <Content Include="IMG\insta2.png" />
+    <Content Include="IMG\mapa.jfif" />
     <Content Include="IMG\outline_gps_fixed_black_24dp.png" />
-    <Content Include="JS\bootstrap.bundle.js" />
-    <Content Include="JS\bootstrap.bundle.min.js" />
-    <Content Include="JS\bootstrap.js" />
-    <Content Include="JS\bootstrap.min.js" />
-    <Content Include="JS\IniciarMapa.js" />
-    <Content Include="JS\Zona.js" />
+    <Content Include="IMG\toledoFondo.jpg" />
+    <Content Include="IMG\ToledoFondoIngreso.jpg" />
+    <Content Include="IMG\whats.png" />
+    <Content Include="JS\Boostrap\bootstrap.bundle.js" />
+    <Content Include="JS\Boostrap\bootstrap.bundle.min.js" />
+    <Content Include="JS\Boostrap\bootstrap.js" />
+    <Content Include="JS\Boostrap\bootstrap.min.js" />
+    <Content Include="JS\index\index.js" />
+    <Content Include="JS\index\IniciarMapa.js" />
+    <Content Include="JS\index\Logic.js" />
+    <Content Include="JS\index\Zona.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CSS\bootstrap-grid.css.map" />
-    <Content Include="CSS\bootstrap-grid.min.css.map" />
-    <Content Include="CSS\bootstrap-reboot.css.map" />
-    <Content Include="CSS\bootstrap-reboot.min.css.map" />
-    <Content Include="CSS\bootstrap.css.map" />
-    <Content Include="CSS\bootstrap.min.css.map" />
-    <Content Include="JS\bootstrap.bundle.js.map" />
-    <Content Include="JS\bootstrap.bundle.min.js.map" />
-    <Content Include="JS\bootstrap.js.map" />
-    <Content Include="JS\bootstrap.min.js.map" />
+    <Content Include="CSS\Boostrap\bootstrap-grid.css.map" />
+    <Content Include="CSS\Boostrap\bootstrap-grid.min.css.map" />
+    <Content Include="CSS\Boostrap\bootstrap-reboot.css.map" />
+    <Content Include="CSS\Boostrap\bootstrap-reboot.min.css.map" />
+    <Content Include="CSS\Boostrap\bootstrap.css.map" />
+    <Content Include="CSS\Boostrap\bootstrap.min.css.map" />
+    <Content Include="JS\Boostrap\bootstrap.bundle.js.map" />
+    <Content Include="JS\Boostrap\bootstrap.bundle.min.js.map" />
+    <Content Include="JS\Boostrap\bootstrap.js.map" />
+    <Content Include="JS\Boostrap\bootstrap.min.js.map" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
