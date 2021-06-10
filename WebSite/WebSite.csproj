@@ -74,9 +74,11 @@
     <Content Include="CSS\Boostrap\bootstrap.css" />
     <Content Include="CSS\Boostrap\bootstrap.min.css" />
     <Content Include="CSS\Boostrap\starter-template.css" />
+    <Content Include="CSS\Style\StyleFuncionario.css" />
     <Content Include="CSS\Style\Style.css" />
     <Content Include="CSS\Style\StyleNavegation.css" />
     <Content Include="HTML\h.html" />
+    <Content Include="HTML\PagAltaFuncionario.html" />
     <Content Include="HTML\PaginaDeNavegar.html" />
     <Content Include="HTML\Zona.html" />
     <Content Include="IMG\escudoToledo.png" />

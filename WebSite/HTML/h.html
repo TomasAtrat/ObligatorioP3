@@ -2,16 +2,16 @@
   <head>
     <meta charset="utf-8">
     <title>Ingreso</title>
-    <link rel="stylesheet" href="Style.css" >
-    <link rel="stylesheet" href="/css/master.css">
-    <link rel="icon"  type="image/png" href="escudoToledo.png">
-    <script  type="text/javascript" src="Logic.js"></script>
+    <link rel="stylesheet" href="../CSS/Style/Style.css" >
+    <link rel="stylesheet" href="../CSS/Boostrap/css/master.css">
+    <link rel="icon"  type="image/png" href="../IMG/escudoToledo.png">
+    <script  type="text/javascript" src="../JS/index/Logic.js"></script>
   </head>
   <body>
     <div class="Contenedor">
       <div class="CajaPrincipal">
           <div class="ingreso" id="ingreso">
-            <img src="escudoToledo.png" class="avatar">
+            <img src="../IMG/escudoToledo.png" class="avatar">
             <h1>Ingresar</h1>
             <form>
             
@@ -20,7 +20,8 @@
             
               <label for="Contraseña" required>Contraseña</label>
               <input type="password" placeholder="Ingresar Contraseña" required>
-              <input type="submit"  value="Ingresar" onclick="Verificar(), location='PaginaDeNavegar.html'">
+                
+              <input type="submit"  value="Ingresar" onclick="Verificar(), location='../HTML/PaginaDeNavegar.html'">
               
               <a href="#" onclick="Aparecer()">Registrarme</a>
             </form>
@@ -28,7 +29,7 @@
 
           <div id="Registro">
            
-            <img src="escudoToledo.png" class="avatar">
+            <img src="../IMG/escudoToledo.png" class="avatar">
             <h3>Registrase</h3>
               <form>
                 <input type="text" placeholder="Nombre" required>
