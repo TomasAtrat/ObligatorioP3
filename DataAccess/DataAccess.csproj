@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapper\PuntoMapper.cs" />
+    <Compile Include="Mapper\ReclamosMapper.cs" />
     <Compile Include="Mapper\UsuarioMapper.cs" />
     <Compile Include="Mapper\ZonaMapper.cs" />
     <Compile Include="Model\Model1.Context.cs">

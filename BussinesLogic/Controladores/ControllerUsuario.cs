@@ -40,7 +40,7 @@ namespace BussinesLogic.Controladores
 
         public List<string> Alta(IDto dto)
         {
-            throw new NotImplementedException();
+            DtoUsuario dto = this.repository.UsuarioRepository.
         }
 
         public List<string> Baja(IDto dto)

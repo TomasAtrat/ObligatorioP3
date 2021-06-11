@@ -13,6 +13,7 @@ namespace DataAccess.Mapper
         public DtoUsuario mapToDto(t_USUARIO user)
         {
             DtoUsuario dto = new DtoUsuario();
+            DtoReclamo dtoHelp = new DtoReclamo();
             dto.Nombre = user.Nombre;
             dto.Apellido = user.Apellido;
             dto.Email = user.Email;
@@ -20,8 +21,23 @@ namespace DataAccess.Mapper
             dto.EsFuncionario = user.EsFuncionario;
             dto.NombreUsuario = user.NombreUsuario;
             dto.Password = user.Password;
-            //Llamar a mapper de reclamos
             return dto;
         }
+
+        public t_USUARIO mapToEntity(DtoUsuario usuarioAConvertir)
+        {
+            t_USUARIO UsuarioConv = new t_USUARIO();
+            usuarioAConvertir.NombreUsuario = UsuarioConv.NombreUsuario;
+            usuarioAConvertir.Password = UsuarioConv.Password;
+            usuarioAConvertir.Nombre = UsuarioConv.Nombre;
+            usuarioAConvertir.Apellido = UsuarioConv.Apellido;
+            usuarioAConvertir.Email = UsuarioConv.Email;
+            usuarioAConvertir.Telefono = UsuarioConv.Telefono;
+            usuarioAConvertir.EsFuncionario = UsuarioConv.EsFuncionario;
+            return UsuarioConv;
+
+        }
+
+      
     }
 }
