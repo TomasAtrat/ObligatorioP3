@@ -23,5 +23,13 @@ namespace DataAccess.Mapper
             //Llamar a mapper de reclamos
             return dto;
         }
+
+        public List<DtoUsuario> mapToDto(List<t_USUARIO> users)
+        {
+            List<DtoUsuario> colDtos = new List<DtoUsuario>();
+            if (users != null)
+                users.ForEach(i => colDtos.Add(this.mapToDto(i)));
+            return colDtos;
+        }
     }
 }
