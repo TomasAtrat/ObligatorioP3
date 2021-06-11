@@ -20,22 +20,8 @@ namespace BussinesLogic.Controladores
         private Repository repository;
 
 
-        public string existeCuenta(string nickname, string password) 
+        public void existeCuenta(string nickname, string password) 
         {
-            string url = "";
-            DtoUsuario dto = this.repository.UsuarioRepository.getElementById(nickname, password);
-            if (dto == null)
-            {
-                url = "";
-            }else if (dto.EsFuncionario)
-            {
-                url = "";
-            }
-            else
-            {
-                url = "";
-            }
-            return url;
         }
 
         public List<string> Alta(IDto dto)
