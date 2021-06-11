@@ -22,6 +22,18 @@ namespace MVCWeb
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/support/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/zonas").Include(
+                         "~/Scripts/support/Zona.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/googleMaps").Include(
+                     "~/Scripts/src/IniciarMapa.js"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/CSS/bootstrap.css",
+                      "~/Content/CSS/bootstrap.min.css",
+                      "~/Content/CSS/site.css",
+                      "~/Content/CSS/starter-template.css"));
+
             bundles.Add(new StyleBundle("~/Content/CSS/css").Include(
                       "~/Content/CSS/bootstrap.css",
                       "~/Content/CSS/site.css"));

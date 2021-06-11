@@ -10,3 +10,15 @@ body {
 form {
     margin-top: -35px;
 }
+
+#camposFormulario {
+    width: 70%;
+    margin: auto;
+    padding-left: 15px;
+}
+
+#map {
+    height: 300px;
+    width: 65%;
+    margin: auto;
+}

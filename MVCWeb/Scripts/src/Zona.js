@@ -16,7 +16,7 @@ function load() {
 
 function AddLocation(lat, lng) {
     var location = { lat, lng };
-    const icon = "../IMG/outline_gps_fixed_black_24dp.png";
+    const icon = "../../Content/IMG/outline_gps_fixed_black_24dp.png";
     const marker = new google.maps.Marker({
         position: location,
         icon: icon,
