@@ -53,9 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapper\CuadrillaMapper.cs" />
     <Compile Include="Mapper\PuntoMapper.cs" />
-    <Compile Include="Mapper\ReclamosMapper.cs" />
-    <Compile Include="Mapper\Tipo_ReclamoMapper.cs" />
+    <Compile Include="Mapper\ReclamoMapper.cs" />
     <Compile Include="Mapper\UsuarioMapper.cs" />
     <Compile Include="Mapper\ZonaMapper.cs" />
     <Compile Include="Model\Model1.Context.cs">
@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="Persistencia\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CuadrillaRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
     <Compile Include="Repository\ZonaRepository.cs" />
     <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
