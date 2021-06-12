@@ -11,8 +11,8 @@ namespace CommonSolution.Dto
     public class DtoReclamo : IDto
     {
         public long id;
-        public float lat;
-        public float lgn;
+        public double lat;
+        public double lgn;
         public string observaciones;
         public Estado Estado;
         public DateTime fechaHoraReclamo;

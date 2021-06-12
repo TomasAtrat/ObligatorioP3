@@ -57,9 +57,19 @@ namespace BussinesLogic.Controladores
             return error;
         }
 
-        public void Baja(IDto dto)
+        public List<string> Baja(IDto dto)
         {
-            this.repository.UsuarioRepository.DeleteUsuario(((DtoUsuario)dto).NombreUsuario, ((DtoUsuario)dto).Password);
+            List<string> errores = new List<string>();
+            try
+            {
+                this.repository.UsuarioRepository.DeleteUsuario(((DtoUsuario)dto).NombreUsuario, ((DtoUsuario)dto).Password);
+
+            }
+            catch(Exception ex)
+            {
+               errores.Add(ex.Message);
+            }
+            return errores;
         }
 
         public List<string> Modificacion(IDto dto)
