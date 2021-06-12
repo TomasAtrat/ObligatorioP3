@@ -54,5 +54,26 @@ namespace DataAccess.Repository
             }
         }
 
+        public void DeleteUsuario(string nickname, string password)
+        {
+            using (Context context = new Context())
+            {
+                context.t_USUARIO.Remove(context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario == nickname && f.Password == password));
+                
+            }
+        }
+
+        public void UpDateUser(DtoUsuario usuario)
+        {
+            using (Context context = new Context())
+            {
+                using (DbContextTransaction trann = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    t_USUARIO user = context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario == usuario.NombreUsuario );
+                    user = this.usuarioMapper.mapToEntity(usuario); 
+                }
+            }
+        }
+
     }
 }
