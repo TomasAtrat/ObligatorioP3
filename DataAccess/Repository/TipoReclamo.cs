@@ -21,12 +21,27 @@ namespace DataAccess.Repository
 
         private TipoReclamoMapper TipoReclamoMapper;
 
-        public void AddReclamo(DtoTipoReclamo dto)
+        public void AddTipoReclamo(DtoTipoReclamo dto)
         {
+            t_TIPO_RECLAMO Treclamo = this.TipoReclamoMapper.maptoentity(dto);
+
             using (Context contex = new Context())
-            { 
-            
-            
+            {
+                using (DbContextTransaction trann = contex.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    try
+                    {
+                        contex.t_TIPO_RECLAMO.Add(Treclamo);
+                        contex.SaveChanges();
+                        trann.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        trann.Rollback();
+                        throw e;
+                    }
+                }
+
             }
         }
 
