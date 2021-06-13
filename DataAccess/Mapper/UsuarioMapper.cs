@@ -47,7 +47,7 @@ namespace DataAccess.Mapper
         {
             List<DtoUsuario> colDtos = new List<DtoUsuario>();
             if (users != null)
-                users.ForEach(i => colDtos.Add(this.mapToDto(i)));
+                users.ForEach(i => colDtos.Add(this.MapToDto(i)));
             return colDtos;
         }
 
@@ -55,7 +55,7 @@ namespace DataAccess.Mapper
         {
             List<t_USUARIO> colDtos = new List<t_USUARIO>();
             if (users != null)
-                users.ForEach(i => colDtos.Add(this.mapToEntity(i)));
+                users.ForEach(i => colDtos.Add(this.MapToEntity(i)));
             return colDtos;
         }
     }

@@ -1,0 +1,55 @@
+﻿<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ingreso</title>
+    <link rel="stylesheet" href="../CSS/Style/Style.css" >
+    <link rel="stylesheet" href="../CSS/Boostrap/css/master.css">
+    <link rel="icon"  type="image/png" href="../IMG/escudoToledo.png">
+    <script  type="text/javascript" src="../JS/index/Logic.js"></script>
+  </head>
+  <body>
+    <div class="Contenedor">
+      <div class="CajaPrincipal">
+          <div class="ingreso" id="ingreso">
+            <img src="../IMG/escudoToledo.png" class="avatar">
+            <h1>Ingresar</h1>
+            <form>
+            
+              <label for="Usuario">Usuario</label>
+              <input type="text" placeholder="Ingresar Usuario" required>
+            
+              <label for="Contraseña" required>Contraseña</label>
+              <input type="password" placeholder="Ingresar Contraseña" required>
+                
+              <input type="submit"  value="Ingresar" onclick="Verificar(), location='../HTML/PaginaDeNavegar.html'">
+              
+              <a href="#" onclick="Aparecer()">Registrarme</a>
+            </form>
+          </div>
+
+          <div id="Registro">
+           
+            <img src="../IMG/escudoToledo.png" class="avatar">
+            <h3>Registrase</h3>
+              <form>
+                <input type="text" placeholder="Nombre" required>
+                <input type="text" placeholder="Apellido" required>
+                <br>
+                <br>
+                <h4>Datos de contacto y usuario</h4>
+                <input type="text" placeholder="Telefono" required>
+                <input type="text" placeholder="Mail" required>
+                <input type="text" placeholder="Nombre de usuario" required>
+                <input type="password" placeholder="Contrasena" required>
+                <input type="password" placeholder="verificar Contrasena" required >
+                                                                                    
+                <input type="submit"  value="Registrarme"   onclick="Verificar()" >
+                <a href="#" onclick="Desaparecer()">Volver</a><br>
+
+              </form>
+          </div>
+       </div>		
+   
+  </div>
+  </body>
+</html>
