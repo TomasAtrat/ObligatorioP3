@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controladores\ControllerReclamos.cs" />
+    <Compile Include="Controladores\ControllerTipoReclamo.cs" />
     <Compile Include="Controladores\ControllerUsuario.cs" />
     <Compile Include="Controladores\ControllerZona.cs" />
     <Compile Include="Interfaces\IControllers.cs" />
