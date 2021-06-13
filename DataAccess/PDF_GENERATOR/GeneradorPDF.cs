@@ -25,7 +25,7 @@ namespace DataAccess.PDF_GENERATOR
             this.doc.SetPageSize(PageSize.A4);
             PdfWriter writer = PdfWriter.GetInstance(this.doc, new FileStream(folder, FileMode.Create));
             this.doc.AddTitle(DocumentTitle);
-            this.doc.AddCreator("Tomás");
+            this.doc.AddCreator("Ayuntamiento de Toledo");
         }
 
         public void ReporteReclamo(DtoReclamo reclamo, string folder, string DocumentTitle)
