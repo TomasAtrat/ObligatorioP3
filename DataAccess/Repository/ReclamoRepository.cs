@@ -17,10 +17,12 @@ namespace DataAccess.Repository
         {
             this.reclamoRepositorio = new ReclamoMapper();
             this.userMap = new UsuarioMapper();
+            this.reclamoMapper = new ReclamoMapper();
         }
 
         private ReclamoMapper reclamoRepositorio;
         private UsuarioMapper userMap;
+        private ReclamoMapper reclamoMapper;
 
         public bool VerificarExistenica(long id)
         {
@@ -110,6 +112,17 @@ namespace DataAccess.Repository
                     }
                 }
             }
+        }
+
+        public DtoReclamo GetElementById(long id)
+        {
+            DtoReclamo dto = null;
+            using (Context context = new Context())
+            {
+                dto = this.reclamoMapper.mapToDto(context.t_RECLAMO.AsNoTracking().FirstOrDefault(i => i.ID == id));
+            }
+
+            return dto;
         }
     }
 }
