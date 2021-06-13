@@ -12,7 +12,7 @@ namespace DataAccess.Mapper
     public class UsuarioMapper
     {
         private ReclamoMapper reclamoMapeador;
-        public DtoUsuario mapToDto(t_USUARIO user)
+        public DtoUsuario MapToDto(t_USUARIO user)
         {
             DtoUsuario dto = new DtoUsuario();
             DtoReclamo dtoHelp = new DtoReclamo();
@@ -27,7 +27,7 @@ namespace DataAccess.Mapper
             return dto;
         }
 
-        public t_USUARIO mapToEntity(DtoUsuario usuarioAConvertir)
+        public t_USUARIO MapToEntity(DtoUsuario usuarioAConvertir)
         {
             t_USUARIO UsuarioConv = new t_USUARIO();
             usuarioAConvertir.NombreUsuario = UsuarioConv.NombreUsuario;
@@ -43,11 +43,19 @@ namespace DataAccess.Mapper
 
       
 
-        public List<DtoUsuario> mapToDto(List<t_USUARIO> users)
+        public List<DtoUsuario> MapToDto(List<t_USUARIO> users)
         {
             List<DtoUsuario> colDtos = new List<DtoUsuario>();
             if (users != null)
                 users.ForEach(i => colDtos.Add(this.mapToDto(i)));
+            return colDtos;
+        }
+
+        public List<t_USUARIO> MapToDto(List<DtoUsuario> users)
+        {
+            List<t_USUARIO> colDtos = new List<t_USUARIO>();
+            if (users != null)
+                users.ForEach(i => colDtos.Add(this.mapToEntity(i)));
             return colDtos;
         }
     }

@@ -1,13 +1,13 @@
-﻿using CommonSolution.Dto;
-using DataAccess.Mapper;
-using DataAccess.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using System.Data.Entity;
+using DataAccess.Mapper;
+using DataAccess.Model;
+using CommonSolution.Dto;
 
 namespace DataAccess.Repository
 {
@@ -15,25 +15,42 @@ namespace DataAccess.Repository
     {
         public ReclamoRepository()
         {
-            this.reclamoMapper = new ReclamoMapper();
+            this.reclamoRepositorio = new ReclamoMapper();
+            this.userMap = new UsuarioMapper();
         }
 
-        private ReclamoMapper reclamoMapper;
+        private ReclamoMapper reclamoRepositorio;
+        private UsuarioMapper userMap;
 
-        public void AltaReclamo(DtoReclamo dto)
+        public bool VerificarExistenica(long id)
         {
-            t_RECLAMO reclamo = this.reclamoMapper.mapToEntity(dto);
-            using (Context context= new Context())
+            bool verif = false;
+            using (Context context = new Context())
             {
-                using (DbContextTransaction tran= context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                try
+                {
+                    verif = context.t_RECLAMO.AsNoTracking().Any(a => a.ID == id);
+                }
+                catch(Exception ex)
+                {
+
+                }
+            }
+            return verif;
+        }
+        public void AddReclamo(DtoReclamo dto)
+        {
+            using (Context context = new Context())
+            {
+                using (DbContextTransaction tran = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
                 {
                     try
                     {
-                        context.t_RECLAMO.Add(reclamo);
+                        context.t_RECLAMO.Add(this.reclamoRepositorio.mapToEntity(dto));
                         context.SaveChanges();
                         tran.Commit();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         tran.Rollback();
                     }
@@ -41,33 +58,24 @@ namespace DataAccess.Repository
             }
         }
 
-        public void ModificarReclamo(DtoReclamo dto)
+        public void DeleteReclamo(DtoReclamo dto)
         {
-            using (Context context= new Context())
+            using (Context context = new Context())
             {
-                using (DbContextTransaction tran= context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                using (DbContextTransaction tran = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
                 {
                     try
                     {
                         t_RECLAMO reclamo = context.t_RECLAMO.AsNoTracking().FirstOrDefault(i => i.ID == dto.ID);
                         if (reclamo != null)
                         {
-                            reclamo.IDCuadrilla = dto.IDCuadrilla;
-                            reclamo.IDCuadrilla = dto.IDCuadrilla;
-                            reclamo.IDTipoReclamo = dto.IDTipoReclamo;
-                            reclamo.IDZona = dto.IDZona;
-                            reclamo.Latitud = dto.Latitud;
-                            reclamo.Longitud = dto.Longitud;
-                            reclamo.Observaciones = dto.Observaciones;
-                            reclamo.Estado = dto.Estado.ToString();
-                            reclamo.FechaHoraIngreso = dto.FechaHoraIngreso;
-                            reclamo.t_USUARIO = (ICollection<t_USUARIO>)dto.colUsuarios;
+                            context.t_RECLAMO.Remove(reclamo);
                             context.SaveChanges();
                             tran.Commit();
                         }
-                        
+
                     }
-                    catch (Exception)
+                    catch (Exception exce)
                     {
                         tran.Rollback();
                     }
@@ -75,36 +83,33 @@ namespace DataAccess.Repository
             }
         }
 
-        public void EliminarReclamo(DtoReclamo dto)
+        public void UpDateReclamos(DtoReclamo dto)
         {
-            t_RECLAMO reclamo = this.reclamoMapper.mapToEntity(dto);
-            using (Context context= new Context())
-            {
-                using (DbContextTransaction tran= context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
-                {
-                    try
-                    {
-                        context.t_RECLAMO.Remove(reclamo);
-                        context.SaveChanges();
-                        tran.Commit();
-                    }
-                    catch (Exception)
-                    {
-                        tran.Rollback();
-                    }
-                }
-            }
-        }
-
-        public DtoReclamo GetElementById(long id)
-        {
-            DtoReclamo dto = null;
             using (Context context = new Context())
             {
-                dto = this.reclamoMapper.mapToDto(context.t_RECLAMO.AsNoTracking().FirstOrDefault(i => i.ID == id));
+                using (DbContextTransaction tann = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    try 
+                    { 
+                        t_RECLAMO reclamoAModificar = context.t_RECLAMO.FirstOrDefault(f => f.ID == dto.ID);
+                        reclamoAModificar.IDZona = dto.IDZona;
+                        reclamoAModificar.IDCuadrilla = dto.IDCuadrilla;
+                        reclamoAModificar.IDTipoReclamo = dto.IDTipoReclamo;
+                        reclamoAModificar.FechaHoraIngreso = dto.FechaHoraIngreso;
+                        reclamoAModificar.Estado = dto.Estado.ToString();
+                        reclamoAModificar.Observaciones = dto.Observaciones;
+                        reclamoAModificar.Latitud = dto.Latitud;
+                        reclamoAModificar.Longitud = dto.Longitud;
+                        reclamoAModificar.t_USUARIO = this.userMap.MapToDto(dto.colUsuarios.ToList());
+                        context.SaveChanges();
+                        tann.Commit();
+                    }
+                    catch(Exception ex)
+                    {
+                        tann.Rollback();
+                    }
+                }
             }
-
-            return dto;
         }
     }
 }

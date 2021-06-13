@@ -13,12 +13,15 @@ namespace DataAccess.Persistencia
         {
             this.zonaRepository = new ZonaRepository();
             this.usuarioRepository = new UsuarioRepository();
+            this.reclamoRepository = new ReclamoRepository();
         }
 
         private ZonaRepository zonaRepository;
         private UsuarioRepository usuarioRepository;
+        private ReclamoRepository reclamoRepository;
 
         public ZonaRepository ZonaRepository { get => zonaRepository; }
         public UsuarioRepository UsuarioRepository { get => usuarioRepository; }
+        public ReclamoRepository ReclamoRepository { get => reclamoRepository; }
     }
 }
