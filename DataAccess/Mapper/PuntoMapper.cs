@@ -10,10 +10,6 @@ namespace DataAccess.Mapper
 {
     public class PuntoMapper
     {
-        public long ID { get; set; }
-        public long IDZona { get; set; }
-        public double Latitud { get; set; }
-        public double Longitud { get; set; }
 
         public DtoPunto mapToDto(t_PUNTO punto)
         {
