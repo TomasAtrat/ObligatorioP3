@@ -45,7 +45,7 @@ namespace DataAccess.Repository
                         context.SaveChanges();
                         trann.Commit();
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         trann.Rollback();
                     }
@@ -58,8 +58,22 @@ namespace DataAccess.Repository
         {
             using (Context context = new Context())
             {
-                context.t_USUARIO.Remove(context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario == nickname && f.Password == password));
-                
+                using (DbContextTransaction trann = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    try
+                    {
+                        t_USUARIO user = context.t_USUARIO.AsNoTracking().FirstOrDefault(f => f.NombreUsuario == nickname);
+                        if (user != null)
+
+                            context.t_USUARIO.Remove(user);
+                        context.SaveChanges();
+                        trann.Commit();
+                    }
+                    catch (Exception exce)
+                    {
+                        trann.Rollback();
+                    }
+                }
             }
         }
 
@@ -69,8 +83,17 @@ namespace DataAccess.Repository
             {
                 using (DbContextTransaction trann = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
                 {
-                    t_USUARIO user = context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario == usuario.NombreUsuario );
-                    user = this.usuarioMapper.mapToEntity(usuario); 
+                    try
+                    {
+                        t_USUARIO user = context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario == usuario.NombreUsuario);
+                        user = this.usuarioMapper.mapToEntity(usuario);
+                        context.SaveChanges();
+                        trann.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        trann.Rollback();
+                    }
                 }
             }
         }

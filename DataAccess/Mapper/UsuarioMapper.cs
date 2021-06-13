@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DataAccess.Mapper
 {
     public class UsuarioMapper
     {
-        private ReclamosMapper reclamoMapeador;
+        private ReclamoMapper reclamoMapeador;
         public DtoUsuario mapToDto(t_USUARIO user)
         {
             DtoUsuario dto = new DtoUsuario();
@@ -22,7 +23,7 @@ namespace DataAccess.Mapper
             dto.EsFuncionario = user.EsFuncionario;
             dto.NombreUsuario = user.NombreUsuario;
             dto.Password = user.Password;
-            dto.colReclamos = this.reclamoMapeador.mapToListEntity(user.t_RECLAMO.ToList());
+            dto.colReclamos = this.reclamoMapeador.mapToDto(user.t_RECLAMO.ToList());
             return dto;
         }
 
