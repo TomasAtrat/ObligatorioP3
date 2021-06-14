@@ -67,7 +67,7 @@ namespace DataAccess.Repository
 
             }
         }
-        public void ModificarCuadrilla(DtoTipoReclamo dto)
+        public void ModificarTipoReclamo(DtoTipoReclamo dto)
         {
             using (Context context = new Context())
             {
@@ -90,7 +90,7 @@ namespace DataAccess.Repository
                 }
             }
         }
-        public DtoTipoReclamo getElementById(long id)
+        public DtoTipoReclamo getElementByIdTipoReclamo(long id)
         {
             DtoTipoReclamo dto = null;
             using (Context context = new Context())
@@ -101,7 +101,7 @@ namespace DataAccess.Repository
 
 
         }
-        public bool ExisteCuadrilla(long id)
+        public bool ExisteTipoReclamo(long id)
         {
             bool existe = false;
             using (Context context = new Context())
@@ -110,7 +110,7 @@ namespace DataAccess.Repository
             }
             return existe;
         }
-        public List<DtoTipoReclamo> ListarCuadrilla()
+        public List<DtoTipoReclamo> ListarTipoReclamo()
         {
             List<DtoTipoReclamo> tiporeclamo = new List<DtoTipoReclamo>();
             using (Context context = new Context())
