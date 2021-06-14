@@ -69,5 +69,24 @@ namespace BussinesLogic.Controladores
         {
             return this.repositorio.RepositoryDePunto.SearchPunto(id);
         }
+
+        public List<string> AddPointList(List<IDto> dto)
+        {
+            List<string> errores = new List<string>();
+            foreach(DtoPunto i in dto)
+            {
+                if (!(this.Verificacion(i.id)))
+                {
+                    this.repositorio.RepositoryDePunto.AddPuntos(i);
+                }
+                else
+                {
+                    errores.Add(i.id + "Ya existe un punto aqui");
+                }
+            }
+            
+
+            return errores;
+        }
     }
 }
