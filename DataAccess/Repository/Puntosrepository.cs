@@ -22,7 +22,7 @@ namespace DataAccess.Repository
             this.puntosMappers = new PuntoMapper();
         }
 
-        public void AddPuntos(List<DtoPunto> punto)
+        public void AddPuntos(DtoPunto punto)
         {
             using (Context cont = new Context())
             {
@@ -30,13 +30,12 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        foreach(DtoPunto p in  punto)
-                        {
-                            t_PUNTO puntoEntity = this.puntosMappers.mapToEntity(p);
+                        
+                            t_PUNTO puntoEntity = this.puntosMappers.mapToEntity(punto);
                             cont.t_PUNTO.Add(puntoEntity);
                             cont.SaveChanges();
                             tran.Commit();
-                        }
+                        
                         
                     }
                     catch (Exception ex)
@@ -45,6 +44,51 @@ namespace DataAccess.Repository
                     }
                 }
             }
+        }
+
+        public void UpDatePuntos(DtoPunto dto)
+        {
+            using (Context context = new Context())
+            {
+                using (DbContextTransaction tran = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    try
+                    { 
+                    t_PUNTO punto = context.t_PUNTO.FirstOrDefault(f => f.ID == dto.id);
+                    punto.IDZona = dto.idZona;
+                    punto.Latitud = dto.lat;
+                    punto.Longitud = dto.lng;
+                    context.SaveChanges();
+                    tran.Commit();
+                    }
+                    catch(Exception ex)
+                    {
+                        tran.Rollback();
+                    }
+
+
+                }
+            }
+        }
+
+        public void DeletePunto(DtoPunto dto)
+        {
+            using (Context context = new Context())
+            {
+                t_PUNTO punt = context.t_PUNTO.FirstOrDefault(f => f.ID == dto.id);
+                context.t_PUNTO.Remove(punt);
+                context.SaveChanges();
+            }
+        }
+
+        public bool SearchPunto(long dto)
+        {
+            bool exists = false;
+            using (Context context = new Context())
+            {
+                exists = context.t_PUNTO.AsNoTracking().Any(a => a.ID == dto);
+            }
+            return exists;
         }
 
     }
