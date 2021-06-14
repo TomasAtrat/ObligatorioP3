@@ -1,5 +1,6 @@
 ﻿using BussinesLogic.Interfaces;
 using CommonSolution.Dto;
+using CommonSolution.DTO;
 using DataAccess.Persistencia;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,18 @@ namespace BussinesLogic.Controladores
             return colDtos.Where(i => i.IDCuadrilla == idCuadrilla && (i.Estado.ToString() == "ASIGNADO" || i.Estado.ToString() == "EN_PROCESO")).ToList();
         }
 
-        
+        public List<DtoReclamosAtrasados> getReclamosAtrasados()
+        {
+            List<DtoReclamo> colDtos = this.repository.ReclamoRepository.getElements().Where(i=>i.Estado.ToString()== "PENDIENTE").ToList();
+            List<DtoReclamosAtrasados> colReclamos = new List<DtoReclamosAtrasados>();
+            foreach (DtoReclamo item in colDtos)
+            {
+                DtoReclamosAtrasados dto = new DtoReclamosAtrasados();
+                dto.reclamo = item;
+                dto.cantidadHorasRetraso = (DateTime.Now - item.FechaHoraIngreso).Value.Hours;
+                colReclamos.Add(dto);
+            }
+            return colReclamos;
+        }
     }
 }
