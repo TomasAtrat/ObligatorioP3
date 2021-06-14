@@ -100,5 +100,11 @@ namespace BussinesLogic.Controladores
         {
             return this.repository.UsuarioRepository.ListarUsuarios();
         }
+
+        public List<DtoUsuario> ListarFuncionarios()
+        {
+            List<DtoUsuario> dtoUsuarios= this.repository.UsuarioRepository.ListarUsuarios();
+            return dtoUsuarios.Where(i => i.EsFuncionario).ToList();
+        }
     }
 }
