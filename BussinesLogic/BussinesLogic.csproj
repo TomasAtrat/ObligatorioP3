@@ -44,6 +44,7 @@
     <Compile Include="Controladores\ControllerCuadrilla.cs" />
     <Compile Include="Controladores\ControllerPuntos.cs" />
     <Compile Include="Controladores\ControllerReclamos.cs" />
+    <Compile Include="Controladores\ControllerReporte.cs" />
     <Compile Include="Controladores\ControllerTipoReclamo.cs" />
     <Compile Include="Controladores\ControllerUsuario.cs" />
     <Compile Include="Controladores\ControllerZona.cs" />
