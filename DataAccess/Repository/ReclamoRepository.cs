@@ -106,5 +106,22 @@ namespace DataAccess.Repository
 
             return dto;
         }
+
+        public bool VerificarExistenica(long id)
+        {
+            bool verif = false;
+            using (Context context = new Context())
+            {
+                try
+                {
+                    verif = context.t_RECLAMO.AsNoTracking().Any(a => a.ID == id);
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            return verif;
+        }
     }
 }
