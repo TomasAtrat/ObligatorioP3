@@ -54,7 +54,7 @@ namespace DataAccess.Repository
                     }
                     catch (Exception ex)
                     {
-                        tran.Rollback();
+                        tran.Rollback(); 
                     }
                 }
             }
