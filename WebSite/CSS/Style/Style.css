@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+
+body {
+    
+    background: url(../../IMG/ToledoFondoIngreso.jpg) no-repeat center top;
+    background-size: cover;
+    height: 100vh;
+  }
+  
+  .CajaPrincipal {
+    display: block;
+    width: 320px;
+    height: auto;
+    background: rgb(2, 2, 2);
+    opacity:80%;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: 70px 30px;
+    float: right;
+  
+    
+  }
+  
+  .CajaPrincipal .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+  }
+  
+  .CajaPrincipal h1 {
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+  }
+  
+  .CajaPrincipal label {
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+  }
+  
+  .CajaPrincipal input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .CajaPrincipal input[type="text"], 
+  .CajaPrincipal input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .CajaPrincipal input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: #b80f22;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  
+  .CajaPrincipal input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+  }
+  
+  .CajaPrincipal a {
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+  }
+  
+  .CajaPrincipalx a:hover {
+    color: #fff;
+  }
+  .ingreso{
+    display: block;
+    
+  }
+
+#Registro
+{
+  display:none;
+  padding: 0em;
+
+}
+
+#Registro button
+{
+  display: block;
+  width: 100%;
+  border: none;
+    outline: none;
+    height: 40px;
+    background: #b80f22;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
