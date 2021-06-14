@@ -23,7 +23,7 @@ namespace DataAccess.Mapper
             dto.EsFuncionario = user.EsFuncionario;
             dto.NombreUsuario = user.NombreUsuario;
             dto.Password = user.Password;
-            dto.colReclamos = this.reclamoMapeador.mapToDto(user.t_RECLAMO.ToList());
+            dto.colReclamos = this.reclamoMapeador.mapToListDto(user.t_RECLAMO.ToList());
             return dto;
         }
 

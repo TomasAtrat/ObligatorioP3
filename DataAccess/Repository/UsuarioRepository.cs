@@ -95,7 +95,7 @@ namespace DataAccess.Repository
                         user.Email = usuario.Email;
                         user.Telefono = usuario.Telefono;
                         user.EsFuncionario = usuario.EsFuncionario;
-                        user.t_RECLAMO = this.reclamosMapeo.mapToEntity(usuario.colReclamos);
+                        user.t_RECLAMO = this.reclamosMapeo.mapToListEntity(usuario.colReclamos);
                         context.SaveChanges();
                         trann.Commit();
                     }

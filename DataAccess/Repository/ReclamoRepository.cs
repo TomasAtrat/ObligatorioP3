@@ -124,5 +124,15 @@ namespace DataAccess.Repository
 
             return dto;
         }
+
+        public List<DtoReclamo> EnlistarReclamos()
+        {
+            List<DtoReclamo> ListaDeReclamos = new List<DtoReclamo>();
+            using (Context context = new Context())
+            {
+                ListaDeReclamos = this.reclamoRepositorio.mapToListDto(context.t_RECLAMO.ToList());
+            }
+            return ListaDeReclamos;
+        }
     }
 }

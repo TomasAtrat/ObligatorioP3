@@ -72,7 +72,10 @@ namespace BussinesLogic.Controladores
             return this.repositorio.ReclamoRepository.VerificarExistenica(id);
         }
 
-      
+        public List<DtoReclamo> ListarReclamo()
+        {
+            return this.repositorio.ReclamoRepository.EnlistarReclamos();
+        }
 
 
     }
