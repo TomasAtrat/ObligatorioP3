@@ -1,66 +1,83 @@
-﻿using BussinesLogic.Interfaces;
-using CommonSolution.Dto;
-using CommonSolution.Interfaces;
-using DataAccess.Persistencia;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommonSolution.Dto;
+using DataAccess.Persistencia;
+using BussinesLogic.Interfaces;
+using CommonSolution.Interfaces;
 
 namespace BussinesLogic.Controladores
 {
     public class ControllerCuadrilla : IControllers
     {
+        private Repository repositorio;
+
         public ControllerCuadrilla()
         {
-            this.repository = new Repository();
+            this.repositorio = new Repository();
         }
 
-        private Repository repository;
-
-        public List<string> Alta(IDto dto)
+        public  List<string> Alta(IDto dto)
         {
-            List<string> colErrores = this.Validate((DtoCuadrilla)dto);
-            if (colErrores.Count == 0)
+            List<string> errores = Verificar((DtoCuadrilla)dto) ;
+            if(errores.Count() == 0)
             {
-                try
+                if(!(VerificarExistencia(((DtoCuadrilla)dto).id)))
                 {
-                    this.repository.CuadrillaRepository.AltaCuadrilla((DtoCuadrilla)dto);
+                    this.repositorio.CuadrillaRepositorio.AltaCuadrilla((DtoCuadrilla)dto);
                 }
-                catch (Exception exec)
+                else
                 {
-                    colErrores.Add(exec.Message);
+                    errores.Add("Ya existe una cuadrilla con esta id");
                 }
+               
             }
-            return colErrores;
+            return errores;
         }
 
         public List<string> Baja(IDto dto)
         {
-            List<string> colErrores = new List<string>();
+            List<string> errores = new List<string>();
+            if (VerificarExistencia(((DtoCuadrilla)dto).id) == true)
+            { 
+            this.repositorio.CuadrillaRepositorio.BajaCuadrilla((DtoCuadrilla)dto);
+            }
+            else
+            {
+                errores.Add("No existe");
 
-            this.repository.CuadrillaRepository.BajaCuadrilla((DtoCuadrilla)dto);
-            return colErrores;
+            }
+            return errores;
         }
+
         public List<string> Modificacion(IDto dto)
         {
-            List<string> colErrores = new List<string>();
-            this.repository.CuadrillaRepository.ModificarCuadrilla((DtoCuadrilla)dto);
-            return colErrores;
+            throw new NotImplementedException();
         }
 
-        public List<DtoCuadrilla> Listado()
+        public bool VerificarExistencia(long id)
         {
-            return this.repository.CuadrillaRepository.ListarCuadrilla();
+            return this.repositorio.CuadrillaRepositorio.ExisteCuadrilla(id);
         }
 
-
-        private List<string> Validate(DtoCuadrilla dto)
+        public List<string> Verificar(DtoCuadrilla cuadrilla)
         {
-            List<string> colErrores = new List<string>();
-
-            return colErrores;
+            List<string> errores = new List<string>();
+            if (cuadrilla.encargado == null)
+            {char  
+                errores.Add("Agregue un encargdo");
+            }
+            if(cuadrilla.nombre == null)
+            {
+                errores.Add("Agregue un nombre a la cuadrilla");
+            }
+            if(cuadrilla.cantidadPeones <= 0)
+            {
+                errores.Add("Coloque la cantidad de peones que hay en esta cuadrilla");
+            }
+            return errores;
         }
     }
 }
