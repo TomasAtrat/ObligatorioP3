@@ -98,5 +98,14 @@ namespace DataAccess.Repository
             }
         }
 
+        public List<DtoUsuario> getElements()
+        {
+            List<DtoUsuario> colDtos = null;
+            using (Context context= new Context())
+            {
+                colDtos = this.usuarioMapper.mapToDto(context.t_USUARIO.AsNoTracking().ToList());
+            }
+            return colDtos;
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace DataAccess.Persistencia
 {
     public class Repository
     {
-        public Repository()
+        public Repository() 
         {
             this.zonaRepository = new ZonaRepository();
             this.usuarioRepository = new UsuarioRepository();

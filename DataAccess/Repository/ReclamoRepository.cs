@@ -106,5 +106,15 @@ namespace DataAccess.Repository
 
             return dto;
         }
+
+        public List<DtoReclamo> getElements()
+        {
+            List<DtoReclamo> colDtos = null;
+            using (Context context= new Context())
+            {
+                colDtos = this.reclamoMapper.mapToDto(context.t_RECLAMO.AsNoTracking().ToList());
+            }
+            return colDtos;
+        }
     }
 }

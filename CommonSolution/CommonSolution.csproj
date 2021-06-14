@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DTO\DtoCuadrilla.cs" />
-    <Compile Include="DTO\DtoHistorico.cs" />
+    <Compile Include="DTO\DtoHistoricoReclamo.cs" />
     <Compile Include="DTO\DtoPunto.cs" />
     <Compile Include="DTO\DtoReclamo.cs" />
     <Compile Include="DTO\DtoTipoReclamo.cs" />
