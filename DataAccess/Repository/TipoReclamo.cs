@@ -1,6 +1,5 @@
 ﻿using CommonSolution.Dto;
 using DataAccess.Mapper;
-using DataAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -8,42 +7,44 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataAccess.Model;
 
 namespace DataAccess.Repository
 {
-    public class CuadrillaRepository
+    public class TipoReclamo
     {
-        public CuadrillaRepository()
+
+        public TipoReclamo()
         {
-            this.cuadrillamappers = new CuadrillaMapper();
+            this.TipoReclamoMapper = new TipoReclamoMapper();
         }
 
-        private CuadrillaMapper cuadrillamappers;
-        private object zonaMapper;
+        private TipoReclamoMapper TipoReclamoMapper;
 
-        public void AltaCuadrilla(DtoCuadrilla dto)
+        public void AddTipoReclamo(DtoTipoReclamo dto)
         {
-            t_CUADRILLA cuadrilla = this.cuadrillamappers.maptoentity(dto);
+            t_TIPO_RECLAMO Treclamo = this.TipoReclamoMapper.maptoentity(dto);
 
-            using (Context context = new Context())
+            using (Context contex = new Context())
             {
-                using (DbContextTransaction tran = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                using (DbContextTransaction trann = contex.Database.BeginTransaction(IsolationLevel.ReadCommitted))
                 {
                     try
                     {
-                        context.t_CUADRILLA.Add(cuadrilla);
-                        context.SaveChanges();
-                        tran.Commit();
+                        contex.t_TIPO_RECLAMO.Add(Treclamo);
+                        contex.SaveChanges();
+                        trann.Commit();
                     }
                     catch (Exception e)
                     {
-                        tran.Rollback();
+                        trann.Rollback();
                         throw e;
                     }
                 }
+
             }
         }
-        public void BajaCuadrilla(DtoCuadrilla dto)
+        public void BajaTipoReclamo(DtoTipoReclamo dto)
         {
             using (Context context = new Context())
             {
@@ -51,9 +52,9 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_CUADRILLA cuadrilla = context.t_CUADRILLA.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
-                        if (cuadrilla != null)
-                            context.t_CUADRILLA.Remove(cuadrilla);
+                        t_TIPO_RECLAMO tiporeclamo = context.t_TIPO_RECLAMO.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
+                        if (tiporeclamo != null)
+                            context.t_TIPO_RECLAMO.Remove(tiporeclamo);
                         context.SaveChanges();
                         tran.Commit();
                     }
@@ -66,7 +67,7 @@ namespace DataAccess.Repository
 
             }
         }
-        public void ModificarCuadrilla(DtoCuadrilla dto)
+        public void ModificarTipoReclamo(DtoTipoReclamo dto)
         {
             using (Context context = new Context())
             {
@@ -74,10 +75,10 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_CUADRILLA cuadrilla = context.t_CUADRILLA.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
-                        cuadrilla.Nombre = dto.nombre;
-                        cuadrilla.CantidadPeones = dto.cantidadPeones;
-                        cuadrilla.Encargado = dto.encargado;
+                        t_TIPO_RECLAMO tiporeclamo = context.t_TIPO_RECLAMO.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
+
+                        tiporeclamo.Nombre = dto.nombre;
+                        tiporeclamo.Descripcion = dto.descripcion;
 
                         context.SaveChanges();
                         tran.Commit();
@@ -89,36 +90,34 @@ namespace DataAccess.Repository
                 }
             }
         }
-        public DtoCuadrilla getElementById(long id)
+        public DtoTipoReclamo getElementByIdTipoReclamo(long id)
         {
-            DtoCuadrilla dto = null;
+            DtoTipoReclamo dto = null;
             using (Context context = new Context())
             {
-                dto = this.cuadrillamappers.mapToDto(context.t_CUADRILLA.AsNoTracking().FirstOrDefault(i => i.ID == id));
+                dto = this.TipoReclamoMapper.mapToDto(context.t_TIPO_RECLAMO.AsNoTracking().FirstOrDefault(i => i.ID == id));
             }
             return dto;
+
+
         }
-        public bool ExisteCuadrilla(long id)
+        public bool ExisteTipoReclamo(long id)
         {
             bool existe = false;
             using (Context context = new Context())
             {
-                existe = context.t_CUADRILLA.AsNoTracking().Any(a => a.ID == id);
+                existe = context.t_TIPO_RECLAMO.AsNoTracking().Any(a => a.ID == id);
             }
             return existe;
         }
-
-        public List<DtoCuadrilla> ListarCuadrilla()
+        public List<DtoTipoReclamo> ListarTipoReclamo()
         {
-            List<DtoCuadrilla> colCuadrillas = new List<DtoCuadrilla>();
+            List<DtoTipoReclamo> tiporeclamo = new List<DtoTipoReclamo>();
             using (Context context = new Context())
             {
-                colCuadrillas = this.cuadrillamappers.maptoDto(context.t_CUADRILLA.AsNoTracking().ToList());
+                tiporeclamo = this.TipoReclamoMapper.maptoDto(context.t_TIPO_RECLAMO.ToList());
             }
-            return colCuadrillas;
+            return tiporeclamo;
         }
-
-
-
     }
 }

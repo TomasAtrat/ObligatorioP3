@@ -16,9 +16,11 @@ namespace DataAccess.Repository
         public UsuarioRepository()
         {
             this.usuarioMapper = new UsuarioMapper();
+            this.reclamosMapeo = new ReclamoMapper();
         }
 
         private UsuarioMapper usuarioMapper;
+        private ReclamoMapper reclamosMapeo;
 
         public DtoUsuario getElementById(string nickname, string password)
         {
@@ -27,7 +29,7 @@ namespace DataAccess.Repository
             {
                 usuario = context.t_USUARIO.AsNoTracking().FirstOrDefault(i => i.NombreUsuario == nickname && i.Password == password);
             }
-            return this.usuarioMapper.mapToDto(usuario);
+            return this.usuarioMapper.MapToDto(usuario);
         }
 
         public void AddUsuarioInBDD(DtoUsuario UsuarioNuevo)
@@ -40,7 +42,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_USUARIO UsuarioAGuardar = this.usuarioMapper.mapToEntity(UsuarioNuevo);
+                        t_USUARIO UsuarioAGuardar = this.usuarioMapper.MapToEntity(UsuarioNuevo);
                         context.t_USUARIO.Add(UsuarioAGuardar);
                         context.SaveChanges();
                         trann.Commit();
@@ -86,7 +88,14 @@ namespace DataAccess.Repository
                     try
                     {
                         t_USUARIO user = context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario == usuario.NombreUsuario);
-                        user = this.usuarioMapper.mapToEntity(usuario);
+                        user.Apellido = usuario.Apellido;
+                        user.Nombre = usuario.Nombre;
+                        user.NombreUsuario = usuario.NombreUsuario;
+                        user.Password = usuario.Password;
+                        user.Email = usuario.Email;
+                        user.Telefono = usuario.Telefono;
+                        user.EsFuncionario = usuario.EsFuncionario;
+                        user.t_RECLAMO = this.reclamosMapeo.mapToListEntity(usuario.colReclamos);
                         context.SaveChanges();
                         trann.Commit();
                     }
@@ -98,14 +107,15 @@ namespace DataAccess.Repository
             }
         }
 
-        public List<DtoUsuario> getElements()
+        public List<DtoUsuario> ListarUsuarios()
         {
-            List<DtoUsuario> colDtos = null;
-            using (Context context= new Context())
+            List<DtoUsuario> ListUsuarios = new List<DtoUsuario>();
+            using (Context context = new Context())
             {
-                colDtos = this.usuarioMapper.mapToDto(context.t_USUARIO.AsNoTracking().ToList());
+                ListUsuarios = this.usuarioMapper.MapToListDto(context.t_USUARIO.ToList());
             }
-            return colDtos;
+            return ListUsuarios;
         }
+
     }
 }

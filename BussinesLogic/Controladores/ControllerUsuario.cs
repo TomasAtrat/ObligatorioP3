@@ -95,5 +95,10 @@ namespace BussinesLogic.Controladores
             }
             return errores;
         }
+
+        public List<DtoUsuario> ListarUsuario()
+        {
+            return this.repository.UsuarioRepository.ListarUsuarios();
+        }
     }
 }

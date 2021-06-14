@@ -29,16 +29,24 @@ namespace DataAccess.Mapper
             dto.Observaciones = rec.Observaciones;
             dto.Estado = (Estado)Enum.Parse(typeof(Estado), rec.Estado);
             dto.FechaHoraIngreso = rec.FechaHoraIngreso;
-            dto.colUsuarios = this.usuarioMapper.mapToDto((List<t_USUARIO>)rec.t_USUARIO);
+            dto.colUsuarios = this.usuarioMapper.MapToListDto((List<t_USUARIO>)rec.t_USUARIO);
 
             return dto;
         }
 
-        public List<DtoReclamo> mapToDto(List<t_RECLAMO> colRec)
+        public List<DtoReclamo> mapToListDto(List<t_RECLAMO> colRec)
         {
             List<DtoReclamo> colDtos = new List<DtoReclamo>();
             if (colRec != null)
                 colRec.ForEach(i => colDtos.Add(this.mapToDto(i)));
+            return colDtos;
+        }
+
+        public List<t_RECLAMO> mapToListEntity(List<DtoReclamo> colRec)
+        {
+            List<t_RECLAMO> colDtos = new List<t_RECLAMO>();
+            if (colRec != null)
+                colRec.ForEach(i => colDtos.Add(this.mapToEntity(i)));
             return colDtos;
         }
 
