@@ -102,7 +102,7 @@ namespace DataAccess.Repository
                         reclamoAModificar.Observaciones = dto.Observaciones;
                         reclamoAModificar.Latitud = dto.Latitud;
                         reclamoAModificar.Longitud = dto.Longitud;
-                        reclamoAModificar.t_USUARIO = this.userMap.MapToDto(dto.colUsuarios.ToList());
+                        reclamoAModificar.t_USUARIO = this.userMap.MapToListEntity(dto.colUsuarios.ToList());
                         context.SaveChanges();
                         tann.Commit();
                     }

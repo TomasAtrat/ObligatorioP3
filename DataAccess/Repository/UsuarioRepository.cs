@@ -107,5 +107,15 @@ namespace DataAccess.Repository
             }
         }
 
+        public List<DtoUsuario> ListarUsuarios()
+        {
+            List<DtoUsuario> ListUsuarios = new List<DtoUsuario>();
+            using (Context context = new Context())
+            {
+                ListUsuarios = this.usuarioMapper.MapToListDto(context.t_USUARIO.ToList());
+            }
+            return ListUsuarios;
+        }
+
     }
 }
