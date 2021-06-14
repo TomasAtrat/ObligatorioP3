@@ -34,7 +34,7 @@ namespace DataAccess.Mapper
             return dto;
         }
 
-        public List<DtoReclamo> mapToListDto(List<t_RECLAMO> colRec)
+        public List<DtoReclamo> mapToDto(List<t_RECLAMO> colRec)
         {
             List<DtoReclamo> colDtos = new List<DtoReclamo>();
             if (colRec != null)

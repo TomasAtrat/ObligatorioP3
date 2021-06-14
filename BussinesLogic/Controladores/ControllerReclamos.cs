@@ -24,7 +24,7 @@ namespace BussinesLogic.Controladores
             List<string> error = Verificacion((DtoReclamo)dto);
             if(error.Count() ==0 && (BuscarReclamoExistencia(((DtoReclamo)dto).ID) == false))
             {
-                this.repositorio.ReclamoRepository.AddReclamo((DtoReclamo)dto);
+                this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
             }
             throw new NotImplementedException();
         }
@@ -34,7 +34,7 @@ namespace BussinesLogic.Controladores
             List<string> errores = new List<string>();
             if(BuscarReclamoExistencia(((DtoReclamo)dto).ID) == true)
             { 
-            this.repositorio.ReclamoRepository.DeleteReclamo((DtoReclamo)dto);
+            this.repositorio.ReclamoRepository.EliminarReclamo((DtoReclamo)dto);
             }
             else
             {
@@ -48,7 +48,7 @@ namespace BussinesLogic.Controladores
             List<string> errores = Verificacion((DtoReclamo)dto);
             if(errores.Count() == 0 && BuscarReclamoExistencia(((DtoReclamo)dto).ID) == true)
             {
-                this.repositorio.ReclamoRepository.UpDateReclamos((DtoReclamo)dto);
+                this.repositorio.ReclamoRepository.ModificarReclamo((DtoReclamo)dto);
             }
             return errores;
         }
@@ -56,12 +56,12 @@ namespace BussinesLogic.Controladores
         public List<string> Verificacion(DtoReclamo rec)
         {
             List<string> errores = new List<string>();
-            if(rec.Estado.ToString() != "PENDIENTE" && rec.Estado.ToString() != "ASIGNADO" &&
-                rec.Estado.ToString() != "EN_PROCESO" && rec.Estado.ToString() != "RESUELTO" &&
-                 rec.Estado.ToString() != "DESESTIMADO")
-                {
-                errores.Add("Estado incorrecto");
-            }
+            //if(rec.Estado.ToString() != "PENDIENTE" && rec.Estado.ToString() != "ASIGNADO" &&
+            //    rec.Estado.ToString() != "EN_PROCESO" && rec.Estado.ToString() != "RESUELTO" &&
+            //     rec.Estado.ToString() != "DESESTIMADO")
+            //    {
+            //    errores.Add("Estado incorrecto");
+            //}
            
             return errores;
 
@@ -74,9 +74,15 @@ namespace BussinesLogic.Controladores
 
         public List<DtoReclamo> ListarReclamo()
         {
-            return this.repositorio.ReclamoRepository.EnlistarReclamos();
+            return this.repositorio.ReclamoRepository.getElements();
         }
 
+        public void CambiarEstadoReclamo(DtoReclamo dto)
+        {
+            DtoReclamo reclamo = this.repositorio.ReclamoRepository.GetElementById(dto.ID);
+            reclamo.Estado = dto.Estado;
+            this.repositorio.ReclamoRepository.ModificarReclamo(reclamo);
+        }
 
     }
 }

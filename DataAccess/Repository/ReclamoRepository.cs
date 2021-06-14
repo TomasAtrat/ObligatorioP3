@@ -116,5 +116,15 @@ namespace DataAccess.Repository
             }
             return colDtos;
         }
+
+        public bool VerificarExistenica(long id)
+        {
+            bool existe = false;
+            using (Context context= new Context())
+            {
+                existe = context.t_RECLAMO.AsNoTracking().Any(i => i.ID == id);
+            }
+            return existe;
+        }
     }
 }
