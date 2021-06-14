@@ -54,7 +54,21 @@ namespace BussinesLogic.Controladores
 
         public List<string> Modificacion(IDto dto)
         {
-            throw new NotImplementedException();
+
+            List<string> errores = Verificar((DtoCuadrilla)dto);
+            if (errores.Count() == 0)
+            {
+                if (VerificarExistencia(((DtoCuadrilla)dto).id))
+                {
+                    this.repositorio.CuadrillaRepositorio.ModificarCuadrilla((DtoCuadrilla)dto);
+                }
+                else
+                {
+                    errores.Add("No existe esta cuadrilla");
+                }
+
+            }
+            return errores;
         }
 
         public bool VerificarExistencia(long id)
@@ -62,11 +76,16 @@ namespace BussinesLogic.Controladores
             return this.repositorio.CuadrillaRepositorio.ExisteCuadrilla(id);
         }
 
+        public List<DtoCuadrilla> ListadoDeCuadrillas()
+        {
+            return this.repositorio.CuadrillaRepositorio.ListarCuadrilla();
+        }
+
         public List<string> Verificar(DtoCuadrilla cuadrilla)
         {
             List<string> errores = new List<string>();
             if (cuadrilla.encargado == null)
-            {char  
+            {  
                 errores.Add("Agregue un encargdo");
             }
             if(cuadrilla.nombre == null)
