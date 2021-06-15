@@ -91,5 +91,14 @@ namespace DataAccess.Repository
             return exists;
         }
 
+        public List<DtoPunto> getElements()
+        {
+            List<DtoPunto> dtoPuntos = new List<DtoPunto>();
+            using (Context context = new Context())
+            {
+                dtoPuntos= this.puntosMappers.mapToDto(context.t_PUNTO.AsNoTracking().Select(i => i).ToList());
+            }
+            return dtoPuntos;
+        }
     }
 }

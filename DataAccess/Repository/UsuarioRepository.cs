@@ -112,7 +112,7 @@ namespace DataAccess.Repository
             List<DtoUsuario> ListUsuarios = new List<DtoUsuario>();
             using (Context context = new Context())
             {
-                ListUsuarios = this.usuarioMapper.MapToListDto(context.t_USUARIO.ToList());
+                ListUsuarios = this.usuarioMapper.MapToListDto(context.t_USUARIO.Select(s => s).ToList());
             }
             return ListUsuarios;
         }

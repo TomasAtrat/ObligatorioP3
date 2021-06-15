@@ -106,7 +106,7 @@ namespace DataAccess.Repository
             List<DtoZona> colZonas = new List<DtoZona>();
             using (Context context= new Context())
             {
-                colZonas = this.zonaMapper.mapToDto(context.t_ZONA.AsNoTracking().ToList());
+                colZonas = this.zonaMapper.mapToDto(context.t_ZONA.AsNoTracking().Select(s => s).ToList());
             }
             return colZonas;
         }

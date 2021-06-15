@@ -112,7 +112,7 @@ namespace DataAccess.Repository
             List<DtoReclamo> colDtos = null;
             using (Context context= new Context())
             {
-                colDtos = this.reclamoMapper.mapToDto(context.t_RECLAMO.AsNoTracking().ToList());
+                colDtos = this.reclamoMapper.mapToDto(context.t_RECLAMO.AsNoTracking().Select(s=>s).ToList());
             }
             return colDtos;
         }
