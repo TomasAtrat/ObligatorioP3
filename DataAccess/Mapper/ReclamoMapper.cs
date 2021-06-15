@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CommonSolution.Interfaces;
 
 namespace DataAccess.Mapper
 {
@@ -29,14 +30,22 @@ namespace DataAccess.Mapper
             dto.Observaciones = rec.Observaciones;
             dto.Estado = (Estado)Enum.Parse(typeof(Estado), rec.Estado);
             dto.FechaHoraIngreso = rec.FechaHoraIngreso;
-            dto.colUsuarios = this.usuarioMapper.MapToListDto((List<t_USUARIO>)rec.t_USUARIO);
+            dto.colUsuarios = (this.usuarioMapper.mapToListDtoB((List<t_USUARIO>)rec.t_USUARIO);
 
             return dto;
         }
 
-        public List<DtoReclamo> mapToListDto(List<t_RECLAMO> colRec)
+        public List<DtoReclamo> mapToListDtoB(List<t_RECLAMO> colRec)
         {
             List<DtoReclamo> colDtos = new List<DtoReclamo>();
+            if (colRec != null)
+                colRec.ForEach(i => colDtos.Add(this.mapToDto(i)));
+            return colDtos;
+        }
+
+        public List<IDto> mapToListDto(List<t_RECLAMO> colRec)
+        {
+            List<IDto> colDtos = new List<IDto>();
             if (colRec != null)
                 colRec.ForEach(i => colDtos.Add(this.mapToDto(i)));
             return colDtos;

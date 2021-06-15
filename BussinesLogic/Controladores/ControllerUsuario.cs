@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    public class ControllerUsuario : IControllers
+    public class ControllerUsuario : IControllers , InterfazList
     {
         public ControllerUsuario()
         {
@@ -96,7 +96,7 @@ namespace BussinesLogic.Controladores
             return errores;
         }
 
-        public List<DtoUsuario> ListarUsuario()
+        public List<IDto> ListAll()
         {
             return this.repository.UsuarioRepository.ListarUsuarios();
         }

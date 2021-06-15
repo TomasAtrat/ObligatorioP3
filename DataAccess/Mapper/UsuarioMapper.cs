@@ -1,4 +1,5 @@
 ﻿using CommonSolution.Dto;
+using CommonSolution.Interfaces;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
@@ -43,9 +44,9 @@ namespace DataAccess.Mapper
 
       
 
-        public List<DtoUsuario> MapToListDto(List<t_USUARIO> users)
+        public List<IDto> MapToListDto(List<t_USUARIO> users)
         {
-            List<DtoUsuario> colDtos = new List<DtoUsuario>();
+            List<IDto> colDtos = new List<IDto>();
             if (users != null)
                 users.ForEach(i => colDtos.Add(this.MapToDto(i)));
             return colDtos;

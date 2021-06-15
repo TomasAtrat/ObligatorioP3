@@ -10,7 +10,7 @@ using CommonSolution.Interfaces;
 
 namespace BussinesLogic.Controladores
 {
-    public class ControllerReclamos : IControllers 
+    public class ControllerReclamos : IControllers, InterfazList
     {
         private Repository repositorio;
         public ControllerReclamos()
@@ -72,11 +72,9 @@ namespace BussinesLogic.Controladores
             return this.repositorio.ReclamoRepository.VerificarExistenica(id);
         }
 
-        public List<DtoReclamo> ListarReclamo()
+        public List<IDto> ListAll()
         {
             return this.repositorio.ReclamoRepository.EnlistarReclamos();
         }
-
-
     }
 }

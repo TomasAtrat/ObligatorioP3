@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data;
+using CommonSolution.Interfaces;
 
 namespace DataAccess.Repository
 {
@@ -107,12 +108,13 @@ namespace DataAccess.Repository
             }
         }
 
-        public List<DtoUsuario> ListarUsuarios()
+        public List<IDto> ListarUsuarios()
         {
-            List<DtoUsuario> ListUsuarios = new List<DtoUsuario>();
+            List<IDto> ListUsuarios = new List<IDto>();
             using (Context context = new Context())
             {
-                ListUsuarios = this.usuarioMapper.MapToListDto(context.t_USUARIO.ToList());
+                List<t_USUARIO> user = context.t_USUARIO.Select(s => s).ToList();
+                ListUsuarios = this.usuarioMapper.MapToListDto(user);
             }
             return ListUsuarios;
         }

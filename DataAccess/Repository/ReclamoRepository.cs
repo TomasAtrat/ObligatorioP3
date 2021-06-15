@@ -8,6 +8,7 @@ using System.Data.Entity;
 using DataAccess.Mapper;
 using DataAccess.Model;
 using CommonSolution.Dto;
+using CommonSolution.Interfaces;
 
 namespace DataAccess.Repository
 {
@@ -125,9 +126,9 @@ namespace DataAccess.Repository
             return dto;
         }
 
-        public List<DtoReclamo> EnlistarReclamos()
+        public List<IDto> EnlistarReclamos()
         {
-            List<DtoReclamo> ListaDeReclamos = new List<DtoReclamo>();
+            List<IDto> ListaDeReclamos = new List<IDto>();
             using (Context context = new Context())
             {
                 ListaDeReclamos = this.reclamoRepositorio.mapToListDto(context.t_RECLAMO.ToList());
