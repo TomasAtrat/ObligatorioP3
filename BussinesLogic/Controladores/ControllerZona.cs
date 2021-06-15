@@ -45,9 +45,9 @@ namespace BussinesLogic.Controladores
             return colErrores;
         }
 
-        public List<DtoZona> Listado()
+        public List<IDto> ListAll()
         {
-            return this.repository.ZonaRepository.ListarZonas();
+            return this.repository.ZonaRepository.ListarZonas().Cast<IDto>().ToList();
         }
 
         public List<string> Modificacion(IDto dto)

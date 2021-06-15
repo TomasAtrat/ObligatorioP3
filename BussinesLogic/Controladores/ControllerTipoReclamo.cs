@@ -32,5 +32,10 @@ namespace BussinesLogic.Controladores
         {
             throw new NotImplementedException();
         }
+
+        public List<IDto> ListAll()
+        {
+            return this.repository.TipoReclamoRepository.ListarTipoReclamo().Cast<IDto>().ToList();
+        }
     }
 }

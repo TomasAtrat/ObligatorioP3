@@ -72,9 +72,9 @@ namespace BussinesLogic.Controladores
             return this.repositorio.ReclamoRepository.VerificarExistenica(id);
         }
 
-        public List<DtoReclamo> ListarReclamo()
+        public List<IDto> ListAll()
         {
-            return this.repositorio.ReclamoRepository.getElements();
+            return this.repositorio.ReclamoRepository.getElements().Cast<IDto>().ToList();
         }
 
         public void CambiarEstadoReclamo(DtoReclamo dto)

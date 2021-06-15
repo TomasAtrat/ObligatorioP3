@@ -11,10 +11,10 @@ using DataAccess.Model;
 
 namespace DataAccess.Repository
 {
-    public class TipoReclamo
+    public class TipoReclamoRepository
     {
 
-        public TipoReclamo()
+        public TipoReclamoRepository()
         {
             this.TipoReclamoMapper = new TipoReclamoMapper();
         }
