@@ -1,4 +1,5 @@
 ﻿using CommonSolution.Dto;
+using CommonSolution.Interfaces;
 using DataAccess.Mapper;
 using DataAccess.Model;
 using System;
@@ -108,12 +109,13 @@ namespace DataAccess.Repository
             return existe;
         }
 
-        public List<DtoCuadrilla> ListarCuadrilla()
+        public List<IDto> ListarCuadrilla()
         {
-            List<DtoCuadrilla> colCuadrillas = new List<DtoCuadrilla>();
+            List<IDto> colCuadrillas = new List<IDto>();
             using (Context context = new Context())
             {
-                colCuadrillas = this.cuadrillamappers.maptoDto(context.t_CUADRILLA.ToList());
+                List<t_CUADRILLA> cuadrillas = context.t_CUADRILLA.AsNoTracking().Select(s => s).ToList();
+                colCuadrillas = this.cuadrillamappers.maptoListDto(cuadrillas);
             }
             return colCuadrillas;
         }

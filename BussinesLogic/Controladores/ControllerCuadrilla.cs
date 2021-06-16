@@ -10,7 +10,7 @@ using CommonSolution.Interfaces;
 
 namespace BussinesLogic.Controladores
 {
-    public class ControllerCuadrilla : IControllers
+    public class ControllerCuadrilla : IControllers , InterfazList
     {
         private Repository repositorio;
 
@@ -76,7 +76,7 @@ namespace BussinesLogic.Controladores
             return this.repositorio.CuadrillaRepositorio.ExisteCuadrilla(id);
         }
 
-        public List<DtoCuadrilla> ListadoDeCuadrillas()
+        public List<IDto> ListAll()
         {
             return this.repositorio.CuadrillaRepositorio.ListarCuadrilla();
         }
