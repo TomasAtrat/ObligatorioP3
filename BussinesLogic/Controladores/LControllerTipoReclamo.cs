@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace BussinesLogic.Controladores
 {
@@ -18,10 +19,11 @@ namespace BussinesLogic.Controladores
 
         private Repository repository;
 
-        public List<string> Alta(IDto dto)
+        public ActionResult Alta(IDto dto)
         {
             throw new NotImplementedException();
         }
+        
 
         public List<string> Baja(IDto dto)
         {

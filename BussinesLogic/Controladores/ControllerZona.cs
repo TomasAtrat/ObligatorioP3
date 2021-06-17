@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    public class ControllerZona : IControllers
+    public class ControllerZona : IControllersAbm  , IControllersListado
     {
 
         public ControllerZona()
@@ -62,6 +62,11 @@ namespace BussinesLogic.Controladores
             List<string> colErrores = new List<string>();
 
             return colErrores;
+        }
+
+        public void listar(IDto dto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
