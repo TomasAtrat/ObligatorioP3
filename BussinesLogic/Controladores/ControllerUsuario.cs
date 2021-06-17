@@ -96,9 +96,9 @@ namespace BussinesLogic.Controladores
             return errores;
         }
 
-        public List<DtoUsuario> ListarUsuario()
+        public List<IDto> ListAll()
         {
-            return this.repository.UsuarioRepository.ListarUsuarios();
+            return this.repository.UsuarioRepository.ListarUsuarios().Cast<IDto>().ToList();
         }
 
         public List<DtoUsuario> ListarFuncionarios()

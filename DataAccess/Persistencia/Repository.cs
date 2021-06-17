@@ -14,20 +14,23 @@ namespace DataAccess.Persistencia
             this.zonaRepository = new ZonaRepository();
             this.usuarioRepository = new UsuarioRepository();
             this.reclamoRepository = new ReclamoRepository();
-            this.repositoryDePunto = new Puntosrepository();
-            this.cuadrillaRepositorio = new CuadrillaRepository();
+            this.puntoRepository = new Puntosrepository();
+            this.cuadrillaRepository = new CuadrillaRepository();
+            this.tipoReclamoRepository = new TipoReclamoRepository();
         }
 
         private ZonaRepository zonaRepository;
         private UsuarioRepository usuarioRepository;
         private ReclamoRepository reclamoRepository;
-        private Puntosrepository repositoryDePunto;
-        private CuadrillaRepository cuadrillaRepositorio;
+        private Puntosrepository puntoRepository;
+        private CuadrillaRepository cuadrillaRepository;
+        private TipoReclamoRepository tipoReclamoRepository;
 
         public ZonaRepository ZonaRepository { get => zonaRepository; }
         public UsuarioRepository UsuarioRepository { get => usuarioRepository; }
         public ReclamoRepository ReclamoRepository { get => reclamoRepository; }
-        public Puntosrepository RepositoryDePunto { get => repositoryDePunto;}
-        public CuadrillaRepository CuadrillaRepositorio { get => cuadrillaRepositorio;}
+        public Puntosrepository PuntoRepository { get => puntoRepository; }
+        public CuadrillaRepository CuadrillaRepository { get => cuadrillaRepository; }
+        public TipoReclamoRepository TipoReclamoRepository { get => tipoReclamoRepository; }
     }
 }

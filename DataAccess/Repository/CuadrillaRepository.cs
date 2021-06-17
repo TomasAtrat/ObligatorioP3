@@ -113,7 +113,7 @@ namespace DataAccess.Repository
             List<DtoCuadrilla> colCuadrillas = new List<DtoCuadrilla>();
             using (Context context = new Context())
             {
-                colCuadrillas = this.cuadrillamappers.maptoDto(context.t_CUADRILLA.AsNoTracking().ToList());
+                colCuadrillas = this.cuadrillamappers.maptoDto(context.t_CUADRILLA.AsNoTracking().Select(s=>s).ToList());
             }
             return colCuadrillas;
         }

@@ -24,7 +24,7 @@ namespace BussinesLogic.Controladores
             List<string> errores = new List<string>();
             if(!(this.Verificacion(((DtoPunto)dto).id)))
             {
-                this.repositorio.RepositoryDePunto.AddPuntos((DtoPunto)dto);
+                this.repositorio.PuntoRepository.AddPuntos((DtoPunto)dto);
             }
             else
             {
@@ -40,7 +40,7 @@ namespace BussinesLogic.Controladores
             List<string> errores = new List<string>();
             if (this.Verificacion(((DtoPunto)dto).id))
             {
-                this.repositorio.RepositoryDePunto.DeletePunto((DtoPunto)dto);
+                this.repositorio.PuntoRepository.DeletePunto((DtoPunto)dto);
             }
             else
             {
@@ -55,7 +55,7 @@ namespace BussinesLogic.Controladores
             List<string> errores = new List<string>();
             if (this.Verificacion(((DtoPunto)dto).id))
             {
-                this.repositorio.RepositoryDePunto.UpDatePuntos((DtoPunto)dto);
+                this.repositorio.PuntoRepository.UpDatePuntos((DtoPunto)dto);
             }
             else
             {
@@ -67,7 +67,7 @@ namespace BussinesLogic.Controladores
 
         public bool Verificacion(long id)
         {
-            return this.repositorio.RepositoryDePunto.SearchPunto(id);
+            return this.repositorio.PuntoRepository.SearchPunto(id);
         }
 
         public List<string> AddPointList(List<IDto> dto)
@@ -77,7 +77,7 @@ namespace BussinesLogic.Controladores
             {
                 if (!(this.Verificacion(i.id)))
                 {
-                    this.repositorio.RepositoryDePunto.AddPuntos(i);
+                    this.repositorio.PuntoRepository.AddPuntos(i);
                 }
                 else
                 {
@@ -87,6 +87,11 @@ namespace BussinesLogic.Controladores
             
 
             return errores;
+        }
+
+        public List<IDto> ListAll()
+        {
+            return this.repositorio.PuntoRepository.getElements().Cast<IDto>().ToList();
         }
     }
 }
