@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    public class ControllerUsuario : IControllersAbm
+    public class LControllerUsuario : IControllersAbm
     {
-        public ControllerUsuario()
+        public LControllerUsuario()
         {
             this.repository = new Repository();
         }
