@@ -8,21 +8,21 @@ using System.Web.Mvc;
 
 namespace MVCWeb.Controllers
 {
-    public class UsuarioController : Controller
+    public class CuadrillaController : Controller
     {
-        // GET: Usuario
+        // GET: Cuadrilla
         public ActionResult Agregar()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Agregar(DtoUsuario dto)
+        public ActionResult Agregar(DtoCuadrilla dto)
         {
-            LControllerUsuario Lusuario = new LControllerUsuario();
-            Lusuario.Alta(dto);
+             
 
             return View();
 
         }
+
     }
 }

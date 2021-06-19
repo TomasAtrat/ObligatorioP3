@@ -32,28 +32,29 @@ namespace DataAccess.Repository
             return this.usuarioMapper.MapToDto(usuario);
         }
 
-        public void AddUsuarioInBDD(DtoUsuario UsuarioNuevo)
+        public void AddUsuarioInBDD(DtoUsuario Dtousuario)
         {
 
 
-            using (Context context = new Context())
+            using (Context Context = new Context())
             {
-                using (DbContextTransaction trann = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
-                {
-                    try
-                    {
-                        t_USUARIO UsuarioAGuardar = this.usuarioMapper.MapToEntity(UsuarioNuevo);
-                        context.t_USUARIO.Add(UsuarioAGuardar);
-                        context.SaveChanges();
-                        trann.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        trann.Rollback();
-                    }
-                }
+             //  using (DbContextTransaction trann = Context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+               // {
+                 //   try
+                   // {
+                        t_USUARIO NuevoUsuario = this.usuarioMapper.MapToEntity(Dtousuario);
+                        Context.t_USUARIO.Add(NuevoUsuario);
+                        Context.SaveChanges();
+                      //  trann.Commit();
+                   // }
+                   // catch (Exception ex)
+                    //{
+                     //   trann.Rollback();
+                   // }
+              // }
 
-            }
+
+           }
         }
 
         public void DeleteUsuario(string nickname, string password)

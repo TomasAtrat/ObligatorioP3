@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    public class LControllerUsuario : IControllersAbm
+    public class LControllerUsuario : IControllersAbm 
     {
         public LControllerUsuario()
         {
@@ -44,6 +44,7 @@ namespace BussinesLogic.Controladores
             List<string> error = Validacion((DtoUsuario)dto);
 
             if (error.Count() == 0)
+
             {
                 try
                 {
@@ -85,11 +86,11 @@ namespace BussinesLogic.Controladores
         public List<string> Validacion(DtoUsuario user)
         {
             List<string> errores = new List<string>();
-            if (user.Nombre.Count() < 51 && user.Apellido.Count() < 51 && user.NombreUsuario.Count() < 51)
+            if (user.Nombre.Count() > 51 && user.Apellido.Count() > 51 && user.NombreUsuario.Count() > 51)
             {
                 errores.Add("Verifique el largo de los datos");
             }
-            if (user.Password.Count() < 51)
+            if (user.Password.Count() > 51)
             {
                 errores.Add("Password demasiado largo");
             }
