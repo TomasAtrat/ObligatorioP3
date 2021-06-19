@@ -194,6 +194,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Zona\Index.cshtml" />
     <Content Include="Views\Shared\Mapa.cshtml" />
+    <Content Include="Views\Zona\Listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

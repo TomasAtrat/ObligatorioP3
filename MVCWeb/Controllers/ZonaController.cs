@@ -12,5 +12,10 @@ namespace MVCWeb.Controllers
         {
             return View();
         }
+
+        public ActionResult Listar()
+        {
+            return View();
+        }
     }
 }
