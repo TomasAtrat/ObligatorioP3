@@ -43,7 +43,7 @@ namespace DataAccess.Mapper
 
       
 
-        public List<DtoUsuario> MapToDto(List<t_USUARIO> users)
+        public List<DtoUsuario> MapToListDto(List<t_USUARIO> users)
         {
             List<DtoUsuario> colDtos = new List<DtoUsuario>();
             if (users != null)
@@ -51,7 +51,7 @@ namespace DataAccess.Mapper
             return colDtos;
         }
 
-        public List<t_USUARIO> MapToDto(List<DtoUsuario> users)
+        public List<t_USUARIO> MapToListEntity(List<DtoUsuario> users)
         {
             List<t_USUARIO> colDtos = new List<t_USUARIO>();
             if (users != null)

@@ -50,9 +50,9 @@ namespace BussinesLogic.Controladores
             return colErrores;
         }
 
-        public List<DtoCuadrilla> Listado()
+        public List<IDto> ListAll()
         {
-            return this.repository.CuadrillaRepository.ListarCuadrilla();
+            return this.repository.CuadrillaRepository.ListarCuadrilla().Cast<IDto>().ToList();
         }
 
 

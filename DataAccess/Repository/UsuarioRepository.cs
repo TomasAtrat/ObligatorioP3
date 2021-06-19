@@ -96,7 +96,7 @@ namespace DataAccess.Repository
                         user.Email = usuario.Email;
                         user.Telefono = usuario.Telefono;
                         user.EsFuncionario = usuario.EsFuncionario;
-                        user.t_RECLAMO = this.reclamosMapeo.mapToEntity(usuario.colReclamos);
+                        user.t_RECLAMO = this.reclamosMapeo.mapToListEntity(usuario.colReclamos);
                         context.SaveChanges();
                         trann.Commit();
                     }
@@ -106,6 +106,16 @@ namespace DataAccess.Repository
                     }
                 }
             }
+        }
+
+        public List<DtoUsuario> ListarUsuarios()
+        {
+            List<DtoUsuario> ListUsuarios = new List<DtoUsuario>();
+            using (Context context = new Context())
+            {
+                ListUsuarios = this.usuarioMapper.MapToListDto(context.t_USUARIO.Select(s => s).ToList());
+            }
+            return ListUsuarios;
         }
 
     }

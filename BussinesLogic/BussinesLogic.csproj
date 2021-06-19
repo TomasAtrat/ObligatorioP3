@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controladores\ControllerCuadrilla.cs" />
+    <Compile Include="Controladores\ControllerPuntos.cs" />
     <Compile Include="Controladores\ControllerReclamos.cs" />
     <Compile Include="Controladores\L_ControllerTipoReclamo.cs" />
     <Compile Include="Controladores\LControllerUsuario.cs" />

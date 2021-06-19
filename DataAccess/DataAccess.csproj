@@ -84,8 +84,9 @@
     <Compile Include="Persistencia\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CuadrillaRepository.cs" />
+    <Compile Include="Repository\Puntosrepository.cs" />
     <Compile Include="Repository\ReclamoRepository.cs" />
-    <Compile Include="Repository\TipoReclamo.cs" />
+    <Compile Include="Repository\TipoReclamoRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
     <Compile Include="Repository\ZonaRepository.cs" />
     <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
