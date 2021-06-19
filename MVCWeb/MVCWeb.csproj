@@ -192,6 +192,7 @@
     <Content Include="Views\Shared\Mapa.cshtml" />
     <Content Include="Views\Usuario\Agregar.cshtml" />
     <Content Include="Views\Cuadrilla\Agregar.cshtml" />
+    <Content Include="Views\Cuadrilla\listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
