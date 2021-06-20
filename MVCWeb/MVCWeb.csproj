@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ReclamoController.cs" />
     <Compile Include="Controllers\ZonaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -155,6 +156,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\CSS\Site.css" />
+    <Content Include="Scripts\src\Reclamo.js" />
     <Content Include="Scripts\support\bootstrap.js" />
     <Content Include="Scripts\support\bootstrap.min.js" />
     <Content Include="Content\CSS\bootstrap-grid.css.map" />
@@ -196,6 +198,8 @@
     <Content Include="Views\Zona\Listar.cshtml" />
     <Content Include="Views\Zona\Agregar.cshtml" />
     <Content Include="Views\Shared\Mapa.cshtml" />
+    <Content Include="Views\Reclamo\Agregar.cshtml" />
+    <Content Include="Views\Reclamo\Listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
