@@ -200,6 +200,7 @@
     <Content Include="Views\Usuario\Agregar.cshtml" />
     <Content Include="Views\Cuadrilla\Agregar.cshtml" />
     <Content Include="Views\Cuadrilla\listar.cshtml" />
+    <Content Include="Views\Cuadrilla\lstado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

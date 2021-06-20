@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    public class LControllerUsuario : IControllersAbm 
+    public class LControllerUsuario : IControllersAbm
     {
         public LControllerUsuario()
         {
@@ -66,9 +66,9 @@ namespace BussinesLogic.Controladores
                 this.repository.UsuarioRepository.DeleteUsuario(((DtoUsuario)dto).NombreUsuario, ((DtoUsuario)dto).Password);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               errores.Add(ex.Message);
+                errores.Add(ex.Message);
             }
             return errores;
         }
@@ -104,8 +104,9 @@ namespace BussinesLogic.Controladores
 
         public List<DtoUsuario> ListarFuncionarios()
         {
-            List<DtoUsuario> dtoUsuarios= this.repository.UsuarioRepository.ListarUsuarios();
+            List<DtoUsuario> dtoUsuarios = this.repository.UsuarioRepository.ListarUsuarios();
             return dtoUsuarios.Where(i => i.EsFuncionario).ToList();
         }
+
     }
 }
