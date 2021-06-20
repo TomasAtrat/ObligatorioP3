@@ -16,5 +16,6 @@ namespace BussinesLogic.Interfaces
         List<string> Modificacion(IDto dto);
 
         List<IDto> ListAll();
+        List<IDto> add(IDto dto);
     }
 }

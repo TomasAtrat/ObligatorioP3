@@ -102,11 +102,24 @@ namespace BussinesLogic.Controladores
             return this.repository.UsuarioRepository.ListarUsuarios().Cast<IDto>().ToList();
         }
 
+        
         public List<DtoUsuario> ListarFuncionarios()
         {
             List<DtoUsuario> dtoUsuarios = this.repository.UsuarioRepository.ListarUsuarios();
-            return dtoUsuarios.Where(i => i.EsFuncionario).ToList();
+            return dtoUsuarios.Where(i => i.EsFuncionario == true).ToList();
+
         }
 
+        public List<DtoUsuario> ListarUsuarios()
+        {
+            List<DtoUsuario> dtoUsuarios = this.repository.UsuarioRepository.ListarUsuarios();
+            return dtoUsuarios.Where(i => i.EsFuncionario == false).ToList();
+
+        }
+
+        public List<IDto> add(IDto dto)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -24,5 +24,14 @@ namespace MVCWeb.Controllers
             return View();
 
         }
+
+        public ActionResult Listar()
+        {
+            LControllerUsuario controller = new LControllerUsuario();
+            List<DtoUsuario> dto = controller.ListarFuncionarios();
+            return View(dto);
+            
+
+        }
     }
 }
