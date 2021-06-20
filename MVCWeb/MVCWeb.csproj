@@ -193,8 +193,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Zona\Index.cshtml" />
-    <Content Include="Views\Shared\Mapa.cshtml" />
     <Content Include="Views\Zona\Listar.cshtml" />
+    <Content Include="Views\Zona\Agregar.cshtml" />
+    <Content Include="Views\Shared\Mapa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

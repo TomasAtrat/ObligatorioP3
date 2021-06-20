@@ -11,6 +11,7 @@ namespace CommonSolution.Dto
 {
     public class DtoZona : IDto
     {
+        [ReadOnly(true)]
         public long id;
         [DisplayName("Nombre")]
         [Required]
@@ -19,7 +20,7 @@ namespace CommonSolution.Dto
         [DisplayName("Color")]
         [Required]
         public string color { get; set; }
-        public List<DtoPunto> colPuntos;
+        public List<DtoPunto> colPuntos { get; set; }
         public List<DtoCuadrilla> colCuadrillas;
     }
 }

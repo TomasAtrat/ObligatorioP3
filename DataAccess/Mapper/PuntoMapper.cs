@@ -24,6 +24,7 @@ namespace DataAccess.Mapper
         public List<DtoPunto> mapToDto(List<t_PUNTO> colPuntos)
         {
             List<DtoPunto> colDto = new List<DtoPunto>();
+            
             if (colPuntos != null)
                 colPuntos.ForEach(i => colDto.Add(this.mapToDto(i)));
             return colDto;
