@@ -13,5 +13,7 @@ namespace CommonSolution.Dto
         public string encargado;
         public string nombre;
         public short cantidadPeones;
+        public long idZona;
+        public List<DtoReclamo> colReclamos;
     }
 }
