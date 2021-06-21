@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    public class LControllerCuadrilla : IControllers
+    public class LControllerCuadrilla : IControllersAbm
     {
         public LControllerCuadrilla()
         {

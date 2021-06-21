@@ -32,5 +32,10 @@ namespace BussinesLogic.Controladores
         {
             throw new NotImplementedException();
         }
+
+        public List<IDto> ListAll()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
