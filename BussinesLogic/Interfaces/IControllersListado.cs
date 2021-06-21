@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Interfaces
 {
-    public interface IControllers
+  public  interface IControllersListado
     {
-        List<string> Alta(IDto dto);
 
-        List<string> Baja(IDto dto);
-
-        List<string> Modificacion(IDto dto);
-
-        List<IDto> ListAll();
+        void listar(IDto dto);
     }
 }
+

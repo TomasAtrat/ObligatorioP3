@@ -8,5 +8,6 @@ namespace CommonSolution.Interfaces
 {
     public interface IDto
     {
+       
     }
 }

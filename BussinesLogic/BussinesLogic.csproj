@@ -41,14 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controladores\ControllerCuadrilla.cs" />
+    <Compile Include="Controladores\LControllerCuadrilla.cs" />
     <Compile Include="Controladores\ControllerPuntos.cs" />
     <Compile Include="Controladores\ControllerReclamos.cs" />
-    <Compile Include="Controladores\ControllerReporte.cs" />
-    <Compile Include="Controladores\ControllerTipoReclamo.cs" />
-    <Compile Include="Controladores\ControllerUsuario.cs" />
+    <Compile Include="Controladores\L_ControllerTipoReclamo.cs" />
+    <Compile Include="Controladores\LControllerUsuario.cs" />
     <Compile Include="Controladores\ControllerZona.cs" />
-    <Compile Include="Interfaces\IControllers.cs" />
+    <Compile Include="Interfaces\IControllersAbm.cs" />
+    <Compile Include="Interfaces\IControllersListado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

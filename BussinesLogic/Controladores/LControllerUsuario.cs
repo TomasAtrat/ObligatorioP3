@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    public class ControllerUsuario : IControllers
+    public class LControllerUsuario : IControllersAbm
     {
-        public ControllerUsuario()
+        public LControllerUsuario()
         {
             this.repository = new Repository();
         }
@@ -44,6 +44,7 @@ namespace BussinesLogic.Controladores
             List<string> error = Validacion((DtoUsuario)dto);
 
             if (error.Count() == 0)
+
             {
                 try
                 {
@@ -65,9 +66,9 @@ namespace BussinesLogic.Controladores
                 this.repository.UsuarioRepository.DeleteUsuario(((DtoUsuario)dto).NombreUsuario, ((DtoUsuario)dto).Password);
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               errores.Add(ex.Message);
+                errores.Add(ex.Message);
             }
             return errores;
         }
@@ -85,11 +86,11 @@ namespace BussinesLogic.Controladores
         public List<string> Validacion(DtoUsuario user)
         {
             List<string> errores = new List<string>();
-            if (user.Nombre.Count() < 51 && user.Apellido.Count() < 51 && user.NombreUsuario.Count() < 51)
+            if (user.Nombre.Count() > 51 && user.Apellido.Count() > 51 && user.NombreUsuario.Count() > 51)
             {
                 errores.Add("Verifique el largo de los datos");
             }
-            if (user.Password.Count() < 51)
+            if (user.Password.Count() > 51)
             {
                 errores.Add("Password demasiado largo");
             }
@@ -101,10 +102,24 @@ namespace BussinesLogic.Controladores
             return this.repository.UsuarioRepository.ListarUsuarios().Cast<IDto>().ToList();
         }
 
+        
         public List<DtoUsuario> ListarFuncionarios()
         {
-            List<DtoUsuario> dtoUsuarios= this.repository.UsuarioRepository.ListarUsuarios();
-            return dtoUsuarios.Where(i => i.EsFuncionario).ToList();
+            List<DtoUsuario> dtoUsuarios = this.repository.UsuarioRepository.ListarUsuarios();
+            return dtoUsuarios.Where(i => i.EsFuncionario == true).ToList();
+
+        }
+
+        public List<DtoUsuario> ListarUsuarios()
+        {
+            List<DtoUsuario> dtoUsuarios = this.repository.UsuarioRepository.ListarUsuarios();
+            return dtoUsuarios.Where(i => i.EsFuncionario == false).ToList();
+
+        }
+
+        public List<IDto> add(IDto dto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
