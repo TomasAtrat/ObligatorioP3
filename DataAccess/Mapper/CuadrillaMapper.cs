@@ -10,6 +10,13 @@ namespace DataAccess.Mapper
 {
     public class CuadrillaMapper
     {
+        public CuadrillaMapper()
+        {
+            this.reclamoMapper = new ReclamoMapper();
+        }
+
+        private ReclamoMapper reclamoMapper;
+
         public DtoCuadrilla mapToDto(t_CUADRILLA Cuadrilla)
         {
             DtoCuadrilla dto = new DtoCuadrilla();
@@ -51,6 +58,39 @@ namespace DataAccess.Mapper
             return Colentity;
         }
 
+        public DtoCuadrilla mapToDto(t_CUADRILLA_ZONA cuadrilla)
+        {
+            DtoCuadrilla dto = new DtoCuadrilla();
+            dto.idZona = cuadrilla.IDZona;
+            dto.id = cuadrilla.IDCuadrilla;
+            dto.colReclamos = this.reclamoMapper.mapToDto(cuadrilla.t_RECLAMO.ToList());
+            return dto;
+        }
+
+        public t_CUADRILLA_ZONA mapToEntity(DtoCuadrilla dto)
+        {
+            t_CUADRILLA_ZONA zona = new t_CUADRILLA_ZONA();
+            zona.IDCuadrilla = dto.id;
+            zona.IDZona = dto.idZona;
+            zona.t_RECLAMO = this.reclamoMapper.mapToEntity(dto.colReclamos);
+            return zona;
+        }
+
+        public List<DtoCuadrilla> mapToDto(List<t_CUADRILLA_ZONA> colCuadrillas)
+        {
+            List<DtoCuadrilla> colDtos = new List<DtoCuadrilla>();
+            if (colCuadrillas != null)
+                colCuadrillas.ForEach(i => colDtos.Add(this.mapToDto(i)));
+            return colDtos;
+        }
+
+        public List<t_CUADRILLA_ZONA> mapToEntity(List<DtoCuadrilla> colDto)
+        {
+            List<t_CUADRILLA_ZONA> colCuadrillas = new List<t_CUADRILLA_ZONA>();
+            if (colDto != null)
+                colDto.ForEach(i => colCuadrillas.Add(this.mapToEntity(i)));
+            return colCuadrillas;
+        }
 
     }
 }

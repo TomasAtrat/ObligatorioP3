@@ -65,5 +65,13 @@ namespace DataAccess.Mapper
             rec.t_USUARIO = (ICollection<t_USUARIO>)dto.colUsuarios;
             return rec;
         }
+
+        public List<t_RECLAMO> mapToEntity(List<DtoReclamo> colDto)
+        {
+            List<t_RECLAMO> colReclamos = new List<t_RECLAMO>();
+            if (colDto != null)
+                colDto.ForEach(i => colReclamos.Add(this.mapToEntity(i)));
+            return colReclamos;
+        }
     }
 }

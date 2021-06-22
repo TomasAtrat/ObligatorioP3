@@ -10,12 +10,7 @@ namespace DataAccess.Mapper
 {
   public class TipoReclamoMapper
     {
-        /*public TipoReclamoMapper()
-        {
-            this.tipoReclamoMapper = new TipoReclamoMapper();
-        }*/
-
-    
+        private TipoReclamoMapper tipoReclamoMapper;
        
         public DtoTipoReclamo mapToDto(t_TIPO_RECLAMO entity)
         {
@@ -47,7 +42,7 @@ namespace DataAccess.Mapper
             return colDtos;
         }
 
-        public List<t_TIPO_RECLAMO> maptoDto(List<DtoTipoReclamo> dto)
+        public List<t_TIPO_RECLAMO> maptoentity(List<DtoTipoReclamo> dto)
         {
             List<t_TIPO_RECLAMO> Colentity = new List<t_TIPO_RECLAMO>();
             if (dto != null)

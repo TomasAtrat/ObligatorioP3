@@ -62,8 +62,8 @@ namespace DataAccess.Repository
         {
             using (Context context = new Context())
             {
-             //   using (DbContextTransaction trann = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
-             //   {
+               using (DbContextTransaction trann = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+               {
                     try
                     {
                         t_USUARIO user = context.t_USUARIO.Find(nickname, password);
@@ -72,14 +72,14 @@ namespace DataAccess.Repository
                             context.t_USUARIO.Remove(user);
                             
                             context.SaveChanges();
-                          //  trann.Commit();
+                            trann.Commit();
                         }
                     }
                     catch (Exception exce)
                     {
-                       // trann.Rollback();
+                        trann.Rollback();
                     }
-               // }
+                }
             }
         }
 

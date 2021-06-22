@@ -22,11 +22,18 @@ namespace BussinesLogic.Controladores
         public List<string> Alta(IDto dto)
         {
             List<string> error = Verificacion((DtoReclamo)dto);
-            if(error.Count() ==0 && (BuscarReclamoExistencia(((DtoReclamo)dto).ID) == false))
+            if(error.Count() ==0)
             {
+                AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
                 this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
             }
-            throw new NotImplementedException();
+            return error;
+        }
+
+        private void AsignarCuadrilla(DtoReclamo dto)
+        {
+            DtoCuadrilla dtoCuadrilla = this.repositorio.CuadrillaRepository.getCuadrillasByZona(dto.IDZona).OrderBy(i=>i.colReclamos.Count).First(); //Asigna la cuadrilla de una manera balanceada
+            dto.IDCuadrilla = dtoCuadrilla.id;
         }
 
         public List<string> Baja(IDto dto)
@@ -67,7 +74,7 @@ namespace BussinesLogic.Controladores
 
         }
 
-        public bool BuscarReclamoExistencia(long id)
+        public bool BuscarReclamoExistencia(long id) //No se puede comparar si un reclamo ya existe porque el id es asignado automáticamente, y al momento el id del dto es null
         {
             return this.repositorio.ReclamoRepository.VerificarExistenica(id);
         }

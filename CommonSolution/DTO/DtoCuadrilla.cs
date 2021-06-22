@@ -24,5 +24,8 @@ namespace CommonSolution.Dto
         [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
         public short cantidadPeones { get; set; }
+
+        public long idZona;
+        public List<DtoReclamo> colReclamos;
     }
 }

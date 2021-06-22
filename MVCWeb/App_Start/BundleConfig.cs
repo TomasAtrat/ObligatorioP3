@@ -23,7 +23,10 @@ namespace MVCWeb
                       "~/Scripts/support/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/zonas").Include(
-                         "~/Scripts/support/Zona.js"));
+                         "~/Scripts/src/Zona.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/reclamos").Include(
+                         "~/Scripts/src/Reclamo.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/googleMaps").Include(
                      "~/Scripts/src/IniciarMapa.js"));

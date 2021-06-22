@@ -40,6 +40,11 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"> @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Nueva zona", "Index", "Zona", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Listado", "Listar", "Zona", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Agregar zona", "Agregar", "Zona", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Agregar reclamo", "Agregar", "Reclamo", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Listar reclamos", "Listar", "Reclamo", null, new { @class = "nav-link" }) </li>
+
                 <li class="nav-item"> @Html.ActionLink("Nuevo Usuario", "Agregar", "Usuario", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Nueva Cuadrilla", "Agregar", "Cuadrilla", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Listar Funcionarios", "Listar", "Usuario", null, new { @class = "nav-link" }) </li>

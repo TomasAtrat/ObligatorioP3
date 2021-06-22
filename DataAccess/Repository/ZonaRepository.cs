@@ -15,7 +15,7 @@ namespace DataAccess.Repository
     {
         public ZonaRepository()
         {
-
+            this.zonaMapper = new ZonaMapper();
         }
 
         private ZonaMapper zonaMapper;
@@ -106,7 +106,7 @@ namespace DataAccess.Repository
             List<DtoZona> colZonas = new List<DtoZona>();
             using (Context context= new Context())
             {
-                colZonas = this.zonaMapper.mapToDto(context.t_ZONA.AsNoTracking().Select(s => s).ToList());
+                colZonas = this.zonaMapper.mapToDto(context.t_ZONA.AsNoTracking().Select(s => s).OrderByDescending(o => o.ID).ToList());
             }
             return colZonas;
         }
