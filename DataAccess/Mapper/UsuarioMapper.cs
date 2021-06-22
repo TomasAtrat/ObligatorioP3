@@ -30,13 +30,13 @@ namespace DataAccess.Mapper
         public t_USUARIO MapToEntity(DtoUsuario usuarioAConvertir)
         {
             t_USUARIO UsuarioConv = new t_USUARIO();
-            usuarioAConvertir.NombreUsuario = UsuarioConv.NombreUsuario;
-            usuarioAConvertir.Password = UsuarioConv.Password;
-            usuarioAConvertir.Nombre = UsuarioConv.Nombre;
-            usuarioAConvertir.Apellido = UsuarioConv.Apellido;
-            usuarioAConvertir.Email = UsuarioConv.Email;
-            usuarioAConvertir.Telefono = UsuarioConv.Telefono;
-            usuarioAConvertir.EsFuncionario = UsuarioConv.EsFuncionario;
+           UsuarioConv.NombreUsuario = usuarioAConvertir.NombreUsuario;
+           UsuarioConv.Password = usuarioAConvertir.Password;
+           UsuarioConv.Nombre = usuarioAConvertir.Nombre;
+           UsuarioConv.Apellido = usuarioAConvertir.Apellido;
+           UsuarioConv.Email = usuarioAConvertir.Email;
+           UsuarioConv.Telefono = usuarioAConvertir.Telefono;
+            UsuarioConv.EsFuncionario = usuarioAConvertir.EsFuncionario;
             return UsuarioConv;
 
         }

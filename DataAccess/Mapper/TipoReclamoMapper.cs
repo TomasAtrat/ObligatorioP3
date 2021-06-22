@@ -10,12 +10,12 @@ namespace DataAccess.Mapper
 {
   public class TipoReclamoMapper
     {
-        public TipoReclamoMapper()
+        /*public TipoReclamoMapper()
         {
             this.tipoReclamoMapper = new TipoReclamoMapper();
-        }
+        }*/
 
-        private TipoReclamoMapper tipoReclamoMapper;
+    
        
         public DtoTipoReclamo mapToDto(t_TIPO_RECLAMO entity)
         {

@@ -33,5 +33,29 @@ namespace MVCWeb.Controllers
             
 
         }
+
+
+
+        
+        public ActionResult Delete(string NombreUsuario, string password)
+        {
+            DtoUsuario usuario = new DtoUsuario();
+            usuario.NombreUsuario = NombreUsuario;
+            usuario.Password = password;
+            LControllerUsuario user = new LControllerUsuario();
+            user.Baja(usuario);
+            return Redirect("Listar");
+
+        }
+
+       /* public ActionResult Delete(string NombreUsuario, string password)
+        {
+            DtoUsuario usuario = new DtoUsuario();
+            usuario.NombreUsuario = NombreUsuario;
+            usuario.Password = password;
+            LControllerUsuario user = new LControllerUsuario();
+            user.Baja(usuario);
+            return Redirect("Listar");
+        }*/
     }
 }
