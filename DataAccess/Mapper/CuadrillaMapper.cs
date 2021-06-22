@@ -63,7 +63,7 @@ namespace DataAccess.Mapper
             DtoCuadrilla dto = new DtoCuadrilla();
             dto.idZona = cuadrilla.IDZona;
             dto.id = cuadrilla.IDCuadrilla;
-            dto.colReclamos = this.reclamoMapper.mapToDto(cuadrilla.t_RECLAMO.ToList());
+            dto.colReclamos = this.reclamoMapper.mapToListDto(cuadrilla.t_RECLAMO.ToList());
             return dto;
         }
 
