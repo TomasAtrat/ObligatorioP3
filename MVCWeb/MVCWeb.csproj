@@ -203,7 +203,7 @@
     <Content Include="Views\Shared\Mapa.cshtml" />
     <Content Include="Views\Usuario\Agregar.cshtml" />
     <Content Include="Views\Cuadrilla\Agregar.cshtml" />
-    <Content Include="Views\Cuadrilla\listar.cshtml" />
+    <Content Include="Views\Cuadrilla\Listar.cshtml" />
     <Content Include="Views\Cuadrilla\lstado.cshtml" />
     <Content Include="Views\Usuario\Listar.cshtml" />
     <Content Include="Views\Reclamo\Agregar.cshtml" />

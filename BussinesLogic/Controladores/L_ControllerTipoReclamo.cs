@@ -21,17 +21,49 @@ namespace BussinesLogic.Controladores
 
         public List<string> Alta(IDto dto)
         {
-            throw new NotImplementedException();
+            List<string> errores = new List<string>();
+            try
+            {
+
+                this.repository.TipoReclamoRepository.AddTipoReclamo((DtoTipoReclamo)dto);
+
+            }catch(Exception ex)
+            {
+                errores.Add(ex.Message);
+            }
+            return errores;
         }
 
         public List<string> Baja(IDto dto)
         {
-            throw new NotImplementedException();
+            List<string> errores = new List<string>();
+            try
+            {
+
+                this.repository.TipoReclamoRepository.BajaTipoReclamo((DtoTipoReclamo)dto) ;
+
+            }
+            catch (Exception ex)
+            {
+                errores.Add(ex.Message);
+            }
+            return errores;
         }
 
         public List<string> Modificacion(IDto dto)
         {
-            throw new NotImplementedException();
+            List<string> errores = new List<string>();
+            try
+            {
+
+                this.repository.TipoReclamoRepository.ModificarTipoReclamo((DtoTipoReclamo)dto);
+
+            }
+            catch (Exception ex)
+            {
+                errores.Add(ex.Message);
+            }
+            return errores;
         }
 
         public List<IDto> ListAll()

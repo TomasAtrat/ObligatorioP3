@@ -34,6 +34,13 @@ namespace MVCWeb.Controllers
 
         }
 
+        public ActionResult ListarCliente()
+        {
+            LControllerUsuario controller = new LControllerUsuario();
+            List<DtoUsuario> dto = controller.ListarUsuarios();
+            return View(dto);
+        }
+
 
 
         

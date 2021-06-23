@@ -39,5 +39,14 @@ namespace MVCWeb.Controllers
             return View("Listar");
         }
 
+        public ActionResult Delete(long id)
+        {
+            LControllerCuadrilla cuadrillaControler = new LControllerCuadrilla();
+            DtoCuadrilla cuadrilla = new DtoCuadrilla();
+            cuadrilla.id = id;
+            cuadrillaControler.Baja(cuadrilla);
+            return View("Listar");
+        }
+
     }
 }

@@ -14,10 +14,6 @@ namespace DataAccess.Repository
     public class TipoReclamoRepository
     {
 
-        public TipoReclamoRepository()
-        {
-            this.TipoReclamoMapper = new TipoReclamoMapper();
-        }
 
         private TipoReclamoMapper TipoReclamoMapper;
 
