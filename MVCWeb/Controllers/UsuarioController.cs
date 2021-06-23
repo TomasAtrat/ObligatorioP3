@@ -21,7 +21,7 @@ namespace MVCWeb.Controllers
             LControllerUsuario Lusuario = new LControllerUsuario();
             Lusuario.Alta(dto);
 
-            return View();
+            return View("Listar");
 
         }
 

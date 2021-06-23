@@ -75,7 +75,7 @@ namespace DataAccess.Repository
                     {
                         t_CUADRILLA cuadrilla = context.t_CUADRILLA.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
                         cuadrilla.Nombre = dto.nombre;
-                        cuadrilla.CantidadPeones = dto.cantidadPeones;
+                        cuadrilla.CantidadPeones = (short)dto.cantidadPeones;
                         cuadrilla.Encargado = dto.encargado;
 
                         context.SaveChanges();

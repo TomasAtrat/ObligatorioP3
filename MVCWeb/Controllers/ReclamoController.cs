@@ -15,14 +15,14 @@ namespace MVCWeb.Controllers
         [HttpGet]
         public ActionResult Listar()
         {
-            IControllers ReclamoController = new ControllerReclamos();
+            IControllersAbm ReclamoController = new ControllerReclamos();
             List<DtoReclamo> colReclamos=  ReclamoController.ListAll().Cast<DtoReclamo>().ToList();
             return View(colReclamos);
         }
 
         public ActionResult Agregar()
         {
-            IControllers TypeController = new ControllerTipoReclamo();            
+            IControllersAbm TypeController = new L_ControllerTipoReclamo();            
             List<DtoTipoReclamo> colDto= TypeController.ListAll().Cast<DtoTipoReclamo>().ToList();
             List<SelectListItem> colTiposReclamos = new List<SelectListItem>();
 

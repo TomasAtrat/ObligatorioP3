@@ -35,7 +35,7 @@ namespace DataAccess.Mapper
             cuadrilla.ID = dto.id;
             cuadrilla.Nombre = dto.nombre;
             cuadrilla.Encargado = dto.encargado;
-            cuadrilla.CantidadPeones = dto.cantidadPeones;
+            cuadrilla.CantidadPeones = (short)dto.cantidadPeones;
 
             return cuadrilla;
         }

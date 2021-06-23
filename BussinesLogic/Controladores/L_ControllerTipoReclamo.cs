@@ -1,5 +1,6 @@
 ﻿using BussinesLogic.Interfaces;
 using CommonSolution.Interfaces;
+using CommonSolution.Dto;
 using DataAccess.Persistencia;
 using System;
 using System.Collections.Generic;
@@ -35,7 +36,7 @@ namespace BussinesLogic.Controladores
 
         public List<IDto> ListAll()
         {
-            throw new NotImplementedException();
+           return  this.repository.TipoReclamoRepository.ListarTipoReclamo().Cast<IDto>().ToList();
         }
     }
 }
