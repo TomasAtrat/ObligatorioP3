@@ -20,6 +20,7 @@ namespace CommonSolution.Dto
         [DisplayName("Color")]
         [Required]
         public string color { get; set; }
+        public bool Estado;
         public List<DtoPunto> colPuntos { get; set; }
         public List<DtoCuadrilla> colCuadrillas;
     }

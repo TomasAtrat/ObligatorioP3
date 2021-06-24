@@ -5,20 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d0580bb07fc0442a91f70252780c7bd5" Name="Diagram1">
-        <EntityTypeShape EntityType="AlcaldiaToledoModel.t_CUADRILLA" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AlcaldiaToledoModel.t_CUADRILLA_ZONA" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="AlcaldiaToledoModel.t_HISTORICO_ESTADO_RECLAMO" Width="1.5" PointX="7.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="AlcaldiaToledoModel.t_PUNTO" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AlcaldiaToledoModel.t_RECLAMO" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AlcaldiaToledoModel.t_TIPO_RECLAMO" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="AlcaldiaToledoModel.t_USUARIO" Width="1.5" PointX="7.5" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AlcaldiaToledoModel.t_ZONA" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <AssociationConnector Association="AlcaldiaToledoModel.FK_t_CUADRILLA_ZONA_t_CUADRILLA" ManuallyRouted="false" />
-        <AssociationConnector Association="AlcaldiaToledoModel.FK_t_CUADRILLA_ZONA_t_ZONA" ManuallyRouted="false" />
-        <AssociationConnector Association="AlcaldiaToledoModel.FK_ZonaReclamo" ManuallyRouted="false" />
-        <AssociationConnector Association="AlcaldiaToledoModel.FK_t_PUNTO_t_ZONA" ManuallyRouted="false" />
-        <AssociationConnector Association="AlcaldiaToledoModel.FK_TipoReclamo" ManuallyRouted="false" />
-        <AssociationConnector Association="AlcaldiaToledoModel.t_RECLAMO_USUARIO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AlcaldiaToledoModel.t_CUADRILLA" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AlcaldiaToledoModel.t_CUADRILLA_ZONA" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="AlcaldiaToledoModel.t_RECLAMO" Width="1.5" PointX="5.25" PointY="1.5" />
+        <EntityTypeShape EntityType="AlcaldiaToledoModel.t_USUARIO" Width="1.5" PointX="7.5" PointY="1.875" />
+        <EntityTypeShape EntityType="AlcaldiaToledoModel.t_ZONA" Width="1.5" PointX="0.75" PointY="6.5" />
+        <AssociationConnector Association="AlcaldiaToledoModel.FK_t_CUADRILLA_ZONA_t_CUADRILLA" />
+        <AssociationConnector Association="AlcaldiaToledoModel.FK_t_CUADRILLA_ZONA_t_ZONA" />
+        <AssociationConnector Association="AlcaldiaToledoModel.FK_ZonaReclamo" />
+        <AssociationConnector Association="AlcaldiaToledoModel.FK_t_PUNTO_t_ZONA" />
+        <AssociationConnector Association="AlcaldiaToledoModel.FK_TipoReclamo" />
+        <AssociationConnector Association="AlcaldiaToledoModel.t_RECLAMO_USUARIO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

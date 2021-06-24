@@ -23,8 +23,14 @@ namespace CommonSolution.Dto
         [DisplayName("cantidadPeones")]
         [Required(ErrorMessage = "El {0} es requerido")]
         public int cantidadPeones { get; set; }
-
-        public long idZona;
+        [DisplayName("Obvservaciones")]
+        [StringLength(250, ErrorMessage = "La obvservacion nopuede superar 250 caracteres")]
+        public string Observaciones { get; set; }
+        [DisplayName("IdZona")]
+        [Required]
+        public long idZona { get; set; }
+        public bool Estado;
+        
         public List<DtoReclamo> colReclamos;
     }
 }

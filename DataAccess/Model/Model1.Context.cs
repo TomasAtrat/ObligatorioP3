@@ -27,12 +27,12 @@ namespace DataAccess.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<t_CUADRILLA> t_CUADRILLA { get; set; }
-        public virtual DbSet<t_CUADRILLA_ZONA> t_CUADRILLA_ZONA { get; set; }
         public virtual DbSet<t_HISTORICO_ESTADO_RECLAMO> t_HISTORICO_ESTADO_RECLAMO { get; set; }
         public virtual DbSet<t_PUNTO> t_PUNTO { get; set; }
-        public virtual DbSet<t_RECLAMO> t_RECLAMO { get; set; }
         public virtual DbSet<t_TIPO_RECLAMO> t_TIPO_RECLAMO { get; set; }
+        public virtual DbSet<t_CUADRILLA> t_CUADRILLA { get; set; }
+        public virtual DbSet<t_CUADRILLA_ZONA> t_CUADRILLA_ZONA { get; set; }
+        public virtual DbSet<t_RECLAMO> t_RECLAMO { get; set; }
         public virtual DbSet<t_USUARIO> t_USUARIO { get; set; }
         public virtual DbSet<t_ZONA> t_ZONA { get; set; }
     

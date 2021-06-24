@@ -28,7 +28,8 @@ namespace DataAccess.Model
         public Nullable<System.DateTime> FechaHoraIngreso { get; set; }
         public string Observaciones { get; set; }
         public double Latitud { get; set; }
-        public double Longitud { get; set; }
+        public Nullable<double> Longitud { get; set; }
+        public bool EstadoL { get; set; }
     
         public virtual t_CUADRILLA_ZONA t_CUADRILLA_ZONA { get; set; }
         public virtual t_TIPO_RECLAMO t_TIPO_RECLAMO { get; set; }

@@ -51,6 +51,9 @@ namespace CommonSolution.Dto
         
         public bool EsFuncionario { get; set; }
 
+        public bool Estado;
+
+
 
         public List<DtoReclamo> colReclamos;
     }
