@@ -13,7 +13,10 @@ namespace DataAccess.Repository
 {
     public class TipoReclamoRepository
     {
-
+        public TipoReclamoRepository()
+        {
+            this.TipoReclamoMapper = new TipoReclamoMapper();
+        }
 
         private TipoReclamoMapper TipoReclamoMapper;
 
@@ -27,6 +30,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
+                        //  if(!(context.t_TIPO_RECLAMO.AsNoTracking().Any(a=>a.Estado == true)))
                         contex.t_TIPO_RECLAMO.Add(Treclamo);
                         contex.SaveChanges();
                         trann.Commit();
@@ -111,7 +115,8 @@ namespace DataAccess.Repository
             List<DtoTipoReclamo> tiporeclamo = new List<DtoTipoReclamo>();
             using (Context context = new Context())
             {
-                tiporeclamo = this.TipoReclamoMapper.maptoDto(context.t_TIPO_RECLAMO.Select(s => s).ToList());
+                List<t_TIPO_RECLAMO> entity = context.t_TIPO_RECLAMO.Select(s => s).ToList();
+                tiporeclamo = this.TipoReclamoMapper.maptoListDto(entity);
             }
             return tiporeclamo;
         }

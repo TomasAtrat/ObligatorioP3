@@ -19,9 +19,8 @@ namespace CommonSolution.Dto
         [DisplayName("nombre")]
         [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
-        public string nombre { get; set; }
+        public string nombre { get; set; } 
         [DisplayName("cantidadPeones")]
-        [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
         public int cantidadPeones { get; set; }
 

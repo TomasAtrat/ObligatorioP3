@@ -11,8 +11,9 @@ namespace CommonSolution.Dto
 {
     public class DtoTipoReclamo : IDto
     {
-        public long id;
-        [DisplayName("Nombre")]
+        [DisplayName("Id")]
+        public long id { get;  }
+    [DisplayName("Nombre")]
         [Required(ErrorMessage = "El campo {0} Es Requerido")]
         public string nombre { get; set; }
         [DisplayName("Descripcion")]

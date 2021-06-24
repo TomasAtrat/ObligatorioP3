@@ -33,7 +33,7 @@ namespace DataAccess.Mapper
             return entity;
         }
 
-        public List<DtoTipoReclamo> maptoDto(List<t_TIPO_RECLAMO> entity)
+        public List<DtoTipoReclamo> maptoListDto(List<t_TIPO_RECLAMO> entity)
         {
             List<DtoTipoReclamo> colDtos = new List<DtoTipoReclamo>();
             if (entity != null)

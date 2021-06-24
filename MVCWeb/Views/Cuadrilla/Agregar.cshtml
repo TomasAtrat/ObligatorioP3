@@ -7,7 +7,7 @@
 
 
 
-@using (Html.BeginForm("Agregar","Cuadrilla")) 
+@using (Html.BeginForm("Agregar","Cuadrilla" )) 
 {
     @Html.AntiForgeryToken()
     
@@ -48,7 +48,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Listar", "Cuadrilla")
 </div>
 
 @section Scripts {

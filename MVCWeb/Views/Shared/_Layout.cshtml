@@ -39,15 +39,18 @@
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"> @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" }) </li>
-                <li class="nav-item"> @Html.ActionLink("Nueva zona", "Index", "Zona", null, new { @class = "nav-link" }) </li>
-                <li class="nav-item"> @Html.ActionLink("Listado", "Listar", "Zona", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Agregar Tipo de reclamo", "Agregar", "TipoReclamo_", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Listar Tipo de reclamo", "Listar", "TipoReclamo_", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Agregar zona", "Agregar", "Zona", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Listado de zona", "Listar", "Zona", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Nueva Cuadrilla", "Agregar", "Cuadrilla", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Listar Cuadrilla", "Listar", "Cuadrilla", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Agregar reclamo", "Agregar", "Reclamo", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Listar reclamos", "Listar", "Reclamo", null, new { @class = "nav-link" }) </li>
-
                 <li class="nav-item"> @Html.ActionLink("Nuevo Usuario", "Agregar", "Usuario", null, new { @class = "nav-link" }) </li>
-                <li class="nav-item"> @Html.ActionLink("Nueva Cuadrilla", "Agregar", "Cuadrilla", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Listar Funcionarios", "Listar", "Usuario", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Listar clientes", "ListarClientes", "Usuario", null, new { @class = "nav-link" }) </li>
+
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

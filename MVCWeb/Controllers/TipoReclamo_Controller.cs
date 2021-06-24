@@ -12,13 +12,18 @@ namespace MVCWeb.Controllers
 {
     public class TipoReclamo_Controller : Controller
     {
-      
+        public ActionResult Agregar()
+        {
+           
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult Agregar(IDto dto)
+        public ActionResult Agregar(DtoTipoReclamo dto)
         {
             IControllersAbm control = new L_ControllerTipoReclamo();
             control.Alta(dto);
-            return View("Listar");
+            return View();
         }
 
         public ActionResult Listar()
@@ -28,6 +33,10 @@ namespace MVCWeb.Controllers
             return View(lista);
         }
 
-
+        public ActionResult Delete(string id)
+        {
+            IControllersAbm control = new L_ControllerTipoReclamo();
+            DtoTipoReclamo dto = control.
+        }
     }
 }

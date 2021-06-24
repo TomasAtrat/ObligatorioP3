@@ -208,11 +208,13 @@
     <Content Include="Views\Usuario\Listar.cshtml" />
     <Content Include="Views\Reclamo\Agregar.cshtml" />
     <Content Include="Views\Reclamo\Listar.cshtml" />
+    <Content Include="Views\Usuario\ListarClientes.cshtml" />
+    <Content Include="Views\TipoReclamo_\Agregar.cshtml" />
+    <Content Include="Views\TipoReclamo_\Listar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\TipoReclamo_\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
