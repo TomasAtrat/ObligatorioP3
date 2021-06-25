@@ -33,10 +33,12 @@ namespace MVCWeb.Controllers
             return View(lista);
         }
 
-        public ActionResult Delete(string id)
+        public ActionResult Delete(long id)
         {
-            IControllersAbm control = new L_ControllerTipoReclamo();
-            DtoTipoReclamo dto = control.
+            L_ControllerTipoReclamo control = new L_ControllerTipoReclamo();
+            DtoTipoReclamo dto = (DtoTipoReclamo)control.ExtraerPorid(id);
+            control.Baja(dto);
+            return Redirect("Listar");
         }
     }
 }

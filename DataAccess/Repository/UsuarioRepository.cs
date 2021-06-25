@@ -27,50 +27,60 @@ namespace DataAccess.Repository
             t_USUARIO usuario = new t_USUARIO();
             using (Context context = new Context())
             {
-                usuario = context.t_USUARIO.AsNoTracking().FirstOrDefault(i => i.NombreUsuario == nickname && i.Password == password);
+                usuario = context.t_USUARIO.AsNoTracking().FirstOrDefault(i => i.NombreUsuario == nickname && i.Password == password && i.Estado == true);
             }
             return this.usuarioMapper.MapToDto(usuario);
         }
 
         public void AddUsuarioInBDD(DtoUsuario Dtousuario)
         {
-
+            t_USUARIO NuevoUsuario = this.usuarioMapper.MapToEntity(Dtousuario);
 
             using (Context Context = new Context())
             {
-              using (DbContextTransaction trann = Context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
-              {
-                try
-               {
-                        t_USUARIO NuevoUsuario = this.usuarioMapper.MapToEntity(Dtousuario);
-                        Context.t_USUARIO.Add(NuevoUsuario);
-                        Context.SaveChanges();
-                       trann.Commit();
+                using (DbContextTransaction trann = Context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    try
+                    {
+                        t_USUARIO userNew = Context.t_USUARIO.FirstOrDefault(a => a.NombreUsuario == Dtousuario.NombreUsuario && a.Password == Dtousuario.Password);
+                        if (userNew == null)
+                        {
+                            NuevoUsuario.Estado = true;
+                            Context.t_USUARIO.Add(NuevoUsuario);
+                            Context.SaveChanges();
+                            trann.Commit();
+                        }
+                        else
+                        {
+                            userNew.Estado = true;
+                            Context.SaveChanges();
+                            trann.Commit();
+                        }
                     }
                     catch (Exception ex)
                     {
-                       trann.Rollback();
+                        trann.Rollback();
                     }
-              }
+                }
 
 
-           }
+            }
         }
 
-        
+
         public void DeleteUsuario(string nickname, string password)
         {
             using (Context context = new Context())
             {
-               using (DbContextTransaction trann = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
-               {
+                using (DbContextTransaction trann = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
                     try
                     {
-                        t_USUARIO user = context.t_USUARIO.Find(nickname, password);
+                        t_USUARIO user = context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario ==nickname && f.Password ==password);
                         if (user != null)
                         {
-                            context.t_USUARIO.Remove(user);
-                            
+                            user.Estado = false;
+
                             context.SaveChanges();
                             trann.Commit();
                         }
@@ -99,7 +109,7 @@ namespace DataAccess.Repository
                         user.Email = usuario.Email;
                         user.Telefono = usuario.Telefono;
                         user.EsFuncionario = usuario.EsFuncionario;
-                       // user.t_RECLAMO = this.reclamosMapeo.mapToListDto(usuario.colReclamos);
+                        // user.t_RECLAMO = this.reclamosMapeo.mapToListDto(usuario.colReclamos);
                         context.SaveChanges();
                         trann.Commit();
                     }
@@ -116,7 +126,7 @@ namespace DataAccess.Repository
             List<DtoUsuario> ListUsuarios = new List<DtoUsuario>();
             using (Context context = new Context())
             {
-                ListUsuarios = this.usuarioMapper.MapToListDto(context.t_USUARIO.Select(s => s).ToList());
+                ListUsuarios = this.usuarioMapper.MapToListDto(context.t_USUARIO.Where(s => s.Estado== true).ToList());
             }
             return ListUsuarios;
         }

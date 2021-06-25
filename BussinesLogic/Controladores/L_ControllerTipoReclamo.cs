@@ -40,7 +40,7 @@ namespace BussinesLogic.Controladores
             try
             {
 
-                this.repository.TipoReclamoRepository.BajaTipoReclamo((DtoTipoReclamo)dto) ;
+                this.repository.TipoReclamoRepository.BajaTipoReclamo(((DtoTipoReclamo)dto).id);
 
             }
             catch (Exception ex)
@@ -71,9 +71,9 @@ namespace BussinesLogic.Controladores
            return  this.repository.TipoReclamoRepository.ListarTipoReclamo().Cast<IDto>().ToList();
         }
 
-        public IDto ExtraerPorid(string nombre)
+        public IDto ExtraerPorid(long id)
         {
-            return this.repository.TipoReclamoRepository.getElementByIdTipoReclamo();
+            return this.repository.TipoReclamoRepository.getElementByIdTipoReclamo(id);
         }
     }
 }

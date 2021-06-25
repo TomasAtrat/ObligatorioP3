@@ -29,6 +29,7 @@ namespace DataAccess.Mapper
             dto.Observaciones = rec.Observaciones;
             dto.Estado = (Estado)Enum.Parse(typeof(Estado), rec.Estado);
             dto.FechaHoraIngreso = rec.FechaHoraIngreso;
+            dto.EstadoLogic = rec.EstadoL;
             dto.colUsuarios = this.usuarioMapper.MapToListDto((List<t_USUARIO>)rec.t_USUARIO);
 
             return dto;
@@ -62,6 +63,7 @@ namespace DataAccess.Mapper
             rec.Observaciones = dto.Observaciones;
             rec.Estado = dto.Estado.ToString();
             rec.FechaHoraIngreso = dto.FechaHoraIngreso;
+            rec.EstadoL = dto.EstadoLogic;
             rec.t_USUARIO = (ICollection<t_USUARIO>)dto.colUsuarios;
             return rec;
         }

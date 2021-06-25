@@ -23,6 +23,7 @@ namespace DataAccess.Mapper
             dto.EsFuncionario = user.EsFuncionario;
             dto.NombreUsuario = user.NombreUsuario;
             dto.Password = user.Password;
+            dto.Estado = user.Estado;
            // dto.colReclamos = this.reclamoMapeador.mapToDto(user.t_RECLAMO.ToList());
             return dto;
         }
@@ -37,6 +38,7 @@ namespace DataAccess.Mapper
            UsuarioConv.Email = usuarioAConvertir.Email;
            UsuarioConv.Telefono = usuarioAConvertir.Telefono;
             UsuarioConv.EsFuncionario = usuarioAConvertir.EsFuncionario;
+            UsuarioConv.Estado = usuarioAConvertir.Estado;
             return UsuarioConv;
 
         }

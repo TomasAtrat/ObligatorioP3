@@ -30,7 +30,7 @@ namespace CommonSolution.Dto
         [Required]
         public double Latitud { get; set; }
         [Required]
-        public double Longitud { get; set; }
+        public Nullable<double> Longitud { get; set; }
         public bool EstadoLogic;
         public List<DtoUsuario> colUsuarios;
     }

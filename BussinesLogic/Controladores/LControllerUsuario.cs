@@ -48,7 +48,7 @@ namespace BussinesLogic.Controladores
             {
                 try
                 {
-                    this.repository.UsuarioRepository.AddUsuarioInBDD((DtoUsuario)dto);
+                  this.repository.UsuarioRepository.AddUsuarioInBDD((DtoUsuario)dto);
                 }
                 catch (Exception ex)
                 {

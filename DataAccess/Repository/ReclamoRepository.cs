@@ -29,6 +29,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
+                        
                         reclamo.Estado = "PENDIENTE";
                         reclamo.FechaHoraIngreso = DateTime.Now;
                         context.t_RECLAMO.Add(reclamo);
@@ -86,7 +87,8 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        context.t_RECLAMO.Remove(reclamo);
+                        t_RECLAMO reclamoB = context.t_RECLAMO.FirstOrDefault(f => f.ID == dto.ID);
+                        reclamoB.EstadoL = false;
                         context.SaveChanges();
                         tran.Commit();
                     }
@@ -114,7 +116,7 @@ namespace DataAccess.Repository
             List<DtoReclamo> colDtos = null;
             using (Context context= new Context())
             {
-                colDtos = this.reclamoMapper.mapToListDto(context.t_RECLAMO.AsNoTracking().Select(s=>s).ToList());
+                colDtos = this.reclamoMapper.mapToListDto(context.t_RECLAMO.AsNoTracking().Where(s=>s.EstadoL==true).ToList());
             }
             return colDtos;
         }

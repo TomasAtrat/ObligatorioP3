@@ -30,6 +30,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
+
                         context.t_ZONA.Add(zona);
                         context.SaveChanges();
                         tran.Commit();
@@ -53,7 +54,7 @@ namespace DataAccess.Repository
                     {
                         t_ZONA zona = context.t_ZONA.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
                         if (zona != null)
-                            context.t_ZONA.Remove(zona);
+                            zona.Estado = false;
                         context.SaveChanges();
                         tran.Commit();
                     }
@@ -106,7 +107,7 @@ namespace DataAccess.Repository
             List<DtoZona> colZonas = new List<DtoZona>();
             using (Context context= new Context())
             {
-                colZonas = this.zonaMapper.mapToDto(context.t_ZONA.AsNoTracking().Select(s => s).OrderByDescending(o => o.ID).ToList());
+                colZonas = this.zonaMapper.mapToDto(context.t_ZONA.AsNoTracking().Where(s => s.Estado == true).OrderByDescending(o => o.ID).ToList());
             }
             return colZonas;
         }

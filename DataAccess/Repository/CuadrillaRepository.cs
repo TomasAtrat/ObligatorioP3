@@ -22,6 +22,7 @@ namespace DataAccess.Repository
 
         public void AltaCuadrilla(DtoCuadrilla dto)
         {
+
             t_CUADRILLA cuadrilla = this.cuadrillaMapper.maptoentity(dto);
 
             using (Context context = new Context())
@@ -30,9 +31,17 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        context.t_CUADRILLA.Add(cuadrilla);
-                        context.SaveChanges();
-                        tran.Commit();
+                        if (!(context.t_CUADRILLA.AsNoTracking().Any(a => a.Nombre == dto.nombre)))
+                        {
+                            cuadrilla.Estado = true;
+                            context.t_CUADRILLA.Add(cuadrilla);
+                            context.SaveChanges();
+                            tran.Commit();
+                        }
+                        else
+                        {
+                            cuadrilla.Estado = true;
+                        }
                     }
                     catch (Exception e)
                     {
@@ -50,11 +59,15 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_CUADRILLA cuadrilla = context.t_CUADRILLA.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
+
+                        t_CUADRILLA cuadrilla = context.t_CUADRILLA.FirstOrDefault(i => i.ID == dto.id);
                         if (cuadrilla != null)
-                            context.t_CUADRILLA.Remove(cuadrilla);
-                        context.SaveChanges();
-                        tran.Commit();
+
+                            cuadrilla.Estado = false;
+
+                                context.SaveChanges();
+                                tran.Commit();
+                          
                     }
                     catch (Exception exce)
                     {
@@ -112,15 +125,15 @@ namespace DataAccess.Repository
             List<DtoCuadrilla> colCuadrillas = new List<DtoCuadrilla>();
             using (Context context = new Context())
             {
-                colCuadrillas = this.cuadrillaMapper.maptoDto(context.t_CUADRILLA.AsNoTracking().Select(s=>s).ToList());
+                colCuadrillas = this.cuadrillaMapper.maptoDto(context.t_CUADRILLA.AsNoTracking().Where(s => s.Estado == true).ToList());
             }
             return colCuadrillas;
         }
 
-        public List<DtoCuadrilla> getCuadrillasByZona(long idZona) 
+        public List<DtoCuadrilla> getCuadrillasByZona(long idZona)
         {
             List<DtoCuadrilla> colCuadrillas = new List<DtoCuadrilla>();
-            using (Context context= new Context())
+            using (Context context = new Context())
             {
                 colCuadrillas = this.cuadrillaMapper.mapToDto(context.t_CUADRILLA_ZONA.AsNoTracking().Where(i => i.IDZona == idZona).ToList());
             }

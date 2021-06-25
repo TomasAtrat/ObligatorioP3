@@ -23,6 +23,7 @@ namespace DataAccess.Mapper
             dto.id = en.ID;
             dto.nombre = en.Nombre;
             dto.color = en.Color;
+            dto.Estado = en.Estado;
             dto.colPuntos = this.puntoMapper.mapToDto(en.t_PUNTO.ToList());
             return dto;
         }
@@ -33,6 +34,7 @@ namespace DataAccess.Mapper
             zona.ID = dto.id;
             zona.Nombre = dto.nombre;
             zona.Color = dto.color;
+            zona.Estado = dto.Estado;
             zona.t_PUNTO = this.puntoMapper.mapToEntity(dto.colPuntos);
             return zona;
         }

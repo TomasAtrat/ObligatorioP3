@@ -44,7 +44,7 @@ namespace DataAccess.Repository
 
             }
         }
-        public void BajaTipoReclamo(DtoTipoReclamo dto)
+        public void BajaTipoReclamo(long id)
         {
             using (Context context = new Context())
             {
@@ -52,11 +52,13 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_TIPO_RECLAMO tiporeclamo = context.t_TIPO_RECLAMO.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
+                        t_TIPO_RECLAMO tiporeclamo = context.t_TIPO_RECLAMO.FirstOrDefault(i => i.ID == id);
                         if (tiporeclamo != null)
+                        {
                             context.t_TIPO_RECLAMO.Remove(tiporeclamo);
-                        context.SaveChanges();
-                        tran.Commit();
+                            context.SaveChanges();
+                            tran.Commit();
+                        }
                     }
                     catch (Exception exce)
                     {
