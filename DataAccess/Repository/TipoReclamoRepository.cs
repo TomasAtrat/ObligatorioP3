@@ -30,7 +30,6 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        //  if(!(context.t_TIPO_RECLAMO.AsNoTracking().Any(a=>a.Estado == true)))
                         contex.t_TIPO_RECLAMO.Add(Treclamo);
                         contex.SaveChanges();
                         trann.Commit();
