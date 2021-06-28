@@ -16,19 +16,7 @@ namespace MVCWeb.Controllers
         {
             return View(); 
         }
-
-        public ActionResult Edit()
-        {
-            return View("Modificar");
-        }
-
-        public ActionResult Modificar(DtoCuadrilla dto)
-        {
-            LControllerCuadrilla cuadrillaNueva = new LControllerCuadrilla();
-            cuadrillaNueva.Modificacion((IDto)dto);
-
-            return Redirect("~/Cuadrilla/Listar");
-        }
+       
         [HttpPost]
         public ActionResult Agregar(DtoCuadrilla dto)
         {
@@ -44,7 +32,22 @@ namespace MVCWeb.Controllers
             return View(listaDeCuadrilla);
         }
 
-        
+        [HttpGet]
+        public ActionResult Edit(long id)
+        {
+            LControllerCuadrilla cuadrillaNueva = new LControllerCuadrilla();
+            DtoCuadrilla identificacion = cuadrillaNueva.ExtraerId(id);
+            return View(identificacion);
+        }
+        [HttpPost]
+        public ActionResult Edit(DtoCuadrilla dto)
+        {
+            LControllerCuadrilla cuadrillaNueva = new LControllerCuadrilla();
+            cuadrillaNueva.Modificacion((IDto)dto);
+
+            return Redirect("~/Cuadrilla/Listar");
+        }
+
 
         public ActionResult Delete(long id)
         {

@@ -54,15 +54,20 @@ namespace MVCWeb.Controllers
             return Redirect("Listar");
 
         }
-
-       /* public ActionResult Delete(string NombreUsuario, string password)
+        
+      public ActionResult Edit(string NombreUsuario, string password)
         {
-            DtoUsuario usuario = new DtoUsuario();
-            usuario.NombreUsuario = NombreUsuario;
-            usuario.Password = password;
-            LControllerUsuario user = new LControllerUsuario();
-            user.Baja(usuario);
+            LControllerUsuario context = new LControllerUsuario();
+            return View(context.ExtraerPorNyP(NombreUsuario, password));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(DtoUsuario UppDateUser)
+        {
+            LControllerUsuario context = new LControllerUsuario();
+            context.Modificacion(UppDateUser);
+
             return Redirect("Listar");
-        }*/
+        }
     }
 }

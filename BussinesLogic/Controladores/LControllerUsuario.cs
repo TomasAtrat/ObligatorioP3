@@ -121,5 +121,11 @@ namespace BussinesLogic.Controladores
         {
             throw new NotImplementedException();
         }
+
+        public DtoUsuario ExtraerPorNyP(string nombre, string paswword)
+        {
+            
+            return this.repository.UsuarioRepository.getElementById(nombre,paswword);
+        }
     }
 }

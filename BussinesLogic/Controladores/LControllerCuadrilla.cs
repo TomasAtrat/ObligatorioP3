@@ -62,5 +62,10 @@ namespace BussinesLogic.Controladores
 
             return colErrores;
         }
+
+        public DtoCuadrilla ExtraerId(long id)
+        {
+            return this.repository.CuadrillaRepository.getElementById(id);
+        }
     }
 }
