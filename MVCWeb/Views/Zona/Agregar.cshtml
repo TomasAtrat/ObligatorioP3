@@ -9,7 +9,7 @@
     <hr />
     <p class="lead">Los campos requeridos están marcados con un *</p>
 </div>
-@using (Html.BeginForm("Agregar", "Zona"))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
@@ -35,7 +35,7 @@
 
         <div class="form-group">
             <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
-                <input type="submit" id="submit" value="Submit" />
+                <input type="submit" id="submit" value="Submit" onclick="AgregarZona()"/>
             </div>
         </div>
     </div>
@@ -48,4 +48,5 @@
 @section scripts{
 
     @Scripts.Render("~/bundles/jqueryval");
+    @Scripts.Render("~/bundles/zonas");
 }
