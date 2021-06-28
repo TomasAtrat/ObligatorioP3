@@ -11,7 +11,7 @@ namespace CommonSolution.Dto
 {
     public class DtoCuadrilla : IDto
     {
-        public long id;
+        public long id { get; set; }
         [DisplayName("encargado")]
         [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]

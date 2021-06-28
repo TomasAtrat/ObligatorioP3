@@ -7,7 +7,7 @@
 <h2>ListarClientes</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Agregar")
 </p>
 <table class="table">
     <tr>
@@ -28,9 +28,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Telefono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EsFuncionario)
         </th>
         <th></th>
     </tr>
@@ -56,12 +53,8 @@
             @Html.DisplayFor(modelItem => item.Telefono)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.EsFuncionario)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { item.NombreUsuario, item.Password }) |
+            @Html.ActionLink("Delete", "Delete", new { item.NombreUsuario, item.Password })
         </td>
     </tr>
 }

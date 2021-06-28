@@ -86,7 +86,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_CUADRILLA cuadrilla = context.t_CUADRILLA.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
+                        t_CUADRILLA cuadrilla = context.t_CUADRILLA.FirstOrDefault(i => i.ID == dto.id);
                         cuadrilla.Nombre = dto.nombre;
                         cuadrilla.CantidadPeones = (short)dto.cantidadPeones;
                         cuadrilla.Encargado = dto.encargado;
