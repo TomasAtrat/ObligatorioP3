@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Interfaces
 {
-    public interface IControllersAbm
+    public interface IControllers
     {
         List<string> Alta(IDto dto);
 

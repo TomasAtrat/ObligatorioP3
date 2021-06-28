@@ -10,7 +10,7 @@ using CommonSolution.Interfaces;
 
 namespace BussinesLogic.Controladores
 {
-    public class ControllerPuntos : IControllersAbm
+    public class ControllerPuntos : IControllers
     {
         private Repository repositorio;
 
