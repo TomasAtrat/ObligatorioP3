@@ -16,12 +16,21 @@ namespace MVCWeb.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Listar()
         {
             ControllerZona zona = new ControllerZona();
-            List<DtoZona> colZonas= zona.ListAll().Cast<DtoZona>().ToList();
-            
+            List<DtoZona> colZonas = zona.ListAll().Cast<DtoZona>().ToList();
+
             return View(colZonas);
+        } 
+
+        [HttpGet]
+        public JsonResult getZonas()
+        {
+            ControllerZona zona = new ControllerZona();
+            List<DtoZona> colZonas = zona.ListAll().Cast<DtoZona>().ToList();
+            return Json(colZonas);
         }
 
         public ActionResult Agregar()
@@ -29,8 +38,10 @@ namespace MVCWeb.Controllers
             return View();
         }
 
-        public ActionResult AgregarZona(DtoZona dto)
+        public ActionResult AgregarZona(DtoZona zona)
         {
+            IControllers ControllerZona = new ControllerZona();
+            ControllerZona.Alta(zona);
             return View("Agregar");
         }
     }
