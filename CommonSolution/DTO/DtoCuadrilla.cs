@@ -12,21 +12,21 @@ namespace CommonSolution.Dto
     public class DtoCuadrilla : IDto
     {
         public long id { get; set; }
-        [DisplayName("encargado")]
+        [DisplayName("Encargado")]
         [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
         public string encargado { get; set; }
-        [DisplayName("nombre")]
+        [DisplayName("Nombre")]
         [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
         public string nombre { get; set; } 
-        [DisplayName("cantidadPeones")]
+        [DisplayName("Cantidad de peones")]
         [Required(ErrorMessage = "El {0} es requerido")]
         public int cantidadPeones { get; set; }
-        [DisplayName("Obvservaciones")]
-        [StringLength(250, ErrorMessage = "La obvservacion nopuede superar 250 caracteres")]
+        [DisplayName("Observaciones")]
+        [StringLength(250, ErrorMessage = "La observacion no puede superar 250 caracteres")]
         public string Observaciones { get; set; }
-        [DisplayName("IdZona")]
+        [DisplayName("Id Zona")]
         [Required]
         public long idZona { get; set; }
         public bool Estado;

@@ -134,5 +134,27 @@ namespace DataAccess.Repository
             return colCuadrillas;
         }
 
+        public void AltaCuadrillaZona(DtoCuadrilla dto)
+        {
+            t_CUADRILLA_ZONA entity = this.cuadrillaMapper.mapToEntity(dto);
+            using (Context context= new Context())
+            {
+                using (DbContextTransaction tran= context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    try
+                    {
+                        context.t_CUADRILLA_ZONA.Add(entity);
+                        context.SaveChanges();
+                        tran.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        tran.Rollback();
+                        throw e;
+                    }                    
+                }
+            }
+        }
+
     }
 }

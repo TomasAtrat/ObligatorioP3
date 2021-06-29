@@ -12,6 +12,7 @@ function load() {
     map.addListener("dblclick", (mapsMouseEvent) => {
         drawPolygon()
     });
+    getZonas();
 }
 
 function AddLocation(lat, lng) {

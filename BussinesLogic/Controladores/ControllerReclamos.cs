@@ -32,7 +32,7 @@ namespace BussinesLogic.Controladores
 
         private void AsignarCuadrilla(DtoReclamo dto)
         {
-            DtoCuadrilla dtoCuadrilla = this.repositorio.CuadrillaRepository.getCuadrillasByZona(dto.IDZona).OrderBy(i=>i.colReclamos.Count).First(); //Asigna la cuadrilla de una manera balanceada
+            DtoCuadrilla dtoCuadrilla = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i=>i.colReclamos.Count).First(); //Asigna la cuadrilla de una manera balanceada
             dto.IDCuadrilla = dtoCuadrilla.id;
         }
 

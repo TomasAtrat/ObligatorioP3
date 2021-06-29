@@ -23,7 +23,7 @@ namespace DataAccess.Mapper
             dto.ID = rec.ID;
             dto.IDCuadrilla = rec.IDCuadrilla;
             dto.IDTipoReclamo = rec.IDTipoReclamo;
-            dto.IDZona = rec.IDZona;
+            dto.IDZona = rec.IDZona.ToString();
             dto.Latitud = rec.Latitud;
             dto.Longitud = rec.Longitud;
             dto.Observaciones = rec.Observaciones;
@@ -57,7 +57,7 @@ namespace DataAccess.Mapper
             rec.ID = dto.ID;
             rec.IDCuadrilla = dto.IDCuadrilla;
             rec.IDTipoReclamo = dto.IDTipoReclamo;
-            rec.IDZona = dto.IDZona;
+            rec.IDZona = long.Parse(dto.IDZona);
             rec.Latitud = dto.Latitud;
             rec.Longitud = (double)dto.Longitud;
             rec.Observaciones = dto.Observaciones;

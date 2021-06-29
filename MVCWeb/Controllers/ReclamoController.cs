@@ -40,9 +40,11 @@ namespace MVCWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgregarReclamo()
+        public ActionResult AgregarReclamo(DtoReclamo dto)
         {
-            return View();
+            IControllers ControllerReclamo = new ControllerReclamos();
+            ControllerReclamo.Alta(dto);
+            return View("Agregar");
         }
     }
 }

@@ -1,14 +1,15 @@
-﻿window.onload = load;
+﻿var _polygon;
 
-function load() {
-    getZonas();
-}
 
-function drawPolygons(path, color) {
+function drawPolygons(path, color, name, id) {
     const polygon = new google.maps.Polygon({
         path: path,
         map: map,
         fillColor: color,
+    });
+    polygon.addListener("rightclick", (mapsMouseEvent) => {
+        addMarker(mapsMouseEvent.latLng.lat(), mapsMouseEvent.latLng.lng()),
+        document.getElementById("IDZona").value= id
     });
 }
 
@@ -26,7 +27,7 @@ function getZonas() {
                         let puntos = { lat: parseFloat(colPuntos[j].lat), lng: parseFloat(colPuntos[j].lng) };
                         totalPuntos.push(puntos);
                     }
-                    drawPolygons(totalPuntos, mensaje[i].color);
+                    drawPolygons(totalPuntos, mensaje[i].color, mensaje[i].nombre, mensaje[i].id);
                 }
             }
         },

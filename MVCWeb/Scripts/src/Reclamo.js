@@ -8,6 +8,8 @@ function load() {
     map.addListener("rightclick", (mapsMouseEvent) => {
         addMarker(mapsMouseEvent.latLng.lat(), mapsMouseEvent.latLng.lng())
     });
+
+    getZonas();
 }
 
 function addMarker(lat, lng) {
