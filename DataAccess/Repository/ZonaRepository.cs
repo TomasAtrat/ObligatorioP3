@@ -30,7 +30,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-
+                        zona.Estado = true;
                         context.t_ZONA.Add(zona);
                         context.SaveChanges();
                         tran.Commit();

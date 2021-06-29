@@ -49,9 +49,9 @@ namespace CommonSolution.Dto
 
         [DisplayName("Es Funcionario?")]
         
-        public bool EsFuncionario { get; set; }
+        public bool? EsFuncionario { get; set; }
 
-        public bool Estado;
+        public bool? Estado;
 
 
 

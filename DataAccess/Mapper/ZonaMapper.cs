@@ -23,7 +23,7 @@ namespace DataAccess.Mapper
             dto.id = en.ID;
             dto.nombre = en.Nombre;
             dto.color = en.Color;
-            dto.Estado = en.Estado;
+            dto.Estado = (bool)en.Estado;
             dto.colPuntos = this.puntoMapper.mapToDto(en.t_PUNTO.ToList());
             return dto;
         }

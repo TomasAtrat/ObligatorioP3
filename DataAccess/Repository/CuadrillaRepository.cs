@@ -31,17 +31,11 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        if (!(context.t_CUADRILLA.AsNoTracking().Any(a => a.Nombre == dto.nombre)))
-                        {
-                            cuadrilla.Estado = true;
-                            context.t_CUADRILLA.Add(cuadrilla);
-                            context.SaveChanges();
-                            tran.Commit();
-                        }
-                        else
-                        {
-                            cuadrilla.Estado = true;
-                        }
+                        cuadrilla.Estado = true;
+                        context.t_CUADRILLA.Add(cuadrilla);
+                        context.SaveChanges();
+                        tran.Commit();
+
                     }
                     catch (Exception e)
                     {
@@ -65,9 +59,9 @@ namespace DataAccess.Repository
 
                             cuadrilla.Estado = false;
 
-                                context.SaveChanges();
-                                tran.Commit();
-                          
+                        context.SaveChanges();
+                        tran.Commit();
+
                     }
                     catch (Exception exce)
                     {

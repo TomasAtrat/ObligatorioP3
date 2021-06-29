@@ -28,7 +28,7 @@ namespace BussinesLogic.Controladores
             {
                 url = "";
             }
-            else if (dto.EsFuncionario)
+            else if ((bool)dto.EsFuncionario)
             {
                 url = "";
             }

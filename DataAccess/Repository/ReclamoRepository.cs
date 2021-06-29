@@ -60,7 +60,7 @@ namespace DataAccess.Repository
                             reclamo.IDTipoReclamo = dto.IDTipoReclamo;
                             reclamo.IDZona = dto.IDZona;
                             reclamo.Latitud = dto.Latitud;
-                            reclamo.Longitud = dto.Longitud;
+                            reclamo.Longitud = (double)dto.Longitud;
                             reclamo.Observaciones = dto.Observaciones;
                             reclamo.Estado = dto.Estado.ToString();
                             reclamo.FechaHoraIngreso = dto.FechaHoraIngreso;

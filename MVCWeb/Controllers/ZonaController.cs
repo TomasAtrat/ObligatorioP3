@@ -38,6 +38,7 @@ namespace MVCWeb.Controllers
             return View();
         }
 
+        [HttpPost]
         public ActionResult AgregarZona(DtoZona zona)
         {
             IControllers ControllerZona = new ControllerZona();

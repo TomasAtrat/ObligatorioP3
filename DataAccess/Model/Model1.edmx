@@ -14,7 +14,7 @@
           <Property Name="Encargado" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CantidadPeones" Type="smallint" Nullable="false" />
           <Property Name="Observaciones" Type="varchar" MaxLength="250" />
-          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="t_CUADRILLA_ZONA">
           <Key>
@@ -58,8 +58,8 @@
           <Property Name="FechaHoraIngreso" Type="datetime" />
           <Property Name="Observaciones" Type="varchar" MaxLength="250" />
           <Property Name="Latitud" Type="float" Nullable="false" />
-          <Property Name="Longitud" Type="float" />
-          <Property Name="EstadoL" Type="bit" Nullable="false" />
+          <Property Name="Longitud" Type="float" Nullable="false" />
+          <Property Name="EstadoL" Type="bit" />
         </EntityType>
         <EntityType Name="t_RECLAMO_USUARIO">
           <Key>
@@ -90,8 +90,8 @@
           <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="320" Nullable="false" />
           <Property Name="Telefono" Type="varchar" MaxLength="50" />
-          <Property Name="EsFuncionario" Type="bit" Nullable="false" />
-          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="EsFuncionario" Type="bit" />
+          <Property Name="Estado" Type="bit" />
         </EntityType>
         <EntityType Name="t_ZONA">
           <Key>
@@ -100,7 +100,7 @@
           <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Color" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Estado" Type="bit" />
         </EntityType>
         <Association Name="FK_t_CUADRILLA_ZONA_t_CUADRILLA">
           <End Role="t_CUADRILLA" Type="Self.t_CUADRILLA" Multiplicity="1" />
@@ -349,7 +349,7 @@
           <Property Name="Encargado" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CantidadPeones" Type="Int16" Nullable="false" />
           <Property Name="Observaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" />
           <NavigationProperty Name="t_CUADRILLA_ZONA" Relationship="AlcaldiaToledoModel.FK_t_CUADRILLA_ZONA_t_CUADRILLA" FromRole="t_CUADRILLA" ToRole="t_CUADRILLA_ZONA" />
         </EntityType>
         <EntityType Name="t_CUADRILLA_ZONA">
@@ -375,8 +375,8 @@
           <Property Name="FechaHoraIngreso" Type="DateTime" Precision="3" />
           <Property Name="Observaciones" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Latitud" Type="Double" Nullable="false" />
-          <Property Name="Longitud" Type="Double" />
-          <Property Name="EstadoL" Type="Boolean" Nullable="false" />
+          <Property Name="Longitud" Type="Double" Nullable="false" />
+          <Property Name="EstadoL" Type="Boolean" />
           <NavigationProperty Name="t_CUADRILLA_ZONA" Relationship="AlcaldiaToledoModel.FK_ZonaReclamo" FromRole="t_RECLAMO" ToRole="t_CUADRILLA_ZONA" />
           <NavigationProperty Name="t_TIPO_RECLAMO" Relationship="AlcaldiaToledoModel.FK_TipoReclamo" FromRole="t_RECLAMO" ToRole="t_TIPO_RECLAMO" />
           <NavigationProperty Name="t_USUARIO" Relationship="AlcaldiaToledoModel.t_RECLAMO_USUARIO" FromRole="t_RECLAMO" ToRole="t_USUARIO" />
@@ -392,8 +392,8 @@
           <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="false" />
           <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EsFuncionario" Type="Boolean" Nullable="false" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="EsFuncionario" Type="Boolean" />
+          <Property Name="Estado" Type="Boolean" />
           <NavigationProperty Name="t_RECLAMO" Relationship="AlcaldiaToledoModel.t_RECLAMO_USUARIO" FromRole="t_USUARIO" ToRole="t_RECLAMO" />
         </EntityType>
         <EntityType Name="t_ZONA">
@@ -403,7 +403,7 @@
           <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" />
           <NavigationProperty Name="t_CUADRILLA_ZONA" Relationship="AlcaldiaToledoModel.FK_t_CUADRILLA_ZONA_t_ZONA" FromRole="t_ZONA" ToRole="t_CUADRILLA_ZONA" />
           <NavigationProperty Name="t_PUNTO" Relationship="AlcaldiaToledoModel.FK_t_PUNTO_t_ZONA" FromRole="t_ZONA" ToRole="t_PUNTO" />
         </EntityType>
