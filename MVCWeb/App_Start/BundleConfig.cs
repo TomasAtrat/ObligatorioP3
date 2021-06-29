@@ -25,6 +25,9 @@ namespace MVCWeb
             bundles.Add(new ScriptBundle("~/bundles/zonas").Include(
                          "~/Scripts/src/Zona.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/ListarZonas").Include(
+                         "~/Scripts/src/ListarZonas.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/reclamos").Include(
                          "~/Scripts/src/Reclamo.js"));
 

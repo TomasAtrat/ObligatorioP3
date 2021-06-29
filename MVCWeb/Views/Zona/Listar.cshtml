@@ -1,36 +1,18 @@
-﻿@model IEnumerable<CommonSolution.Dto.DtoZona>
-
+﻿
 @{
-    ViewBag.Title = "Listar";
+    ViewBag.Title = "Listar zonas";
 }
 
-<h1>Listar zonas</h1>
+<div class="starter-template" style="margin-top: -20px">
+    <h1>@ViewBag.Title</h1>
+    <hr />
+    <p class="lead">Click en la zona para ver su información</p>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.color)
-        </th>
-        <th></th>
-    </tr>
+    @Html.Partial("Mapa")
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.color)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/zonas");
 }
-
-</table>
