@@ -64,7 +64,7 @@ namespace DataAccess.Mapper
             rec.Estado = dto.Estado.ToString();
             rec.FechaHoraIngreso = dto.FechaHoraIngreso;
             rec.EstadoL = dto.EstadoLogic;
-            rec.t_USUARIO = (ICollection<t_USUARIO>)dto.colUsuarios;
+            rec.t_USUARIO = this.usuarioMapper.MapToListEntity(dto.colUsuarios);
             return rec;
         }
 

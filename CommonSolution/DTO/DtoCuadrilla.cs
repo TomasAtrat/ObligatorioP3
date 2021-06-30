@@ -30,7 +30,8 @@ namespace CommonSolution.Dto
         [Required]
         public long idZona { get; set; }
         public bool Estado;
-        
+
+        public DtoZona dtoZona;
         public List<DtoReclamo> colReclamos = new List<DtoReclamo>();
     }
 }

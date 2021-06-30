@@ -42,20 +42,10 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_USUARIO userNew = Context.t_USUARIO.FirstOrDefault(a => a.NombreUsuario == Dtousuario.NombreUsuario && a.Password == Dtousuario.Password);
-                        if (userNew == null)
-                        {
-                            NuevoUsuario.Estado = true;
-                            Context.t_USUARIO.Add(NuevoUsuario);
-                            Context.SaveChanges();
-                            trann.Commit();
-                        }
-                        else
-                        {
-                            userNew.Estado = true;
-                            Context.SaveChanges();
-                            trann.Commit();
-                        }
+                        NuevoUsuario.Estado = true;
+                        Context.t_USUARIO.Add(NuevoUsuario);
+                        Context.SaveChanges();
+                        trann.Commit();
                     }
                     catch (Exception ex)
                     {
@@ -76,7 +66,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_USUARIO user = context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario ==nickname && f.Password ==password);
+                        t_USUARIO user = context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario == nickname && f.Password == password);
                         if (user != null)
                         {
                             user.Estado = false;
@@ -126,7 +116,7 @@ namespace DataAccess.Repository
             List<DtoUsuario> ListUsuarios = new List<DtoUsuario>();
             using (Context context = new Context())
             {
-                ListUsuarios = this.usuarioMapper.MapToListDto(context.t_USUARIO.Where(s => s.Estado== true).ToList());
+                ListUsuarios = this.usuarioMapper.MapToListDto(context.t_USUARIO.Where(s => s.Estado == true).ToList());
             }
             return ListUsuarios;
         }

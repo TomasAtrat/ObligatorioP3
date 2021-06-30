@@ -16,9 +16,11 @@ namespace DataAccess.Repository
         public ReclamoRepository()
         {
             this.reclamoMapper = new ReclamoMapper();
+            this.cuadrillaMapper = new CuadrillaMapper();
         }
 
         private ReclamoMapper reclamoMapper;
+        private CuadrillaMapper cuadrillaMapper;
 
         public DtoReclamo AltaReclamo(DtoReclamo dto)
         {

@@ -1,4 +1,5 @@
 ﻿using BussinesLogic.Controladores;
+using BussinesLogic.Interfaces;
 using CommonSolution.Dto;
 using CommonSolution.Interfaces;
 using System;
@@ -14,17 +15,32 @@ namespace MVCWeb.Controllers
         // GET: Cuadrilla
         public ActionResult Agregar()
         {
-            return View(); 
+            IControllers ZonaController = new ControllerZona();
+            List<DtoZona> colZonas = ZonaController.ListAll().Cast<DtoZona>().ToList();
+            List<SelectListItem> colOpZonas = new List<SelectListItem>();
+            foreach (DtoZona item in colZonas)
+            {
+                SelectListItem option = new SelectListItem();
+                option.Value = item.id.ToString();
+                option.Text = item.nombre;
+                colOpZonas.Add(option);
+            }
+
+            ViewBag.OpZonas = colOpZonas;
+
+            return View();
         }
-       
+
         [HttpPost]
         public ActionResult Agregar(DtoCuadrilla dto)
         {
             LControllerCuadrilla cuadrillaNueva = new LControllerCuadrilla();
             cuadrillaNueva.Alta(dto);
 
-            return View("Agregar"); 
+            return RedirectToAction("Agregar");
         }
+
+        [HttpGet]
         public ActionResult Listar()
         {
             LControllerCuadrilla cuadrillaNueva = new LControllerCuadrilla();
@@ -39,6 +55,7 @@ namespace MVCWeb.Controllers
             DtoCuadrilla identificacion = cuadrillaNueva.ExtraerId(id);
             return View(identificacion);
         }
+
         [HttpPost]
         public ActionResult Edit(DtoCuadrilla dto)
         {
