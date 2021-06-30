@@ -36,6 +36,8 @@
           <Property Name="FechaHoraIngreso" Type="datetime" Nullable="false" />
           <Property Name="Latitud" Type="float" Nullable="false" />
           <Property Name="Longitud" Type="float" Nullable="false" />
+          <Property Name="IDReclamo" Type="bigint" Nullable="false" />
+          <Property Name="DescripcionReclamo" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="t_PUNTO">
           <Key>
@@ -268,6 +270,8 @@
           <Property Name="FechaHoraIngreso" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Latitud" Type="Double" Nullable="false" />
           <Property Name="Longitud" Type="Double" Nullable="false" />
+          <Property Name="IDReclamo" Type="Int64" Nullable="false" />
+          <Property Name="DescripcionReclamo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t_PUNTO">
           <Key>
@@ -461,6 +465,8 @@
           <EntitySetMapping Name="t_HISTORICO_ESTADO_RECLAMO">
             <EntityTypeMapping TypeName="AlcaldiaToledoModel.t_HISTORICO_ESTADO_RECLAMO">
               <MappingFragment StoreEntitySet="t_HISTORICO_ESTADO_RECLAMO">
+                <ScalarProperty Name="DescripcionReclamo" ColumnName="DescripcionReclamo" />
+                <ScalarProperty Name="IDReclamo" ColumnName="IDReclamo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="EstadoAnterior" ColumnName="EstadoAnterior" />
                 <ScalarProperty Name="EstadoActual" ColumnName="EstadoActual" />

@@ -22,5 +22,7 @@ namespace DataAccess.Model
         public System.DateTime FechaHoraIngreso { get; set; }
         public double Latitud { get; set; }
         public double Longitud { get; set; }
+        public long IDReclamo { get; set; }
+        public string DescripcionReclamo { get; set; }
     }
 }
