@@ -18,6 +18,7 @@ namespace DataAccess.Model
         public t_CUADRILLA_ZONA()
         {
             this.t_RECLAMO = new HashSet<t_RECLAMO>();
+            this.t_RECLAMO1 = new HashSet<t_RECLAMO>();
         }
     
         public long IDCuadrilla { get; set; }
@@ -27,5 +28,7 @@ namespace DataAccess.Model
         public virtual t_ZONA t_ZONA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_RECLAMO> t_RECLAMO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<t_RECLAMO> t_RECLAMO1 { get; set; }
     }
 }

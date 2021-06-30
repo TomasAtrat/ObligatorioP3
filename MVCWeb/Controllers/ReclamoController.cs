@@ -44,7 +44,7 @@ namespace MVCWeb.Controllers
         {
             IControllers ControllerReclamo = new ControllerReclamos();
             ControllerReclamo.Alta(dto);
-            return View("Agregar");
+            return RedirectToAction("Agregar");
         }
     }
 }

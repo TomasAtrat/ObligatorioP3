@@ -19,6 +19,7 @@
         <AssociationConnector Association="AlcaldiaToledoModel.FK_t_PUNTO_t_ZONA" ManuallyRouted="false" />
         <AssociationConnector Association="AlcaldiaToledoModel.FK_TipoReclamo" ManuallyRouted="false" />
         <AssociationConnector Association="AlcaldiaToledoModel.t_RECLAMO_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="AlcaldiaToledoModel.FK_ZonaReclamo1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

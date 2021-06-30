@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AlcaldiaToledoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AlcaldiaToledoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="t_CUADRILLA">
           <Key>
             <PropertyRef Name="ID" />
@@ -185,8 +185,8 @@
               <PropertyRef Name="IDZona" />
             </Principal>
             <Dependent Role="t_RECLAMO">
-              <PropertyRef Name="IDZona" />
               <PropertyRef Name="IDCuadrilla" />
+              <PropertyRef Name="IDZona" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -229,8 +229,7 @@
             <End Role="t_RECLAMO" EntitySet="t_RECLAMO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AlcaldiaToledoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -256,6 +255,7 @@
           <NavigationProperty Name="t_CUADRILLA" Relationship="Self.FK_t_CUADRILLA_ZONA_t_CUADRILLA" FromRole="t_CUADRILLA_ZONA" ToRole="t_CUADRILLA" />
           <NavigationProperty Name="t_ZONA" Relationship="Self.FK_t_CUADRILLA_ZONA_t_ZONA" FromRole="t_CUADRILLA_ZONA" ToRole="t_ZONA" />
           <NavigationProperty Name="t_RECLAMO" Relationship="Self.FK_ZonaReclamo" FromRole="t_CUADRILLA_ZONA" ToRole="t_RECLAMO" />
+          <NavigationProperty Name="t_RECLAMO1" Relationship="AlcaldiaToledoModel.FK_ZonaReclamo1" FromRole="t_CUADRILLA_ZONA" ToRole="t_RECLAMO" />
         </EntityType>
         <EntityType Name="t_HISTORICO_ESTADO_RECLAMO">
           <Key>
@@ -297,6 +297,7 @@
           <NavigationProperty Name="t_CUADRILLA_ZONA" Relationship="Self.FK_ZonaReclamo" FromRole="t_RECLAMO" ToRole="t_CUADRILLA_ZONA" />
           <NavigationProperty Name="t_TIPO_RECLAMO" Relationship="Self.FK_TipoReclamo" FromRole="t_RECLAMO" ToRole="t_TIPO_RECLAMO" />
           <NavigationProperty Name="t_USUARIO" Relationship="Self.t_RECLAMO_USUARIO" FromRole="t_RECLAMO" ToRole="t_USUARIO" />
+          <NavigationProperty Name="t_CUADRILLA_ZONA1" Relationship="AlcaldiaToledoModel.FK_ZonaReclamo1" FromRole="t_RECLAMO" ToRole="t_CUADRILLA_ZONA" />
         </EntityType>
         <EntityType Name="t_TIPO_RECLAMO">
           <Key>
@@ -432,7 +433,25 @@
             <End Role="t_RECLAMO" EntitySet="t_RECLAMO" />
             <End Role="t_USUARIO" EntitySet="t_USUARIO" />
           </AssociationSet>
+          <AssociationSet Name="FK_ZonaReclamo1" Association="AlcaldiaToledoModel.FK_ZonaReclamo1">
+            <End Role="t_CUADRILLA_ZONA" EntitySet="t_CUADRILLA_ZONA" />
+            <End Role="t_RECLAMO" EntitySet="t_RECLAMO" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_ZonaReclamo1">
+          <End Type="AlcaldiaToledoModel.t_CUADRILLA_ZONA" Role="t_CUADRILLA_ZONA" Multiplicity="1" />
+          <End Type="AlcaldiaToledoModel.t_RECLAMO" Role="t_RECLAMO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="t_CUADRILLA_ZONA">
+              <PropertyRef Name="IDCuadrilla" />
+              <PropertyRef Name="IDZona" />
+            </Principal>
+            <Dependent Role="t_RECLAMO">
+              <PropertyRef Name="IDCuadrilla" />
+              <PropertyRef Name="IDZona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
