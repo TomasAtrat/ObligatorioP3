@@ -24,16 +24,20 @@ namespace BussinesLogic.Controladores
             List<string> error = Verificacion((DtoReclamo)dto);
             if(error.Count() ==0)
             {
-                AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
-                this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
+                long idCuadrilla= AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
+                dto= this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
+                DtoCuadrilla dtoCuad= this.repositorio.CuadrillaRepository.getElementById(idCuadrilla);//Obtener cuadrilla
+                dtoCuad.colReclamos.Add((DtoReclamo)dto); //Añadir dto al colReclamos de la lista para siguiente asignación de cuadrilla
+                this.repositorio.CuadrillaRepository.ModificarCuadrilla(dtoCuad); //Comittear la modificación
             }
             return error;
         }
 
-        private void AsignarCuadrilla(DtoReclamo dto)
+        private long AsignarCuadrilla(DtoReclamo dto)
         {
             DtoCuadrilla dtoCuadrilla = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i=>i.colReclamos.Count).First(); //Asigna la cuadrilla de una manera balanceada
             dto.IDCuadrilla = dtoCuadrilla.id;
+            return dtoCuadrilla.id;
         }
 
         public List<string> Baja(IDto dto)

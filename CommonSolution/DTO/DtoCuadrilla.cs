@@ -31,6 +31,6 @@ namespace CommonSolution.Dto
         public long idZona { get; set; }
         public bool Estado;
         
-        public List<DtoReclamo> colReclamos;
+        public List<DtoReclamo> colReclamos = new List<DtoReclamo>();
     }
 }
