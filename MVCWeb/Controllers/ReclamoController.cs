@@ -1,6 +1,7 @@
 ﻿using BussinesLogic.Controladores;
 using BussinesLogic.Interfaces;
 using CommonSolution.Dto;
+using MVCWeb.helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace MVCWeb.Controllers
-{
+{    
+    
     public class ReclamoController : Controller
     {
         // GET: Reclamo

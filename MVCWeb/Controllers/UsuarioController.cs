@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace MVCWeb.Controllers
 {
+    [UserAutentication]
     public class UsuarioController : Controller
     {
         // GET: Usuario
