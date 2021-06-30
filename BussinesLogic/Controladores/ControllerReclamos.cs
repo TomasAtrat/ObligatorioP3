@@ -10,7 +10,7 @@ using CommonSolution.Interfaces;
 
 namespace BussinesLogic.Controladores
 {
-    public class ControllerReclamos : IControllersAbm 
+    public class ControllerReclamos : IControllers
     {
         private Repository repositorio;
         public ControllerReclamos()
@@ -32,7 +32,7 @@ namespace BussinesLogic.Controladores
 
         private void AsignarCuadrilla(DtoReclamo dto)
         {
-            DtoCuadrilla dtoCuadrilla = this.repositorio.CuadrillaRepository.getCuadrillasByZona(dto.IDZona).OrderBy(i=>i.colReclamos.Count).First(); //Asigna la cuadrilla de una manera balanceada
+            DtoCuadrilla dtoCuadrilla = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i=>i.colReclamos.Count).First(); //Asigna la cuadrilla de una manera balanceada
             dto.IDCuadrilla = dtoCuadrilla.id;
         }
 

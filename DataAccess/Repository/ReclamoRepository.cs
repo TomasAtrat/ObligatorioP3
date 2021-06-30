@@ -36,7 +36,7 @@ namespace DataAccess.Repository
                         context.SaveChanges();
                         tran.Commit();
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
                         tran.Rollback();
                     }
@@ -58,9 +58,9 @@ namespace DataAccess.Repository
                             reclamo.IDCuadrilla = dto.IDCuadrilla;
                             reclamo.IDCuadrilla = dto.IDCuadrilla;
                             reclamo.IDTipoReclamo = dto.IDTipoReclamo;
-                            reclamo.IDZona = dto.IDZona;
+                            reclamo.IDZona = long.Parse(dto.IDZona);
                             reclamo.Latitud = dto.Latitud;
-                            reclamo.Longitud = dto.Longitud;
+                            reclamo.Longitud =dto.Longitud;
                             reclamo.Observaciones = dto.Observaciones;
                             reclamo.Estado = dto.Estado.ToString();
                             reclamo.FechaHoraIngreso = dto.FechaHoraIngreso;

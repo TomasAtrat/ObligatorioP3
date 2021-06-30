@@ -12,6 +12,7 @@ function load() {
     map.addListener("dblclick", (mapsMouseEvent) => {
         drawPolygon()
     });
+    getZonas();
 }
 
 function AddLocation(lat, lng) {
@@ -24,16 +25,6 @@ function AddLocation(lat, lng) {
         map: map
     })
     markers.push(marker);
-}
-
-function drawPolygon() {
-    const polygon = new google.maps.Polygon({
-        path: GetLocationsFromMarkers(),
-        map: map,
-        fillColor: document.getElementById("ColorPicker").value,
-    });
-    
-    //Las ublicaciones hay que guardarlas en la base de datos y posteriormente eliminarlas de memoria para seguir ingresando
 }
 
 function submit() {
@@ -55,4 +46,43 @@ function GetLocationsFromMarkers() {
         locations.push(location);
     }
     return locations;
+}
+
+function drawPolygon() {
+    let puntos = GetLocationsFromMarkers();
+    let color = document.getElementById("color").value;
+    const polygon = new google.maps.Polygon({
+        path: puntos,
+        map: map,
+        fillColor: color,
+    });
+
+    //Las ublicaciones hay que guardarlas en la base de datos y posteriormente eliminarlas de memoria para seguir ingresando
+}
+
+function AgregarZona() {
+    let nombre = document.getElementById("nombre").value;
+    let color = document.getElementById("color").value;   
+    let puntos = [];
+
+    for (i in locations) {
+        let punto = { lat: locations[i].lat, lng: locations[i].lng };
+        puntos.push(punto);
+    }
+
+    let zona = { nombre: nombre, color: color, colPuntos: puntos };
+        $.ajax({
+            type: "POST",
+            data: JSON.stringify(zona),
+            contentType: "application/json",
+            url: "http://localhost:60096/Zona/AgregarZona",
+            success: function (respuesta) {
+                $("#nombre").val("");
+            },
+            error: function (respuesta) {
+
+            }
+        })
+  
+    
 }

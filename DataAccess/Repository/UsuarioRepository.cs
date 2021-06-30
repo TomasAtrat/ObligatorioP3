@@ -101,7 +101,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_USUARIO user = context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario == usuario.NombreUsuario);
+                        t_USUARIO user = context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario == usuario.NombreUsuario && f.Password == usuario.Password);
                         user.Apellido = usuario.Apellido;
                         user.Nombre = usuario.Nombre;
                         user.NombreUsuario = usuario.NombreUsuario;

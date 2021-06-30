@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    public class LControllerCuadrilla : IControllersAbm
+    public class LControllerCuadrilla : IControllers
     {
         public LControllerCuadrilla()
         {
@@ -27,6 +27,7 @@ namespace BussinesLogic.Controladores
                 try
                 {
                     this.repository.CuadrillaRepository.AltaCuadrilla((DtoCuadrilla)dto);
+                    this.repository.CuadrillaRepository.AltaCuadrillaZona((DtoCuadrilla)dto);
                 }
                 catch (Exception exec)
                 {
@@ -61,6 +62,11 @@ namespace BussinesLogic.Controladores
             List<string> colErrores = new List<string>();
 
             return colErrores;
+        }
+
+        public DtoCuadrilla ExtraerId(long id)
+        {
+            return this.repository.CuadrillaRepository.getElementById(id);
         }
     }
 }

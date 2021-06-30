@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 { 
-    public class L_ControllerTipoReclamo : IControllersAbm 
+    public class L_ControllerTipoReclamo : IControllers 
     {
         public L_ControllerTipoReclamo()
         {

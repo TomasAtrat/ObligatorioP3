@@ -49,7 +49,6 @@
     <Compile Include="Controladores\LControllerUsuario.cs" />
     <Compile Include="Controladores\ControllerZona.cs" />
     <Compile Include="Interfaces\IControllersAbm.cs" />
-    <Compile Include="Interfaces\IControllersListado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

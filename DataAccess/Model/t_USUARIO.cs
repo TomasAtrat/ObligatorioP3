@@ -26,8 +26,8 @@ namespace DataAccess.Model
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
-        public bool EsFuncionario { get; set; }
-        public bool Estado { get; set; }
+        public Nullable<bool> EsFuncionario { get; set; }
+        public Nullable<bool> Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_RECLAMO> t_RECLAMO { get; set; }

@@ -23,13 +23,13 @@ namespace DataAccess.Mapper
             dto.ID = rec.ID;
             dto.IDCuadrilla = rec.IDCuadrilla;
             dto.IDTipoReclamo = rec.IDTipoReclamo;
-            dto.IDZona = rec.IDZona;
+            dto.IDZona = rec.IDZona.ToString();
             dto.Latitud = rec.Latitud;
             dto.Longitud = rec.Longitud;
             dto.Observaciones = rec.Observaciones;
             dto.Estado = (Estado)Enum.Parse(typeof(Estado), rec.Estado);
             dto.FechaHoraIngreso = rec.FechaHoraIngreso;
-            dto.EstadoLogic = rec.EstadoL;
+            dto.EstadoLogic = (bool)rec.EstadoL;
             dto.colUsuarios = this.usuarioMapper.MapToListDto((List<t_USUARIO>)rec.t_USUARIO);
 
             return dto;
@@ -57,9 +57,9 @@ namespace DataAccess.Mapper
             rec.ID = dto.ID;
             rec.IDCuadrilla = dto.IDCuadrilla;
             rec.IDTipoReclamo = dto.IDTipoReclamo;
-            rec.IDZona = dto.IDZona;
+            rec.IDZona = long.Parse(dto.IDZona);
             rec.Latitud = dto.Latitud;
-            rec.Longitud = dto.Longitud;
+            rec.Longitud = (double)dto.Longitud;
             rec.Observaciones = dto.Observaciones;
             rec.Estado = dto.Estado.ToString();
             rec.FechaHoraIngreso = dto.FechaHoraIngreso;

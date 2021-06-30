@@ -14,9 +14,8 @@ namespace CommonSolution.Dto
     {
         public Estado Estado;
         public long ID { get; set; }
-        [ReadOnly(true)]
         [DisplayName("ID de la zona")]
-        public long IDZona { get; set; }
+        public string IDZona { get; set; }
         [DisplayName("ID de la cuadrilla")]
         public long IDCuadrilla { get; set; }
         [Required]
@@ -30,7 +29,7 @@ namespace CommonSolution.Dto
         [Required]
         public double Latitud { get; set; }
         [Required]
-        public Nullable<double> Longitud { get; set; }
+        public double Longitud { get; set; }
         public bool EstadoLogic;
         public List<DtoUsuario> colUsuarios;
     }

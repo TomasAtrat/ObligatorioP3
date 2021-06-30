@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    public class ControllerZona : IControllersAbm  , IControllersListado
+    public class ControllerZona : IControllers
     {
 
         public ControllerZona()
@@ -47,7 +47,7 @@ namespace BussinesLogic.Controladores
 
         public List<IDto> ListAll()
         {
-            return this.repository.ZonaRepository.ListarZonas().Cast<IDto>().ToList();
+            return this.repository.ZonaRepository.ListarZonas().Where(i=>i.Estado).Cast<IDto>().ToList();
         }
 
         public List<string> Modificacion(IDto dto)

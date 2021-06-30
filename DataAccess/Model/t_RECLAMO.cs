@@ -28,12 +28,13 @@ namespace DataAccess.Model
         public Nullable<System.DateTime> FechaHoraIngreso { get; set; }
         public string Observaciones { get; set; }
         public double Latitud { get; set; }
-        public Nullable<double> Longitud { get; set; }
-        public bool EstadoL { get; set; }
+        public double Longitud { get; set; }
+        public Nullable<bool> EstadoL { get; set; }
     
         public virtual t_CUADRILLA_ZONA t_CUADRILLA_ZONA { get; set; }
         public virtual t_TIPO_RECLAMO t_TIPO_RECLAMO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_USUARIO> t_USUARIO { get; set; }
+        public virtual t_CUADRILLA_ZONA t_CUADRILLA_ZONA1 { get; set; }
     }
 }

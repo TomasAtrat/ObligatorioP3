@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Controladores
 {
-    public class LControllerUsuario : IControllersAbm
+    public class LControllerUsuario : IControllers
     {
         public LControllerUsuario()
         {
@@ -28,7 +28,7 @@ namespace BussinesLogic.Controladores
             {
                 url = "";
             }
-            else if (dto.EsFuncionario)
+            else if ((bool)dto.EsFuncionario)
             {
                 url = "";
             }
@@ -120,6 +120,12 @@ namespace BussinesLogic.Controladores
         public List<IDto> add(IDto dto)
         {
             throw new NotImplementedException();
+        }
+
+        public DtoUsuario ExtraerPorNyP(string nombre, string paswword)
+        {
+            
+            return this.repository.UsuarioRepository.getElementById(nombre,paswword);
         }
     }
 }

@@ -17,14 +17,14 @@ namespace MVCWeb.Controllers
         [HttpGet]
         public ActionResult Listar()
         {
-            IControllersAbm ReclamoController = new ControllerReclamos();
+            IControllers ReclamoController = new ControllerReclamos();
             List<DtoReclamo> colReclamos=  ReclamoController.ListAll().Cast<DtoReclamo>().ToList();
             return View(colReclamos);
         }
 
         public ActionResult Agregar()
         {
-            IControllersAbm TypeController = new L_ControllerTipoReclamo();            
+            IControllers TypeController = new L_ControllerTipoReclamo();            
             List<DtoTipoReclamo> colDto= TypeController.ListAll().Cast<DtoTipoReclamo>().ToList();
             List<SelectListItem> colTiposReclamos = new List<SelectListItem>();
 
@@ -42,9 +42,11 @@ namespace MVCWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult AgregarReclamo()
+        public ActionResult AgregarReclamo(DtoReclamo dto)
         {
-            return View();
+            IControllers ControllerReclamo = new ControllerReclamos();
+            ControllerReclamo.Alta(dto);
+            return RedirectToAction("Agregar");
         }
     }
 }

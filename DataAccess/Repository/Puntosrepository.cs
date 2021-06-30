@@ -56,8 +56,8 @@ namespace DataAccess.Repository
                     { 
                     t_PUNTO punto = context.t_PUNTO.FirstOrDefault(f => f.ID == dto.id);
                     punto.IDZona = dto.idZona;
-                    punto.Latitud = dto.lat;
-                    punto.Longitud = dto.lng;
+                    punto.Latitud = double.Parse(dto.lat);
+                    punto.Longitud = double.Parse(dto.lng);
                     context.SaveChanges();
                     tran.Commit();
                     }

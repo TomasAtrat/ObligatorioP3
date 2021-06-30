@@ -23,14 +23,14 @@ namespace MVCWeb.Controllers
         [HttpPost]
         public ActionResult Agregar(DtoTipoReclamo dto)
         {
-            IControllersAbm control = new L_ControllerTipoReclamo();
+            IControllers control = new L_ControllerTipoReclamo();
             control.Alta(dto);
             return View();
         }
 
         public ActionResult Listar()
         {
-            IControllersAbm control = new L_ControllerTipoReclamo();
+            IControllers control = new L_ControllerTipoReclamo();
             List<DtoTipoReclamo> lista =control.ListAll().Cast<DtoTipoReclamo>().ToList();
             return View(lista);
         }

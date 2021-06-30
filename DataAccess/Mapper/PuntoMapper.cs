@@ -16,8 +16,8 @@ namespace DataAccess.Mapper
             DtoPunto dto = new DtoPunto();
             dto.id = punto.ID;
             dto.idZona = punto.IDZona;
-            dto.lat = punto.Latitud;
-            dto.lng = punto.Longitud;
+            dto.lat = punto.Latitud.ToString();
+            dto.lng = punto.Longitud.ToString();
             return dto;
         }
 
@@ -35,8 +35,8 @@ namespace DataAccess.Mapper
             t_PUNTO punto = new t_PUNTO();
             punto.ID = dto.id;
             punto.IDZona = dto.idZona;
-            punto.Latitud = dto.lat;
-            punto.Longitud = dto.lng;
+            punto.Latitud = double.Parse(dto.lat);
+            punto.Longitud = double.Parse(dto.lng);
 
             return punto;
         }

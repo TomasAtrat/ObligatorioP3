@@ -31,17 +31,11 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        if (!(context.t_CUADRILLA.AsNoTracking().Any(a => a.Nombre == dto.nombre)))
-                        {
-                            cuadrilla.Estado = true;
-                            context.t_CUADRILLA.Add(cuadrilla);
-                            context.SaveChanges();
-                            tran.Commit();
-                        }
-                        else
-                        {
-                            cuadrilla.Estado = true;
-                        }
+                        cuadrilla.Estado = true;
+                        context.t_CUADRILLA.Add(cuadrilla);
+                        context.SaveChanges();
+                        tran.Commit();
+
                     }
                     catch (Exception e)
                     {
@@ -65,9 +59,9 @@ namespace DataAccess.Repository
 
                             cuadrilla.Estado = false;
 
-                                context.SaveChanges();
-                                tran.Commit();
-                          
+                        context.SaveChanges();
+                        tran.Commit();
+
                     }
                     catch (Exception exce)
                     {
@@ -86,7 +80,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_CUADRILLA cuadrilla = context.t_CUADRILLA.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
+                        t_CUADRILLA cuadrilla = context.t_CUADRILLA.FirstOrDefault(i => i.ID == dto.id);
                         cuadrilla.Nombre = dto.nombre;
                         cuadrilla.CantidadPeones = (short)dto.cantidadPeones;
                         cuadrilla.Encargado = dto.encargado;
@@ -138,6 +132,28 @@ namespace DataAccess.Repository
                 colCuadrillas = this.cuadrillaMapper.mapToDto(context.t_CUADRILLA_ZONA.AsNoTracking().Where(i => i.IDZona == idZona).ToList());
             }
             return colCuadrillas;
+        }
+
+        public void AltaCuadrillaZona(DtoCuadrilla dto)
+        {
+            t_CUADRILLA_ZONA entity = this.cuadrillaMapper.mapToEntity(dto);
+            using (Context context= new Context())
+            {
+                using (DbContextTransaction tran= context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    try
+                    {
+                        context.t_CUADRILLA_ZONA.Add(entity);
+                        context.SaveChanges();
+                        tran.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        tran.Rollback();
+                        throw e;
+                    }                    
+                }
+            }
         }
 
     }
