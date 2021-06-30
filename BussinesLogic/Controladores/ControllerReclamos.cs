@@ -24,21 +24,36 @@ namespace BussinesLogic.Controladores
             List<string> error = Verificacion((DtoReclamo)dto);
             if(error.Count() ==0)
             {
-                long idCuadrilla= AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
-                DtoCuadrilla dtoCuad = this.repositorio.CuadrillaRepository.getCuadrillaZona(((DtoReclamo)dto).IDCuadrilla, long.Parse(((DtoReclamo)dto).IDZona));
-                ((DtoReclamo)dto).dtoCuadrilla = dtoCuad;
+                long idZona= AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
+                ((DtoReclamo)dto).IDZona = idZona.ToString();
                 dto = this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
-                dtoCuad.colReclamos.Add((DtoReclamo)dto); //Añadir dto al colReclamos de la lista para siguiente asignación de cuadrilla
-                this.repositorio.CuadrillaRepository.ModificarCuadrillaZona(dtoCuad); //Comittear la modificación
             }
             return error;
         }
 
         private long AsignarCuadrilla(DtoReclamo dto)
         {
-            DtoCuadrilla dtoCuad = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i => i.colReclamos.Count).First();  //Asigna la cuadrilla de una manera balanceada    
+            DtoCuadrilla dtoCuad = new DtoCuadrilla();
+
+            if (long.Parse(dto.IDZona) == -1)
+            {
+                dtoCuad = this.repositorio.CuadrillaRepository.getElements().OrderBy(i => i.colReclamos.Count).First();
+            }
+            else
+            {
+                List<DtoCuadrilla> cuadrillas = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i => i.colReclamos.Count).ToList(); 
+                if(cuadrillas == null || cuadrillas.Count==0)
+                {
+                    dtoCuad = this.repositorio.CuadrillaRepository.getElements().OrderBy(i => i.colReclamos.Count).First();
+                }
+                else
+                {
+                    dtoCuad = cuadrillas.First();  //Asigna la cuadrilla de una manera balanceada  
+                }
+            } 
+
             dto.IDCuadrilla = dtoCuad.id;
-            return dtoCuad.id;
+            return dtoCuad.idZona;
         }
 
         public List<string> Baja(IDto dto)

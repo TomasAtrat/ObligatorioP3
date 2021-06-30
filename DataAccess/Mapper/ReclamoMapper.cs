@@ -30,7 +30,7 @@ namespace DataAccess.Mapper
             dto.Estado = (Estado)Enum.Parse(typeof(Estado), rec.Estado);
             dto.FechaHoraIngreso = rec.FechaHoraIngreso;
             dto.EstadoLogic = (bool)rec.EstadoL;
-            dto.colUsuarios = this.usuarioMapper.MapToListDto((List<t_USUARIO>)rec.t_USUARIO);
+            dto.colUsuarios = this.usuarioMapper.MapToListDto(rec.t_USUARIO.ToList());
 
             return dto;
         }

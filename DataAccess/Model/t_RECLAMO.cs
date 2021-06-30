@@ -31,7 +31,6 @@ namespace DataAccess.Model
         public double Longitud { get; set; }
         public Nullable<bool> EstadoL { get; set; }
     
-        public virtual t_CUADRILLA_ZONA t_CUADRILLA_ZONA { get; set; }
         public virtual t_TIPO_RECLAMO t_TIPO_RECLAMO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<t_USUARIO> t_USUARIO { get; set; }

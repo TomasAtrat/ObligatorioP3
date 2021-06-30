@@ -254,7 +254,6 @@
           <Property Name="IDZona" Type="Int64" Nullable="false" />
           <NavigationProperty Name="t_CUADRILLA" Relationship="Self.FK_t_CUADRILLA_ZONA_t_CUADRILLA" FromRole="t_CUADRILLA_ZONA" ToRole="t_CUADRILLA" />
           <NavigationProperty Name="t_ZONA" Relationship="Self.FK_t_CUADRILLA_ZONA_t_ZONA" FromRole="t_CUADRILLA_ZONA" ToRole="t_ZONA" />
-          <NavigationProperty Name="t_RECLAMO" Relationship="Self.FK_ZonaReclamo" FromRole="t_CUADRILLA_ZONA" ToRole="t_RECLAMO" />
           <NavigationProperty Name="t_RECLAMO1" Relationship="AlcaldiaToledoModel.FK_ZonaReclamo1" FromRole="t_CUADRILLA_ZONA" ToRole="t_RECLAMO" />
         </EntityType>
         <EntityType Name="t_HISTORICO_ESTADO_RECLAMO">
@@ -294,7 +293,6 @@
           <Property Name="Latitud" Type="Double" Nullable="false" />
           <Property Name="Longitud" Type="Double" Nullable="false" />
           <Property Name="EstadoL" Type="Boolean" />
-          <NavigationProperty Name="t_CUADRILLA_ZONA" Relationship="Self.FK_ZonaReclamo" FromRole="t_RECLAMO" ToRole="t_CUADRILLA_ZONA" />
           <NavigationProperty Name="t_TIPO_RECLAMO" Relationship="Self.FK_TipoReclamo" FromRole="t_RECLAMO" ToRole="t_TIPO_RECLAMO" />
           <NavigationProperty Name="t_USUARIO" Relationship="Self.t_RECLAMO_USUARIO" FromRole="t_RECLAMO" ToRole="t_USUARIO" />
           <NavigationProperty Name="t_CUADRILLA_ZONA1" Relationship="AlcaldiaToledoModel.FK_ZonaReclamo1" FromRole="t_RECLAMO" ToRole="t_CUADRILLA_ZONA" />
@@ -358,20 +356,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ZonaReclamo">
-          <End Role="t_CUADRILLA_ZONA" Type="Self.t_CUADRILLA_ZONA" Multiplicity="1" />
-          <End Role="t_RECLAMO" Type="Self.t_RECLAMO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="t_CUADRILLA_ZONA">
-              <PropertyRef Name="IDCuadrilla" />
-              <PropertyRef Name="IDZona" />
-            </Principal>
-            <Dependent Role="t_RECLAMO">
-              <PropertyRef Name="IDZona" />
-              <PropertyRef Name="IDCuadrilla" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_t_PUNTO_t_ZONA">
           <End Role="t_ZONA" Type="Self.t_ZONA" Multiplicity="1" />
           <End Role="t_PUNTO" Type="Self.t_PUNTO" Multiplicity="*" />
@@ -416,10 +400,6 @@
           <AssociationSet Name="FK_t_CUADRILLA_ZONA_t_ZONA" Association="Self.FK_t_CUADRILLA_ZONA_t_ZONA">
             <End Role="t_ZONA" EntitySet="t_ZONA" />
             <End Role="t_CUADRILLA_ZONA" EntitySet="t_CUADRILLA_ZONA" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ZonaReclamo" Association="Self.FK_ZonaReclamo">
-            <End Role="t_CUADRILLA_ZONA" EntitySet="t_CUADRILLA_ZONA" />
-            <End Role="t_RECLAMO" EntitySet="t_RECLAMO" />
           </AssociationSet>
           <AssociationSet Name="FK_t_PUNTO_t_ZONA" Association="Self.FK_t_PUNTO_t_ZONA">
             <End Role="t_ZONA" EntitySet="t_ZONA" />

@@ -4,13 +4,12 @@
     ViewBag.Title = "Listar reclamos";
 }
 
-<h1>Listar reclamos</h1>
-<br />
+<div class="starter-template" style="margin-top: -20px">
+    <h1>Listar reclamos</h1>
+</div>
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.FechaHoraIngreso)
         </th>
@@ -34,9 +33,6 @@
 
 @foreach (var item in Model) {
 <tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDTipoReclamo)
-    </td>
     <td>
         @Html.DisplayFor(modelItem => item.FechaHoraIngreso)
     </td>
