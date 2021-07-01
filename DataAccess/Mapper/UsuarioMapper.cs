@@ -14,7 +14,9 @@ namespace DataAccess.Mapper
         private ReclamoMapper reclamoMapeador;
         public DtoUsuario MapToDto(t_USUARIO user)
         {
-            DtoUsuario dto = new DtoUsuario();
+            try
+            { 
+            DtoUsuario dto = new DtoUsuario(); 
             DtoReclamo dtoHelp = new DtoReclamo();
             dto.Nombre = user.Nombre;
             dto.Apellido = user.Apellido;
@@ -26,6 +28,11 @@ namespace DataAccess.Mapper
             dto.Estado = user.Estado;
            // dto.colReclamos = this.reclamoMapeador.mapToDto(user.t_RECLAMO.ToList());
             return dto;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
         }
 
         public t_USUARIO MapToEntity(DtoUsuario usuarioAConvertir)

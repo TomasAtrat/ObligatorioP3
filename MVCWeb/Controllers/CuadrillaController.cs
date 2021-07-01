@@ -2,6 +2,7 @@
 using BussinesLogic.Interfaces;
 using CommonSolution.Dto;
 using CommonSolution.Interfaces;
+using MVCWeb.helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.Mvc;
 
 namespace MVCWeb.Controllers
 {
+    [UserAutentication]
     public class CuadrillaController : Controller
     {
         // GET: Cuadrilla

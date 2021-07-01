@@ -7,9 +7,11 @@ using CommonSolution.Interfaces;
 using BussinesLogic.Interfaces;
 using BussinesLogic.Controladores;
 using CommonSolution.Dto;
+using MVCWeb.helpers;
 
 namespace MVCWeb.Controllers
 {
+    [UserAutentication]
     public class TipoReclamo_Controller : Controller
     {
         public ActionResult Agregar()

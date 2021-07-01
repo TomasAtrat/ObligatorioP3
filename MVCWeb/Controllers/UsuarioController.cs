@@ -1,5 +1,6 @@
 ﻿using BussinesLogic.Controladores;
 using CommonSolution.Dto;
+using MVCWeb.helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MVCWeb.Controllers
 {
+
     public class UsuarioController : Controller
     {
         // GET: Usuario
@@ -24,7 +26,7 @@ namespace MVCWeb.Controllers
             return Redirect("Listar");
 
         }
-
+     //   [UserAutentication]
         public ActionResult Listar()
         {
             LControllerUsuario controller = new LControllerUsuario();
@@ -33,8 +35,8 @@ namespace MVCWeb.Controllers
             
 
         }
-
-        public ActionResult ListarClientes()
+     //   [UserAutentication]
+        public ActionResult ListarCliente()
         {
             LControllerUsuario controller = new LControllerUsuario();
             List<DtoUsuario> dto = controller.ListarUsuarios();
