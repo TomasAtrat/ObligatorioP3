@@ -26,7 +26,7 @@ namespace MVCWeb.Controllers
             return Redirect("Listar");
 
         }
-        [UserAutentication]
+     //   [UserAutentication]
         public ActionResult Listar()
         {
             LControllerUsuario controller = new LControllerUsuario();
@@ -35,7 +35,7 @@ namespace MVCWeb.Controllers
             
 
         }
-        [UserAutentication]
+     //   [UserAutentication]
         public ActionResult ListarCliente()
         {
             LControllerUsuario controller = new LControllerUsuario();
