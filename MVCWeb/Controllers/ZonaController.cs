@@ -30,7 +30,7 @@ namespace MVCWeb.Controllers
         {
             ControllerZona zona = new ControllerZona();
             List<DtoZona> colZonas = zona.ListAll().Cast<DtoZona>().ToList();
-            var zonas = colZonas.Select(i => new { nombre = i.nombre, color = i.color, colPuntos = i.colPuntos , id= i.id}); // Si no se hace 
+            var zonas = colZonas.Select(i => new { nombre = i.nombre, color = i.color, colPuntos = i.colPuntos , id= i.id, cantidadCuadrillas = i.colCuadrillas.Count()}); // Si no se hace 
             return Json(zonas, JsonRequestBehavior.AllowGet);
         }
 

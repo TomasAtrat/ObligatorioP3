@@ -116,3 +116,16 @@ function getZonas() {
         }
     })
 }
+
+function AddInfoWindow() {
+    contentString = '<h7 style= "font-weight: bold"> ID: </h7>' + id +
+        '<h7 style= "font-weight: bold"> Nombre: </h7>' + idCuadrilla +
+        '<h7 style= "font-weight: bold"> Estado: </h7>' + estado +
+        '<h7 style= "font-weight: bold"> Observaciones: </h7>' + observaciones +
+        '<h7 style= "font-weight: bold"> Diferencia en Horas: </h7>' + difHoras;
+
+    infowindow = new google.maps.InfoWindow({
+        content: contentString,
+        position: location
+    });
+}

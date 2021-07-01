@@ -22,7 +22,7 @@ function getReclamos() {
         success: function (mensaje) {
             if (mensaje != null) {
                 for (i in mensaje) {
-                    AddLocation(mensaje[i].Latitud, mensaje[i].Longitud, mensaje[i].difHoras, mensaje[i].IDCuadrilla, mensaje[i].ID, mensaje[i].Estado);
+                    AddLocation(mensaje[i].Latitud, mensaje[i].Longitud, mensaje[i].difHoras, mensaje[i].IDCuadrilla, mensaje[i].ID, mensaje[i].Estado, mensaje[i].Observaciones);
                 }
             }
         },
@@ -32,7 +32,7 @@ function getReclamos() {
 
 }
 
-function AddLocation(lat, lng, difHoras, idCuadrilla, id, estado) {
+function AddLocation(lat, lng, difHoras, idCuadrilla, id, estado, observaciones) {
 
     var location = { lat, lng };
     var marker = new google.maps.Marker({
@@ -47,7 +47,7 @@ function AddLocation(lat, lng, difHoras, idCuadrilla, id, estado) {
     }
 
     marker.addListener("click", () => {
-        AddInfoWindow(location, idCuadrilla, id, estado, difHoras);
+        AddInfoWindow(location, idCuadrilla, id, estado, difHoras, observaciones);
         if (actualInfoWindow != null) {
             actualInfoWindow.close();
         }
@@ -63,11 +63,12 @@ function AddLocation(lat, lng, difHoras, idCuadrilla, id, estado) {
 
 }
 
-function AddInfoWindow(location, idCuadrilla, id, estado, difHoras) {
+function AddInfoWindow(location, idCuadrilla, id, estado, difHoras, observaciones) {
     contentString = '<h7 style= "font-weight: bold"> ID: </h7>' + id +
         '<h7 style= "font-weight: bold"> ID Cuadrilla: </h7>' + idCuadrilla +
         '<h7 style= "font-weight: bold"> Estado: </h7>' + estado +
-    '<h7 style= "font-weight: bold"> Diferencia en Horas: </h7>' + difHoras;
+        '<h7 style= "font-weight: bold"> Observaciones: </h7>' + observaciones +
+        '<h7 style= "font-weight: bold"> Diferencia en Horas: </h7>' + difHoras;
                     
     infowindow = new google.maps.InfoWindow({
         content: contentString,
