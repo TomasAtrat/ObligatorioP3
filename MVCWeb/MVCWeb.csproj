@@ -151,15 +151,18 @@
     <Content Include="Content\CSS\RecuperarContraseña.css" />
     <Content Include="Content\CSS\starter-template.css" />
     <Content Include="Content\IMG\escudoToledo.png" />
+    <Content Include="Content\IMG\green-dot.png" />
     <Content Include="Content\IMG\MaquinaEsc.png" />
     <Content Include="Content\IMG\outline_gps_fixed_black_24dp.png" />
     <Content Include="Content\IMG\toledoFondo.jpg" />
     <Content Include="Content\IMG\ToledoFondoIngreso.jpg" />
+    <Content Include="Content\IMG\yellow-dot.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\CSS\Site.css" />
     <Content Include="Scripts\src\Reclamo.js" />
+    <Content Include="Scripts\src\VisorReclamos.js" />
     <Content Include="Scripts\support\bootstrap.js" />
     <Content Include="Scripts\support\bootstrap.min.js" />
     <Content Include="Content\CSS\bootstrap-grid.css.map" />
@@ -197,7 +200,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Zona\Index.cshtml" />
     <Content Include="Views\Zona\Agregar.cshtml" />
     <Content Include="Views\Shared\Mapa.cshtml" />
     <Content Include="Views\Usuario\Agregar.cshtml" />

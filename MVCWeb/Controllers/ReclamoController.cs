@@ -46,5 +46,14 @@ namespace MVCWeb.Controllers
             ControllerReclamo.Alta(dto);
             return RedirectToAction("Agregar");
         }
+
+        [HttpGet]
+        public JsonResult getReclamos()
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            List<DtoReclamo> colReclamos = controller.ListAll().Cast<DtoReclamo>().ToList();
+            var reclamos = colReclamos.Select(i => new { ID = i.ID, Estado= i.Estado.ToString(), FechaHoraIngreso= i.FechaHoraIngreso, IDCuadrilla= i.IDCuadrilla, IDZona= i.IDZona, Latitud= i.Latitud, Longitud= i.Longitud, Observaciones= i.Observaciones, difHoras= (DateTime.Now-i.FechaHoraIngreso).Value.Hours }) ; // Si no se hace 
+            return Json(reclamos, JsonRequestBehavior.AllowGet);
+        }
     }
 }

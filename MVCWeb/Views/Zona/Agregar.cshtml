@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.color, htmlAttributes: new { @class = "control-label col-md-2" })*
             <div class="col-md-10">
-                @Html.EditorFor(model => model.color, new { htmlAttributes = new {  @type = "color" } })
+                @Html.EditorFor(model => model.color, new { htmlAttributes = new { @type = "color" } })
                 @Html.ValidationMessageFor(model => model.color, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,7 +35,7 @@
 
         <div class="form-group">
             <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
-                <input type="submit" id="submit" value="Submit" onclick="AgregarZona()"/>
+                <input type="submit" id="submit" value="Submit" onclick="AgregarZona()" />
             </div>
         </div>
     </div>
@@ -49,4 +49,5 @@
 
     @Scripts.Render("~/bundles/jqueryval");
     @Scripts.Render("~/bundles/zonas");
+    @Scripts.Render("~/bundles/googleMaps")
 }

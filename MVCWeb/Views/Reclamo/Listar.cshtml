@@ -8,6 +8,8 @@
     <h1>Listar reclamos</h1>
 </div>
 
+@Html.Partial("Mapa")
+
 <table class="table">
     <tr>
         <th>
@@ -31,32 +33,38 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.FechaHoraIngreso)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Observaciones)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Latitud)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Longitud)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDZona)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IDCuadrilla)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaHoraIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDZona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDCuadrilla)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/VisorReclamos")
+    @Scripts.Render("~/bundles/googleMaps")
+}

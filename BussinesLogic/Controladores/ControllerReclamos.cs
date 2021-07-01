@@ -101,7 +101,7 @@ namespace BussinesLogic.Controladores
 
         public List<IDto> ListAll()
         {
-            return this.repositorio.ReclamoRepository.getElements().Cast<IDto>().ToList();
+            return this.repositorio.ReclamoRepository.getElements().Where(i=>i.EstadoLogic).Cast<IDto>().ToList();
         }
 
         public void CambiarEstadoReclamo(DtoReclamo dto)
