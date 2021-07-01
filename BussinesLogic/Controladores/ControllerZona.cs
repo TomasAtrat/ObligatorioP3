@@ -47,7 +47,12 @@ namespace BussinesLogic.Controladores
 
         public List<IDto> ListAll()
         {
-            return this.repository.ZonaRepository.ListarZonas().Where(i=>i.Estado).Cast<IDto>().ToList();
+            List<DtoZona> dtoZonas= this.repository.ZonaRepository.ListarZonas().Where(i=>i.Estado).ToList();
+            foreach (DtoZona item in dtoZonas)
+            {
+                item.colCuadrillas = this.repository.CuadrillaRepository.getCuadrillasByZona(item.id);
+            }
+            return dtoZonas.Cast<IDto>().ToList();
         }
 
         public List<string> Modificacion(IDto dto)
