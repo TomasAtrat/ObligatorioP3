@@ -27,7 +27,6 @@ namespace BussinesLogic.Controladores
                 try
                 {
                     this.repository.CuadrillaRepository.AltaCuadrilla((DtoCuadrilla)dto);
-                    this.repository.CuadrillaRepository.AltaCuadrillaZona((DtoCuadrilla)dto);
                 }
                 catch (Exception exec)
                 {

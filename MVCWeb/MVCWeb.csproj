@@ -161,7 +161,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\CSS\Site.css" />
-    <Content Include="Scripts\src\ListarZonas.js" />
     <Content Include="Scripts\src\Reclamo.js" />
     <Content Include="Scripts\support\bootstrap.js" />
     <Content Include="Scripts\support\bootstrap.min.js" />

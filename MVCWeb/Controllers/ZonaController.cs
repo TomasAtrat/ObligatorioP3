@@ -46,7 +46,7 @@ namespace MVCWeb.Controllers
         {
             IControllers ControllerZona = new ControllerZona();
             ControllerZona.Alta(zona);
-            return View("Agregar");
+            return RedirectToAction("Agregar");
         }
     }
 }

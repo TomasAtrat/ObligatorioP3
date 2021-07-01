@@ -48,7 +48,8 @@
     <Compile Include="Controladores\L_ControllerTipoReclamo.cs" />
     <Compile Include="Controladores\LControllerUsuario.cs" />
     <Compile Include="Controladores\ControllerZona.cs" />
-    <Compile Include="Interfaces\IControllersAbm.cs" />
+    <Compile Include="Controladores\ReporteController.cs" />
+    <Compile Include="Interfaces\IControllers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

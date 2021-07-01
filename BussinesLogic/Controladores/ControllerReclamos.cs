@@ -24,16 +24,36 @@ namespace BussinesLogic.Controladores
             List<string> error = Verificacion((DtoReclamo)dto);
             if(error.Count() ==0)
             {
-                AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
-                this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
+                long idZona= AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
+                ((DtoReclamo)dto).IDZona = idZona.ToString();
+                dto = this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
             }
             return error;
         }
 
-        private void AsignarCuadrilla(DtoReclamo dto)
+        private long AsignarCuadrilla(DtoReclamo dto)
         {
-            DtoCuadrilla dtoCuadrilla = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i=>i.colReclamos.Count).First(); //Asigna la cuadrilla de una manera balanceada
-            dto.IDCuadrilla = dtoCuadrilla.id;
+            DtoCuadrilla dtoCuad = new DtoCuadrilla();
+
+            if (long.Parse(dto.IDZona) == -1)
+            {
+                dtoCuad = this.repositorio.CuadrillaRepository.getElements().OrderBy(i => i.colReclamos.Count).First();
+            }
+            else
+            {
+                List<DtoCuadrilla> cuadrillas = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i => i.colReclamos.Count).ToList(); 
+                if(cuadrillas == null || cuadrillas.Count==0)
+                {
+                    dtoCuad = this.repositorio.CuadrillaRepository.getElements().OrderBy(i => i.colReclamos.Count).First();
+                }
+                else
+                {
+                    dtoCuad = cuadrillas.First();  //Asigna la cuadrilla de una manera balanceada  
+                }
+            } 
+
+            dto.IDCuadrilla = dtoCuad.id;
+            return dtoCuad.idZona;
         }
 
         public List<string> Baja(IDto dto)

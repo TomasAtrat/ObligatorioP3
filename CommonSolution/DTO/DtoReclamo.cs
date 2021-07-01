@@ -32,5 +32,6 @@ namespace CommonSolution.Dto
         public double Longitud { get; set; }
         public bool EstadoLogic;
         public List<DtoUsuario> colUsuarios;
+        public DtoCuadrilla dtoCuadrilla;
     }
 }

@@ -16,11 +16,13 @@ namespace DataAccess.Repository
         public ReclamoRepository()
         {
             this.reclamoMapper = new ReclamoMapper();
+            this.cuadrillaMapper = new CuadrillaMapper();
         }
 
         private ReclamoMapper reclamoMapper;
+        private CuadrillaMapper cuadrillaMapper;
 
-        public void AltaReclamo(DtoReclamo dto)
+        public DtoReclamo AltaReclamo(DtoReclamo dto)
         {
             t_RECLAMO reclamo = this.reclamoMapper.mapToEntity(dto);
             using (Context context= new Context())
@@ -29,11 +31,12 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        
                         reclamo.Estado = "PENDIENTE";
                         reclamo.FechaHoraIngreso = DateTime.Now;
+                        reclamo.EstadoL = true; //Habilitado
                         context.t_RECLAMO.Add(reclamo);
                         context.SaveChanges();
+                        dto = this.reclamoMapper.mapToDto(reclamo);
                         tran.Commit();
                     }
                     catch (Exception e)
@@ -42,6 +45,7 @@ namespace DataAccess.Repository
                     }
                 }
             }
+            return dto;
         }
 
         public void ModificarReclamo(DtoReclamo dto)

@@ -16,14 +16,21 @@ namespace DataAccess.Repository
         public CuadrillaRepository()
         {
             this.cuadrillaMapper = new CuadrillaMapper();
+            this.reclamoMapper = new ReclamoMapper();
+            this.zonaMapper = new ZonaMapper();
         }
 
         private CuadrillaMapper cuadrillaMapper;
+        private ReclamoMapper reclamoMapper;
+        private ZonaMapper zonaMapper;
 
         public void AltaCuadrilla(DtoCuadrilla dto)
         {
-
             t_CUADRILLA cuadrilla = this.cuadrillaMapper.maptoentity(dto);
+            t_CUADRILLA_ZONA entity = this.cuadrillaMapper.mapToEntity(dto);
+            entity.t_CUADRILLA = cuadrilla;
+
+            cuadrilla.t_CUADRILLA_ZONA.Add(entity);
 
             using (Context context = new Context())
             {
@@ -33,6 +40,7 @@ namespace DataAccess.Repository
                     {
                         cuadrilla.Estado = true;
                         context.t_CUADRILLA.Add(cuadrilla);
+                        context.t_CUADRILLA_ZONA.Add(entity);
                         context.SaveChanges();
                         tran.Commit();
 
@@ -84,7 +92,6 @@ namespace DataAccess.Repository
                         cuadrilla.Nombre = dto.nombre;
                         cuadrilla.CantidadPeones = (short)dto.cantidadPeones;
                         cuadrilla.Encargado = dto.encargado;
-
                         context.SaveChanges();
                         tran.Commit();
                     }
@@ -137,9 +144,9 @@ namespace DataAccess.Repository
         public void AltaCuadrillaZona(DtoCuadrilla dto)
         {
             t_CUADRILLA_ZONA entity = this.cuadrillaMapper.mapToEntity(dto);
-            using (Context context= new Context())
+            using (Context context = new Context())
             {
-                using (DbContextTransaction tran= context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                using (DbContextTransaction tran = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
                 {
                     try
                     {
@@ -151,9 +158,51 @@ namespace DataAccess.Repository
                     {
                         tran.Rollback();
                         throw e;
-                    }                    
+                    }
                 }
             }
+        }
+
+        public void ModificarCuadrillaZona(DtoCuadrilla dto)
+        {
+            using (Context context = new Context())
+            {
+                using (DbContextTransaction tran = context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {
+                    try
+                    {
+                        t_CUADRILLA_ZONA entity = context.t_CUADRILLA_ZONA.FirstOrDefault(i => i.IDCuadrilla == dto.id && i.IDZona == dto.idZona);
+                        entity.t_RECLAMO1 = this.reclamoMapper.mapToEntity(dto.colReclamos);
+                        context.SaveChanges();
+                        tran.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        tran.Rollback();
+                        throw e;
+                    }
+                }
+            }
+        }
+
+        public DtoCuadrilla getCuadrillaZona(long IDCuadrilla, long IDZona)
+        {
+            DtoCuadrilla dtoCuad = new DtoCuadrilla();
+            using (Context context = new Context())
+            {
+                dtoCuad = this.cuadrillaMapper.mapToDto(context.t_CUADRILLA_ZONA.AsNoTracking().FirstOrDefault(i => i.IDZona == IDZona && i.IDCuadrilla == IDCuadrilla));
+            }
+            return dtoCuad;
+        }
+
+        public List<DtoCuadrilla> getElements()
+        {
+            List<DtoCuadrilla> colDtos = new List<DtoCuadrilla>();
+            using (Context context= new Context())
+            {
+                colDtos = this.cuadrillaMapper.mapToDto(context.t_CUADRILLA_ZONA.AsNoTracking().ToList());
+            }
+            return colDtos;
         }
 
     }

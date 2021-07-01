@@ -25,7 +25,6 @@ namespace DataAccess.Mapper
             dto.encargado = Cuadrilla.Encargado;
             dto.cantidadPeones = Cuadrilla.CantidadPeones;
             dto.Observaciones = Cuadrilla.Observaciones;
-
             return dto;
         }
 
@@ -65,7 +64,7 @@ namespace DataAccess.Mapper
             DtoCuadrilla dto = new DtoCuadrilla();
             dto.idZona = cuadrilla.IDZona;
             dto.id = cuadrilla.IDCuadrilla;
-            dto.colReclamos = this.reclamoMapper.mapToListDto(cuadrilla.t_RECLAMO.ToList());
+            dto.colReclamos = this.reclamoMapper.mapToListDto(cuadrilla.t_RECLAMO1.ToList());
             return dto;
         }
 
@@ -74,7 +73,7 @@ namespace DataAccess.Mapper
             t_CUADRILLA_ZONA zona = new t_CUADRILLA_ZONA();
             zona.IDCuadrilla = dto.id;
             zona.IDZona = dto.idZona;
-            zona.t_RECLAMO = this.reclamoMapper.mapToEntity(dto.colReclamos);
+            zona.t_RECLAMO1 = this.reclamoMapper.mapToEntity(dto.colReclamos);
             return zona;
         }
 
