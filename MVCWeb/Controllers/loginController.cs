@@ -25,8 +25,8 @@ namespace MVCWeb.Controllers
         [HttpPost]
         public ActionResult Login(DtoLogin dto)
         {
-            LControllerlogin control = new LControllerlogin();
-            DtoUsuario user = control.Registrado(log.Usuario, log.Contraceña);
+            LControllerLogin login = new LControllerLogin();
+            bool usuario = login.estaReigtrado(dto.NombreUsuario, dto.Password);
             if (log.Usuario == user.NombreUsuario && log.Contraceña == user.Password && user != null)
             {
 
