@@ -26,11 +26,11 @@ namespace MVCWeb.Controllers
         public ActionResult Login(DtoLogin dto)
         {
             LControllerLogin login = new LControllerLogin();
-            bool usuario = login.estaReigtrado(dto.NombreUsuario, dto.Password);
-            if (log.Usuario == user.NombreUsuario && log.Contraceña == user.Password && user != null)
+            DtoUsuario usuario = login.Registrado(dto.NombreUsuario, dto.Password);
+            if (usuario.NombreUsuario == dto.NombreUsuario && usuario.Password == dto.Password && dto != null)
             {
 
-                FormsAuthentication.SetAuthCookie(log.Usuario, false);
+                FormsAuthentication.SetAuthCookie(log.Usuario, true);
 
 
                 return Redirect("/Home");

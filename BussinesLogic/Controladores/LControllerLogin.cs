@@ -26,5 +26,10 @@ namespace BussinesLogic.Controladores
             }
             return false;
         }
+
+        public DtoUsuario Registrado(string user, string p)
+        {
+            return this.repository.UsuarioRepository.getElementById(user, p);
+        }
     }
 }
