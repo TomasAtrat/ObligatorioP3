@@ -30,7 +30,7 @@ namespace MVCWeb.Controllers
             if (usuario.NombreUsuario == dto.NombreUsuario && usuario.Password == dto.Password && dto != null)
             {
 
-                FormsAuthentication.SetAuthCookie(log.Usuario, true);
+                FormsAuthentication.SetAuthCookie(dto.NombreUsuario, true);
 
 
                 return Redirect("/Home");
