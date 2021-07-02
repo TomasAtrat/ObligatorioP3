@@ -38,6 +38,7 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
+                <li class="nav-item"> @Html.ActionLink("Iniciar Sesion", "Login", "login", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Agregar Tipo de reclamo", "Agregar", "TipoReclamo_", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Listar Tipo de reclamo", "Listar", "TipoReclamo_", null, new { @class = "nav-link" }) </li>

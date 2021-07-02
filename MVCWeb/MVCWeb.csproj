@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\CuadrillaController.cs" />
     <Compile Include="Controllers\TipoReclamo_Controller.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -213,6 +214,7 @@
     <Content Include="Views\Cuadrilla\Edit.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Zona\Listar.cshtml" />
+    <Content Include="Views\Login\login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

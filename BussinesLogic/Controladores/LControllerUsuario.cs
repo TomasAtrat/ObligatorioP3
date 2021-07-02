@@ -121,7 +121,10 @@ namespace BussinesLogic.Controladores
         {
             throw new NotImplementedException();
         }
-
+        public DtoUsuario ExtraerUsuaroFuncionario(DtoUsuario dto)
+        {
+            return this.repository.UsuarioRepository.getElementById(dto.NombreUsuario , dto.Password);
+        }
         public DtoUsuario ExtraerPorNyP(string nombre, string paswword)
         {
             
