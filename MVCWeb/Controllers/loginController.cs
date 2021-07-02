@@ -23,12 +23,21 @@ namespace MVCWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(DtoUsuario dto)
+        public ActionResult Login(DtoLogin dto)
         {
-            LControllerUsuario usuario = new LControllerUsuario();
-            usuario.ExtraerUsuaroFuncionario(dto);
-            
+            LControllerlogin control = new LControllerlogin();
+            DtoUsuario user = control.Registrado(log.Usuario, log.Contraceña);
+            if (log.Usuario == user.NombreUsuario && log.Contraceña == user.Password && user != null)
+            {
+
+                FormsAuthentication.SetAuthCookie(log.Usuario, false);
+
+
+                return Redirect("/Home");
+            }
+
             return View();
+
         }
         public ActionResult LogOut()
         {
