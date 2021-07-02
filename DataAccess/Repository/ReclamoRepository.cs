@@ -68,7 +68,6 @@ namespace DataAccess.Repository
                             reclamo.Observaciones = dto.Observaciones;
                             reclamo.Estado = dto.Estado.ToString();
                             reclamo.FechaHoraIngreso = dto.FechaHoraIngreso;
-                            reclamo.t_USUARIO = (ICollection<t_USUARIO>)dto.colUsuarios;
                             context.SaveChanges();
                             tran.Commit();
                         }

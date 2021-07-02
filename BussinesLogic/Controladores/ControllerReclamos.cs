@@ -59,7 +59,9 @@ namespace BussinesLogic.Controladores
         public List<string> Baja(IDto dto)
         {
             List<string> errores = new List<string>();
-            if(BuscarReclamoExistencia(((DtoReclamo)dto).ID) == true)
+            bool existe = this.repositorio.ReclamoRepository.VerificarExistenica(((DtoReclamo)dto).ID);
+
+            if(existe)
             { 
             this.repositorio.ReclamoRepository.EliminarReclamo((DtoReclamo)dto);
             }
@@ -73,7 +75,7 @@ namespace BussinesLogic.Controladores
         public List<string> Modificacion(IDto dto)
         {
             List<string> errores = Verificacion((DtoReclamo)dto);
-            if(errores.Count() == 0 && BuscarReclamoExistencia(((DtoReclamo)dto).ID) == true)
+            if(errores.Count() == 0)
             {
                 this.repositorio.ReclamoRepository.ModificarReclamo((DtoReclamo)dto);
             }
@@ -94,14 +96,9 @@ namespace BussinesLogic.Controladores
 
         }
 
-        public bool BuscarReclamoExistencia(long id) //No se puede comparar si un reclamo ya existe porque el id es asignado automáticamente, y al momento el id del dto es null
-        {
-            return this.repositorio.ReclamoRepository.VerificarExistenica(id);
-        }
-
         public List<IDto> ListAll()
         {
-            return this.repositorio.ReclamoRepository.getElements().Where(i=>i.EstadoLogic).Cast<IDto>().ToList();
+            return this.repositorio.ReclamoRepository.getElements().Cast<IDto>().ToList();
         }
 
         public void CambiarEstadoReclamo(DtoReclamo dto)
@@ -109,6 +106,11 @@ namespace BussinesLogic.Controladores
             DtoReclamo reclamo = this.repositorio.ReclamoRepository.GetElementById(dto.ID);
             reclamo.Estado = dto.Estado;
             this.repositorio.ReclamoRepository.ModificarReclamo(reclamo);
+        }
+
+        public DtoReclamo getElementById(long id)
+        {
+            return this.repositorio.ReclamoRepository.GetElementById(id);
         }
 
     }

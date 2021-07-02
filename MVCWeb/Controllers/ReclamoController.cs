@@ -16,14 +16,14 @@ namespace MVCWeb.Controllers
         public ActionResult Listar()
         {
             IControllers ReclamoController = new ControllerReclamos();
-            List<DtoReclamo> colReclamos=  ReclamoController.ListAll().Cast<DtoReclamo>().ToList();
+            List<DtoReclamo> colReclamos = ReclamoController.ListAll().Cast<DtoReclamo>().ToList();
             return View(colReclamos);
         }
 
         public ActionResult Agregar()
         {
-            IControllers TypeController = new L_ControllerTipoReclamo();            
-            List<DtoTipoReclamo> colDto= TypeController.ListAll().Cast<DtoTipoReclamo>().ToList();
+            IControllers TypeController = new L_ControllerTipoReclamo();
+            List<DtoTipoReclamo> colDto = TypeController.ListAll().Cast<DtoTipoReclamo>().ToList();
             List<SelectListItem> colTiposReclamos = new List<SelectListItem>();
 
             foreach (DtoTipoReclamo item in colDto)
@@ -52,8 +52,35 @@ namespace MVCWeb.Controllers
         {
             ControllerReclamos controller = new ControllerReclamos();
             List<DtoReclamo> colReclamos = controller.ListAll().Cast<DtoReclamo>().ToList();
-            var reclamos = colReclamos.Select(i => new { ID = i.ID, Estado= i.Estado.ToString(), FechaHoraIngreso= i.FechaHoraIngreso, IDCuadrilla= i.IDCuadrilla, IDZona= i.IDZona, Latitud= i.Latitud, Longitud= i.Longitud, Observaciones= i.Observaciones, difHoras= (DateTime.Now-i.FechaHoraIngreso).Value.Hours}) ; // Si no se hace 
+            var reclamos = colReclamos.Select(i => new { ID = i.ID, Estado = i.Estado.ToString(), FechaHoraIngreso = i.FechaHoraIngreso, IDCuadrilla = i.IDCuadrilla, IDZona = i.IDZona, Latitud = i.Latitud, Longitud = i.Longitud, Observaciones = i.Observaciones, difHoras = (DateTime.Now - i.FechaHoraIngreso).Value.Hours }); // Si no se hace 
             return Json(reclamos, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult Editar(long id)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            DtoReclamo dto = controller.getElementById(id);
+            List<SelectListItem> colEstados = new List<SelectListItem>();
+            foreach (string item in Enum.GetNames(typeof(Estado)))
+            {
+                SelectListItem option = new SelectListItem();
+                option.Text = item;
+                option.Value = Enum.Parse(typeof(Estado), item).ToString();
+                colEstados.Add(option);
+            }
+
+            ViewBag.colEstados = colEstados;
+            return View(dto);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(DtoReclamo dto)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            dto.Estado = (Estado)Enum.Parse(typeof(Estado), dto.estado);
+            controller.CambiarEstadoReclamo(dto);
+            return RedirectToAction("Listar");
         }
     }
 }
