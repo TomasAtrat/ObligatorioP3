@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace MVCWeb.Controllers
 {
+    [UserAuthentication]
     public class CuadrillaController : Controller
     {
         // GET: Cuadrilla

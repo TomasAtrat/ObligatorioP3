@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace MVCWeb.Controllers
 {
+    [UserAuthentication]
     public class ReclamoController : Controller
     {
         // GET: Reclamo
