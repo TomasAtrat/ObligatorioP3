@@ -10,7 +10,7 @@ using System.Web.Mvc;
 namespace MVCWeb.Controllers
 {
     
-    [UserAuthentication]
+    
     public class ZonaController : Controller
     {
         public ActionResult Index()
