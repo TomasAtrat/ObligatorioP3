@@ -215,6 +215,7 @@
     <Content Include="Views\Cuadrilla\Edit.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Zona\Listar.cshtml" />
+    <Content Include="Views\ListarReporteUno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

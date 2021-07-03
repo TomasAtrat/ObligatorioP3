@@ -1,0 +1,69 @@
+﻿@model IEnumerable<CommonSolution.Dto.DtoReclamo>
+
+@{
+    ViewBag.Title = "ListarReporteUno";
+}
+
+<h2>ListarReporteUno</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDZona)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDCuadrilla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDTipoReclamo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaHoraIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitud)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDZona)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDCuadrilla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDTipoReclamo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaHoraIngreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observaciones)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Latitud)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Longitud)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

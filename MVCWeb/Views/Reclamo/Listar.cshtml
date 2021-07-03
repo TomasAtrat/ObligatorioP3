@@ -56,7 +56,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Ver reclamos asignados a la cuadrila", "ReclamosPorIdCuadrilla", new {  item.IDCuadrilla }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ID })
             </td>
         </tr>
