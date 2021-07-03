@@ -43,11 +43,21 @@ namespace BussinesLogic.Controladores
             this.repository.CuadrillaRepository.BajaCuadrilla((DtoCuadrilla)dto);
             return colErrores;
         }
+
         public List<string> Modificacion(IDto dto)
         {
             List<string> colErrores = new List<string>();
-            this.repository.CuadrillaRepository.ModificarCuadrilla((DtoCuadrilla)dto);
-            return colErrores;
+
+            try
+            {
+                this.repository.CuadrillaRepository.ModificarCuadrilla((DtoCuadrilla)dto);
+            }
+            catch (Exception e)
+            {
+                colErrores.Add(e.Message);
+            }
+
+            return colErrores;            
         }
 
         public List<IDto> ListAll()

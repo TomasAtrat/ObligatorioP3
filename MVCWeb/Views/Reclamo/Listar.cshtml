@@ -16,6 +16,9 @@
             @Html.DisplayNameFor(model => model.FechaHoraIngreso)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Observaciones)
         </th>
         <th>
@@ -35,31 +38,34 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaHoraIngreso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observaciones)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Latitud)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Longitud)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDZona)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDCuadrilla)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Ver reclamos asignados a la cuadrila", "ReclamosPorIdCuadrilla", new {  item.IDCuadrilla }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.FechaHoraIngreso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Estado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Observaciones)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Latitud)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Longitud)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDZona)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDCuadrilla)
+    </td>
+    <td>
+        @Html.ActionLink("Editar", "Editar", new { id = item.ID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+    </td>
+</tr>
     }
 
 </table>

@@ -56,6 +56,33 @@ namespace MVCWeb.Controllers
             return Json(reclamos, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
+        public ActionResult Editar(long id)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            DtoReclamo dto = controller.getElementById(id);
+            List<SelectListItem> colEstados = new List<SelectListItem>();
+            foreach (string item in Enum.GetNames(typeof(Estado)))
+            {
+                SelectListItem option = new SelectListItem();
+                option.Text = item;
+                option.Value = Enum.Parse(typeof(Estado), item).ToString();
+                colEstados.Add(option);
+            }
+
+            ViewBag.colEstados = colEstados;
+            return View(dto);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(DtoReclamo dto)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            dto.Estado = (Estado)Enum.Parse(typeof(Estado), dto.estado);
+            controller.CambiarEstadoReclamo(dto);
+            return RedirectToAction("Listar");
+        }
+
         /*[HttpGet]
         public ActionResult ReclamosPorIdCuadrilla(long idCuadrilla)
         {

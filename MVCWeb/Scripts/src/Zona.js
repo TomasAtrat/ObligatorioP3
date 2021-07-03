@@ -2,7 +2,8 @@
 var locations = [];
 var markers = [];
 var _polygon;
-
+var infowindow;
+var actualInfoWindow;
 window.onload = load;
 
 function load() {
@@ -86,11 +87,24 @@ function AgregarZona() {
         })
 }
 
-function drawPolygons(path, color, name, id) {
-    const polygon = new google.maps.Polygon({
+function drawPolygons(path, color, name, id, cantidadCuadrillas) {
+    var polygon = new google.maps.Polygon({
         path: path,
         map: map,
         fillColor: color,
+    });
+
+    polygon.addListener("click", (e) => {
+        AddInfoWindow(id, name, cantidadCuadrillas, e.latLng);
+        if (actualInfoWindow != null) {
+            actualInfoWindow.close();
+        }
+        infowindow.open({
+            
+            map,
+            shouldFocus: false,
+        });
+        actualInfoWindow = infowindow;
     });
 }
 
@@ -108,7 +122,7 @@ function getZonas() {
                         let puntos = { lat: parseFloat(colPuntos[j].lat), lng: parseFloat(colPuntos[j].lng) };
                         totalPuntos.push(puntos);
                     }
-                    drawPolygons(totalPuntos, mensaje[i].color, mensaje[i].nombre, mensaje[i].id);
+                    drawPolygons(totalPuntos, mensaje[i].color, mensaje[i].nombre, mensaje[i].id, mensaje[i].cantidadCuadrillas);
                 }
             }
         },
@@ -117,12 +131,10 @@ function getZonas() {
     })
 }
 
-function AddInfoWindow() {
+function AddInfoWindow(id, Nombre, cantidad, location) {
     contentString = '<h7 style= "font-weight: bold"> ID: </h7>' + id +
-        '<h7 style= "font-weight: bold"> Nombre: </h7>' + idCuadrilla +
-        '<h7 style= "font-weight: bold"> Estado: </h7>' + estado +
-        '<h7 style= "font-weight: bold"> Observaciones: </h7>' + observaciones +
-        '<h7 style= "font-weight: bold"> Diferencia en Horas: </h7>' + difHoras;
+        '<h7 style= "font-weight: bold"> Nombre: </h7>' + Nombre +
+        '<h7 style= "font-weight: bold"> Cantidad de cuadrillas: </h7>' + cantidad;
 
     infowindow = new google.maps.InfoWindow({
         content: contentString,
