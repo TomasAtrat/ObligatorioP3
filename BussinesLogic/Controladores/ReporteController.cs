@@ -15,9 +15,11 @@ namespace BussinesLogic.Controladores
         public ControllerReporte()
         {
             this.repository = new Repository();
+            this.reportes = new Reportes();
         }
 
         private Repository repository;
+        private Reportes reportes;
 
         public List<DtoReclamo> getReclamosAsignadosPorCuadrilla(long idCuadrilla)
         {
@@ -37,6 +39,21 @@ namespace BussinesLogic.Controladores
                 colReclamos.Add(dto);
             }
             return colReclamos;
+        }
+
+        public List<string> GenerarReporte(DtoReclamo dto)
+        {
+            List<string> colErrores = new List<string>();
+            DtoReclamo reclamo = this.repository.ReclamoRepository.GetElementById(dto.ID);
+            try
+            {
+                this.reportes.ReclamoReporte.GenerarReporte(reclamo, dto.directorio);
+            }
+            catch (Exception e)
+            {
+                colErrores.Add(e.Message);
+            }
+            return colErrores;
         }
     }
 }

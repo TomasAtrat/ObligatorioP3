@@ -74,12 +74,27 @@ namespace MVCWeb.Controllers
             return View(dto);
         }
 
-        [HttpPost]
+        [HttpPost] //Probar put
         public ActionResult Editar(DtoReclamo dto)
         {
             ControllerReclamos controller = new ControllerReclamos();
             dto.Estado = (Estado)Enum.Parse(typeof(Estado), dto.estado);
             controller.CambiarEstadoReclamo(dto);
+            return RedirectToAction("Listar");
+        }
+
+        [HttpGet]
+        public ActionResult NuevoReporte(long id)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            DtoReclamo dto = controller.getElementById(id);
+            return View(dto);
+        }
+
+        public ActionResult NuevoReporte(DtoReclamo dto)
+        {
+            ControllerReporte controller = new ControllerReporte();
+            List<string> colErrores = controller.GenerarReporte(dto);
             return RedirectToAction("Listar");
         }
     }
