@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\loginController.cs" />
     <Compile Include="Controllers\CuadrillaController.cs" />
+    <Compile Include="Controllers\MapaTermicoController.cs" />
     <Compile Include="Controllers\TipoReclamo_Controller.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ReclamoController.cs" />
@@ -215,6 +216,8 @@
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Zona\Listar.cshtml" />
     <Content Include="Views\Login\login.cshtml" />
+    <Content Include="Views\Cuadrilla\aa.cshtml" />
+    <Content Include="Views\MapaTermico\Mapatermico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
