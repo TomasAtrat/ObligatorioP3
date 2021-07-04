@@ -33,5 +33,6 @@ namespace DataAccess.Model
         public virtual DbSet<t_TIPO_RECLAMO> t_TIPO_RECLAMO { get; set; }
         public virtual DbSet<t_USUARIO> t_USUARIO { get; set; }
         public virtual DbSet<t_ZONA> t_ZONA { get; set; }
+        public virtual DbSet<Reportes> Reportes { get; set; }
     }
 }

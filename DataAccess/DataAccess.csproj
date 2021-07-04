@@ -85,6 +85,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Reportes.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\t_CUADRILLA.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
