@@ -83,12 +83,13 @@ namespace MVCWeb.Controllers
             return RedirectToAction("Listar");
         }
 
-        /*[HttpGet]
+        [HttpGet]
         public ActionResult ReclamosPorIdCuadrilla(long idCuadrilla)
         {
             ControllerReclamos control = new ControllerReclamos();
-            List<DtoReclamo> ListaDeReclamos = control.ExtraerReclamosPorCuadrilla(idCuadrilla);
-            return View("Listar", ListaDeReclamos);
-        }*/
+            List<DtoReclamo> ListaDeReclamos = control.ListAll().Cast<DtoReclamo>().ToList();
+            ListaDeReclamos = ListaDeReclamos.Where(w => w.Estado.ToString() == "ASIGNADO" || w.Estado.ToString() == "EN_PROCESO").ToList();
+            return View( ListaDeReclamos);
+        }
     }
 }
