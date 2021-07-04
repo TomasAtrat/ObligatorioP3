@@ -217,7 +217,8 @@
     <Content Include="Views\Zona\Listar.cshtml" />
     <Content Include="Views\Reclamo\Editar.cshtml" />
     <Content Include="Views\ListarReporteUno.cshtml" />
-    <Content Include="Views\Reclamo\ReclamosPorIdCuadrilla.cshtml" />
+    <Content Include="Views\Cuadrilla\ReclamosPorIdCuadrilla.cshtml" />
+    <Content Include="Views\Reclamo\ReclamosAtrasados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

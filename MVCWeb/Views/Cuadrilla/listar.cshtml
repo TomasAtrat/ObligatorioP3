@@ -40,8 +40,9 @@
         @Html.DisplayFor(modelItem => item.Observaciones)
     </td>
     <td>
-        @Html.ActionLink("Modificar", "Edit", new {  id=item.id  }) |
-        @Html.ActionLink("Borrar", "Delete", new {  id=item.id  })
+        @Html.ActionLink("Modificar", "Edit", new { id = item.id }) |
+        @Html.ActionLink("Reclamos asignados y en curso", "ReclamosPorIdCuadrilla", new { item.id }) |
+        @Html.ActionLink("Borrar", "Delete", new { id = item.id })
     </td>
 </tr>
 }

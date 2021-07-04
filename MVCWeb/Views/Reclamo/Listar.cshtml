@@ -9,6 +9,9 @@
 </div>
 
 @Html.Partial("Mapa")
+<p>
+    @Html.ActionLink("Reportes atrasados", "ReclamosAtrasados")
+</p>
 
 <table class="table">
     <tr>
@@ -62,7 +65,7 @@
     </td>
     <td>
         @Html.ActionLink("Editar", "Editar", new { id = item.ID }) |
-        @Html.ActionLink("Details", "ReclamosPorIdCuadrilla", new {  item.IDCuadrilla }) |
+
         @Html.ActionLink("Delete", "Delete", new { id = item.ID })
     </td>
 </tr>

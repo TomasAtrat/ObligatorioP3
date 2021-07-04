@@ -1,6 +1,7 @@
 ﻿using BussinesLogic.Controladores;
 using BussinesLogic.Interfaces;
 using CommonSolution.Dto;
+using CommonSolution.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -84,12 +85,18 @@ namespace MVCWeb.Controllers
         }
 
         [HttpGet]
-        public ActionResult ReclamosPorIdCuadrilla(long idCuadrilla)
+        public ActionResult ReclamosAtrasados()
         {
-            ControllerReclamos control = new ControllerReclamos();
-            List<DtoReclamo> ListaDeReclamos = control.ListAll().Cast<DtoReclamo>().ToList();
-            ListaDeReclamos = ListaDeReclamos.Where(w => w.Estado.ToString() == "ASIGNADO" || w.Estado.ToString() == "EN_PROCESO").ToList();
-            return View( ListaDeReclamos);
+            ControllerReporte report = new ControllerReporte();
+            List<DtoReclamosAtrasados> lista = report.getReclamosAtrasados();
+            List<DtoReclamo> listaReclamo = new List<DtoReclamo>();
+            foreach (DtoReclamosAtrasados item in lista)
+            {
+                listaReclamo.Add(item.reclamo);
+            }
+
+            ViewBag.datos = listaReclamo;
+            return View(lista);
         }
     }
 }

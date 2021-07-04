@@ -7,7 +7,7 @@
 <h2>ReclamosPorIdCuadrilla</h2>
 
 <p>
-    @Html.ActionLink("Lista", "Listar")
+    @Html.ActionLink("Cuadrillas", "Listar")
 </p>
 <table class="table">
     <tr>
@@ -38,34 +38,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDZona)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDCuadrilla)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IDTipoReclamo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaHoraIngreso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observaciones)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Latitud)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Longitud)
-        </td>
-       
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDZona)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDCuadrilla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDTipoReclamo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaHoraIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitud)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitud)
+            </td>
+
+        </tr>
+    }
 
 </table>

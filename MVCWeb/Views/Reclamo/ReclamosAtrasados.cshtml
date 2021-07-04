@@ -1,0 +1,55 @@
+﻿@model IEnumerable<CommonSolution.DTO.DtoReclamosAtrasados>
+
+@{
+    ViewBag.Title = "ReclamosAtrasados";
+}
+
+<h2>ReclamosAtrasados</h2>
+
+<p>
+    @Html.ActionLink("Volver", "Listar")
+</p>
+<table class="table">
+    <tr>
+        <th>Diferencia de horas</th>
+        <th>Fecha de ingreso</th>
+        <th>Estado</th>
+        <th>Observaciones</th>
+        <th>Latitud</th>
+        <th>Longitud</th>
+        <th>Nro. de la zona</th>
+        <th>Nro. Cuadrilla</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.cantidadHorasRetraso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.reclamo.FechaHoraIngreso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.reclamo.Estado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.reclamo.Observaciones)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.reclamo.Latitud)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.reclamo.Longitud)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.reclamo.IDZona)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.reclamo.IDCuadrilla)
+    </td>
+</tr>
+    }
+
+</table>

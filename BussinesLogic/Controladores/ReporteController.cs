@@ -33,9 +33,11 @@ namespace BussinesLogic.Controladores
             {
                 DtoReclamosAtrasados dto = new DtoReclamosAtrasados();
                 dto.reclamo = item;
-                dto.cantidadHorasRetraso = (DateTime.Now - item.FechaHoraIngreso).Value.Hours;
+                double valor = ((TimeSpan)(DateTime.Now - item.FechaHoraIngreso)).TotalHours;
+                dto.cantidadHorasRetraso = Math.Round(valor);
                 colReclamos.Add(dto);
             }
+            colReclamos.OrderByDescending(d =>d.cantidadHorasRetraso);
             return colReclamos;
         }
     }

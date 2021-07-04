@@ -74,5 +74,15 @@ namespace MVCWeb.Controllers
             return Redirect("~/Cuadrilla/Listar");
         }
 
+
+
+        [HttpGet]
+        public ActionResult ReclamosPorIdCuadrilla(DtoCuadrilla dto)
+        {
+
+            ControllerReporte report = new ControllerReporte();
+            return View(report.getReclamosAsignadosPorCuadrilla(dto.id));
+        }
+
     }
 }
