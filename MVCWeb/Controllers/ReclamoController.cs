@@ -95,6 +95,14 @@ namespace MVCWeb.Controllers
         {
             ControllerReporte controller = new ControllerReporte();
             List<string> colErrores = controller.GenerarReporte(dto);
+            string s = "";
+            if (colErrores.Count == 0)
+            {
+                s = controller.ToHtml(dto.directorio, dto.ID);
+            }
+
+            ViewBag.LastReport = s;
+            Session["Reporte"] = s;
             return RedirectToAction("Listar");
         }
     }

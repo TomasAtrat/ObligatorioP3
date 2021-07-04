@@ -22,7 +22,7 @@ namespace DataAccess.PDF_GENERATOR
         public Document OpenDocument(string folder, string DocumentTitle)
         {
             Document doc = new Document();
-
+            folder += $"\\{DocumentTitle}.pdf";
             try
             {
                 doc.SetPageSize(PageSize.A4);
@@ -48,7 +48,7 @@ namespace DataAccess.PDF_GENERATOR
         {
             BarcodeQRCode barcode = new BarcodeQRCode(url, 1000, 1000, null);
             Image BarcodeImg = barcode.GetImage();
-            BarcodeImg.ScaleAbsolute(50, 50);
+            BarcodeImg.ScaleAbsolute(100, 100);
             doc.Add(BarcodeImg);
         }
     }

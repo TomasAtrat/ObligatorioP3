@@ -1,6 +1,7 @@
 ﻿using BussinesLogic.Interfaces;
 using CommonSolution.Dto;
 using CommonSolution.DTO;
+using DataAccess.HTML_GENERATOR;
 using DataAccess.Persistencia;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,12 @@ namespace BussinesLogic.Controladores
                 colErrores.Add(e.Message);
             }
             return colErrores;
+        }
+
+        public string ToHtml(string folder, long id)
+        {
+            GeneradorHTML generador = new GeneradorHTML();
+            return generador.GenerarHTML(folder, id);
         }
     }
 }
