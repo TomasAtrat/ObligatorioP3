@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f138d322fccf40e49bba83c9ee130bf6" Name="Diagram1">
+      <Diagram DiagramId="f138d322fccf40e49bba83c9ee130bf6" Name="Diagram1" ZoomLevel="109">
         <EntityTypeShape EntityType="AlcaldiaToledoModel.t_CUADRILLA" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AlcaldiaToledoModel.t_CUADRILLA_ZONA" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="AlcaldiaToledoModel.t_HISTORICO_ESTADO_RECLAMO" Width="1.5" PointX="5.75" PointY="9.375" IsExpanded="true" />
@@ -19,7 +19,6 @@
         <AssociationConnector Association="AlcaldiaToledoModel.FK_TipoReclamo" ManuallyRouted="false" />
         <AssociationConnector Association="AlcaldiaToledoModel.t_RECLAMO_USUARIO" ManuallyRouted="false" />
         <AssociationConnector Association="AlcaldiaToledoModel.FK_ZonaReclamo1" />
-        <EntityTypeShape EntityType="AlcaldiaToledoModel.Reportes" Width="1.5" PointX="6.75" PointY="1.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

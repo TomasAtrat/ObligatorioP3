@@ -17,7 +17,7 @@ namespace DataAccess.HTML_GENERATOR
         public string GenerarHTML(string folder, long id)
         {
             string PDFolder = folder + $"\\Reclamo{id}.pdf"; 
-            string HTML_Folder= folder + $"\\Reclamo{id}.cshtml";
+            string HTML_Folder= folder + $"\\Reclamo{id}.html";
             PdfFocus f = new PdfFocus();
             f.OpenPdf(PDFolder);
 
