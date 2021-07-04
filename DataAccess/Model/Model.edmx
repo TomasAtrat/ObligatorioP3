@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="AlcaldiaToledoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Reportes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doc" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
         <EntityType Name="t_CUADRILLA">
           <Key>
             <PropertyRef Name="ID" />
@@ -193,6 +200,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="AlcaldiaToledoModelStoreContainer">
+          <EntitySet Name="Reportes" EntityType="Self.Reportes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_CUADRILLA" EntityType="Self.t_CUADRILLA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_CUADRILLA_ZONA" EntityType="Self.t_CUADRILLA_ZONA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_HISTORICO_ESTADO_RECLAMO" EntityType="Self.t_HISTORICO_ESTADO_RECLAMO" Schema="dbo" store:Type="Tables" />
@@ -421,6 +429,7 @@
             <End Role="t_CUADRILLA_ZONA" EntitySet="t_CUADRILLA_ZONA" />
             <End Role="t_RECLAMO" EntitySet="t_RECLAMO" />
           </AssociationSet>
+          <EntitySet Name="Reportes" EntityType="AlcaldiaToledoModel.Reportes" />
         </EntityContainer>
         <Association Name="FK_ZonaReclamo1">
           <End Type="AlcaldiaToledoModel.t_CUADRILLA_ZONA" Role="t_CUADRILLA_ZONA" Multiplicity="1" />
@@ -436,6 +445,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Reportes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doc" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -546,6 +562,14 @@
               <ScalarProperty Name="Password" ColumnName="Password" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Reportes">
+            <EntityTypeMapping TypeName="AlcaldiaToledoModel.Reportes">
+              <MappingFragment StoreEntitySet="Reportes">
+                <ScalarProperty Name="doc" ColumnName="doc" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

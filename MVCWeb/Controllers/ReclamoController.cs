@@ -3,6 +3,7 @@ using BussinesLogic.Interfaces;
 using CommonSolution.Dto;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -103,6 +104,9 @@ namespace MVCWeb.Controllers
 
             ViewBag.LastReport = s;
             Session["Reporte"] = s;
+
+            Process.Start(s); 
+
             return RedirectToAction("Listar");
         }
     }
