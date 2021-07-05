@@ -39,9 +39,7 @@ namespace BussinesLogic.Controladores
             List<string> errores = new List<string>();
             try
             {
-
                 this.repository.TipoReclamoRepository.BajaTipoReclamo(((DtoTipoReclamo)dto).id);
-
             }
             catch (Exception ex)
             {

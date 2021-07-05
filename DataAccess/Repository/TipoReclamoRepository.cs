@@ -117,7 +117,7 @@ namespace DataAccess.Repository
             List<DtoTipoReclamo> tiporeclamo = new List<DtoTipoReclamo>();
             using (Context context = new Context())
             {
-                List<t_TIPO_RECLAMO> entity = context.t_TIPO_RECLAMO.Select(s => s).ToList();
+                List<t_TIPO_RECLAMO> entity = context.t_TIPO_RECLAMO.AsNoTracking().ToList();
                 tiporeclamo = this.TipoReclamoMapper.maptoListDto(entity);
             }
             return tiporeclamo;
