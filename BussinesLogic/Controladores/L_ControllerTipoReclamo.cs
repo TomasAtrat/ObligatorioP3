@@ -71,7 +71,7 @@ namespace BussinesLogic.Controladores
            return  this.repository.TipoReclamoRepository.ListarTipoReclamo().Cast<IDto>().ToList();
         }
 
-        public IDto ExtraerPorid(long id)
+        public DtoTipoReclamo ExtraerPorid(long id)
         {
             return this.repository.TipoReclamoRepository.getElementByIdTipoReclamo(id);
         }

@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<CommonSolution.Dto.DtoCuadrilla>
 
 @{
-    ViewBag.Title = "Listar";
+    ViewBag.Title = "Listar cuadrillas";
 }
 
-<h2>listar</h2>
+<div class="starter-template" style="margin-top: -20px">
+    <h1>Listar cuadrillas</h1>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -42,7 +41,6 @@
     </td>
     <td>
         @Html.ActionLink("Modificar", "Edit", new {  id=item.id  }) |
-        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
         @Html.ActionLink("Borrar", "Delete", new {  id=item.id  })
     </td>
 </tr>

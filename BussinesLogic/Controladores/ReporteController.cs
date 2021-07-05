@@ -1,6 +1,7 @@
 ﻿using BussinesLogic.Interfaces;
 using CommonSolution.Dto;
 using CommonSolution.DTO;
+using DataAccess.HTML_GENERATOR;
 using DataAccess.Persistencia;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,11 @@ namespace BussinesLogic.Controladores
         public ControllerReporte()
         {
             this.repository = new Repository();
+            this.reportes = new Reportes();
         }
 
         private Repository repository;
+        private Reportes reportes;
 
         public List<DtoReclamo> getReclamosAsignadosPorCuadrilla(long idCuadrilla)
         {
@@ -37,6 +40,27 @@ namespace BussinesLogic.Controladores
                 colReclamos.Add(dto);
             }
             return colReclamos;
+        }
+
+        public List<string> GenerarReporte(DtoReclamo dto)
+        {
+            List<string> colErrores = new List<string>();
+            DtoReclamo reclamo = this.repository.ReclamoRepository.GetElementById(dto.ID);
+            try
+            {
+                this.reportes.ReclamoReporte.GenerarReporte(reclamo, dto.directorio);
+            }
+            catch (Exception e)
+            {
+                colErrores.Add(e.Message);
+            }
+            return colErrores;
+        }
+
+        public string ToHtml(string folder, long id)
+        {
+            GeneradorHTML generador = new GeneradorHTML();
+            return generador.GenerarHTML(folder, id);
         }
     }
 }

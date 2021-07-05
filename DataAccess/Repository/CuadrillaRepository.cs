@@ -61,10 +61,8 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-
                         t_CUADRILLA cuadrilla = context.t_CUADRILLA.FirstOrDefault(i => i.ID == dto.id);
                         if (cuadrilla != null)
-
                             cuadrilla.Estado = false;
 
                         context.SaveChanges();
@@ -74,6 +72,7 @@ namespace DataAccess.Repository
                     catch (Exception exce)
                     {
                         tran.Rollback();
+                        throw exce;
                     }
 
                 }
@@ -92,6 +91,7 @@ namespace DataAccess.Repository
                         cuadrilla.Nombre = dto.nombre;
                         cuadrilla.CantidadPeones = (short)dto.cantidadPeones;
                         cuadrilla.Encargado = dto.encargado;
+                        cuadrilla.Observaciones = dto.Observaciones;
                         context.SaveChanges();
                         tran.Commit();
                     }
@@ -198,7 +198,7 @@ namespace DataAccess.Repository
         public List<DtoCuadrilla> getElements()
         {
             List<DtoCuadrilla> colDtos = new List<DtoCuadrilla>();
-            using (Context context= new Context())
+            using (Context context = new Context())
             {
                 colDtos = this.cuadrillaMapper.mapToDto(context.t_CUADRILLA_ZONA.AsNoTracking().ToList());
             }

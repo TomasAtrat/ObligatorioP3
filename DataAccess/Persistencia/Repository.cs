@@ -17,6 +17,7 @@ namespace DataAccess.Persistencia
             this.puntoRepository = new Puntosrepository();
             this.cuadrillaRepository = new CuadrillaRepository();
             this.tipoReclamoRepository = new TipoReclamoRepository();
+            this.historico_Repository = new Historico_Repository();
         }
 
         private ZonaRepository zonaRepository;
@@ -25,6 +26,7 @@ namespace DataAccess.Persistencia
         private Puntosrepository puntoRepository;
         private CuadrillaRepository cuadrillaRepository;
         private TipoReclamoRepository tipoReclamoRepository;
+        private Historico_Repository historico_Repository;
 
         public ZonaRepository ZonaRepository { get => zonaRepository; }
         public UsuarioRepository UsuarioRepository { get => usuarioRepository; }
@@ -32,5 +34,6 @@ namespace DataAccess.Persistencia
         public Puntosrepository PuntoRepository { get => puntoRepository; }
         public CuadrillaRepository CuadrillaRepository { get => cuadrillaRepository; }
         public TipoReclamoRepository TipoReclamoRepository { get => tipoReclamoRepository; }
+        public Historico_Repository Historico_Repository { get => historico_Repository; }
     }
 }
