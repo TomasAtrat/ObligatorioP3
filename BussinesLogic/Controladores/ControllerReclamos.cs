@@ -26,6 +26,7 @@ namespace BussinesLogic.Controladores
             {
                 long idZona= AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
                 ((DtoReclamo)dto).IDZona = idZona.ToString();
+                ((DtoReclamo)dto).Estado = Estado.ASIGNADO;
                 dto = this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
             }
             return error;

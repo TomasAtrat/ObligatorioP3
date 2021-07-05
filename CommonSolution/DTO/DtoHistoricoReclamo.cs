@@ -9,10 +9,15 @@ namespace CommonSolution.Dto
 {
     public class DtoHistoricoReclamo : IDto
     {
-        public long id;
-        public string estadoAnterior;
-        public string estadoActual;
-        public DateTime fechaHora;
-        public string comentarios;
+        public long ID { get; set; }
+        public string EstadoAnterior { get; set; }
+        public string EstadoActual { get; set; }
+        public DateTime FechaHoraCambio { get; set; }
+        public string Comentarios { get; set; }
+        public DateTime FechaHoraIngreso { get; set; }
+        public double Latitud { get; set; }
+        public double Longitud { get; set; }
+        public long IDReclamo { get; set; }
+        public string DescripcionReclamo { get; set; }
     }
 }

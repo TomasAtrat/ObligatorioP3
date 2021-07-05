@@ -46,5 +46,14 @@ namespace MVCWeb.Controllers
             ControllerZona.Alta(zona);
             return RedirectToAction("Agregar");
         }
+
+        [HttpPost]
+        public ActionResult Baja(long id)
+        {
+            ControllerZona ControllerZona = new ControllerZona();
+            DtoZona dto = ControllerZona.getElementById(id);
+            ControllerZona.Baja(dto);
+            return RedirectToAction("Listar");
+        }
     }
 }

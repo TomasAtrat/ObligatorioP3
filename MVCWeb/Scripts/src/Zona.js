@@ -134,10 +134,28 @@ function getZonas() {
 function AddInfoWindow(id, Nombre, cantidad, location) {
     contentString = '<h7 style= "font-weight: bold"> ID: </h7>' + id +
         '<h7 style= "font-weight: bold"> Nombre: </h7>' + Nombre +
-        '<h7 style= "font-weight: bold"> Cantidad de cuadrillas: </h7>' + cantidad;
+        '<h7 style= "font-weight: bold"> Cantidad de cuadrillas: </h7>' + cantidad + "<br />"+
+        "<button title= 'Dar de baja' onclick='Baja(\"" + Nombre + "\" "+ "," + id + ")'> Dar de baja </button>" ;
 
     infowindow = new google.maps.InfoWindow({
         content: contentString,
         position: location
     });
+}
+
+
+function Baja(nombreZona, id) {
+    b = confirm("¿Realmente desea dar de baja la zona " + nombreZona + "?");
+    if (b) {
+        $.ajax({
+            type: "POST",
+            contentType: "application/json",
+            url: "http://localhost:60096/Zona/Baja/" + id,
+            success: function (mensaje) {
+                getZonas();
+            },
+            error: function (mensaje) {
+            }
+        })
+    }
 }

@@ -36,5 +36,7 @@ namespace CommonSolution.Dto
         public bool EstadoLogic;
         public List<DtoUsuario> colUsuarios;
         public DtoCuadrilla dtoCuadrilla;
+        [Required(ErrorMessage = "Se debe especificar un directorio")]
+        public string directorio { get; set; }
     }
 }

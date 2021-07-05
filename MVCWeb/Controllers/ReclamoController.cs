@@ -4,6 +4,7 @@ using CommonSolution.Dto;
 using CommonSolution.DTO;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -53,7 +54,7 @@ namespace MVCWeb.Controllers
         {
             ControllerReclamos controller = new ControllerReclamos();
             List<DtoReclamo> colReclamos = controller.ListAll().Cast<DtoReclamo>().ToList();
-            var reclamos = colReclamos.Select(i => new { ID = i.ID, Estado = i.Estado.ToString(), FechaHoraIngreso = i.FechaHoraIngreso, IDCuadrilla = i.IDCuadrilla, IDZona = i.IDZona, Latitud = i.Latitud, Longitud = i.Longitud, Observaciones = i.Observaciones, difHoras = (DateTime.Now - i.FechaHoraIngreso).Value.Hours }); // Si no se hace 
+            var reclamos = colReclamos.Select(i => new { ID = i.ID, Estado = i.Estado.ToString(), FechaHoraIngreso = i.FechaHoraIngreso, IDCuadrilla = i.IDCuadrilla, IDZona = i.IDZona, Latitud = i.Latitud, Longitud = i.Longitud, Observaciones = i.Observaciones, difHoras = Math.Round(((TimeSpan)(DateTime.Now - i.FechaHoraIngreso)).TotalHours)}); // Si no se hace 
             return Json(reclamos, JsonRequestBehavior.AllowGet);
         }
 
@@ -75,12 +76,34 @@ namespace MVCWeb.Controllers
             return View(dto);
         }
 
-        [HttpPost]
+        [HttpPost] //Probar put
         public ActionResult Editar(DtoReclamo dto)
         {
             ControllerReclamos controller = new ControllerReclamos();
             dto.Estado = (Estado)Enum.Parse(typeof(Estado), dto.estado);
             controller.CambiarEstadoReclamo(dto);
+            return RedirectToAction("Listar");
+        }
+
+        [HttpGet]
+        public ActionResult NuevoReporte(long id)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            DtoReclamo dto = controller.getElementById(id);
+            return View(dto);
+        }
+
+        public ActionResult NuevoReporte(DtoReclamo dto)
+        {
+            ControllerReporte controller = new ControllerReporte();
+            List<string> colErrores = controller.GenerarReporte(dto);
+            string s = "";
+            if (colErrores.Count == 0)
+            {
+                s = controller.ToHtml(dto.directorio, dto.ID);
+            }
+
+            Process.Start(s); 
             return RedirectToAction("Listar");
         }
 

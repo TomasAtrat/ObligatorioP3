@@ -219,6 +219,8 @@
     <Content Include="Views\ListarReporteUno.cshtml" />
     <Content Include="Views\Cuadrilla\ReclamosPorIdCuadrilla.cshtml" />
     <Content Include="Views\Reclamo\ReclamosAtrasados.cshtml" />
+    <Content Include="Views\Reclamo\NuevoReporte.cshtml" />
+    <Content Include="Views\TipoReclamo_\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

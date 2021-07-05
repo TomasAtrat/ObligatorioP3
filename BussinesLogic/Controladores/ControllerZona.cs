@@ -40,9 +40,14 @@ namespace BussinesLogic.Controladores
         public List<string> Baja(IDto dto)
         {
             List<string> colErrores = new List<string>();
-            //Primero hay que eliminar todos los puntos en la tabla de puntos asociados a dicho id
-            this.repository.ZonaRepository.BajaZona((DtoZona)dto);
+            ((DtoZona)dto).Estado = false;
+            this.repository.ZonaRepository.ModificarZona(((DtoZona)dto));
             return colErrores;
+        }
+
+        public DtoZona getElementById(long id)
+        {
+            return this.repository.ZonaRepository.getElementById(id);
         }
 
         public List<IDto> ListAll()
