@@ -3,6 +3,7 @@ using BussinesLogic.Interfaces;
 using CommonSolution.Dto;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,14 +18,14 @@ namespace MVCWeb.Controllers
         public ActionResult Listar()
         {
             IControllers ReclamoController = new ControllerReclamos();
-            List<DtoReclamo> colReclamos=  ReclamoController.ListAll().Cast<DtoReclamo>().ToList();
+            List<DtoReclamo> colReclamos = ReclamoController.ListAll().Cast<DtoReclamo>().ToList();
             return View(colReclamos);
         }
 
         public ActionResult Agregar()
         {
-            IControllers TypeController = new L_ControllerTipoReclamo();            
-            List<DtoTipoReclamo> colDto= TypeController.ListAll().Cast<DtoTipoReclamo>().ToList();
+            IControllers TypeController = new L_ControllerTipoReclamo();
+            List<DtoTipoReclamo> colDto = TypeController.ListAll().Cast<DtoTipoReclamo>().ToList();
             List<SelectListItem> colTiposReclamos = new List<SelectListItem>();
 
             foreach (DtoTipoReclamo item in colDto)
@@ -46,6 +47,64 @@ namespace MVCWeb.Controllers
             IControllers ControllerReclamo = new ControllerReclamos();
             ControllerReclamo.Alta(dto);
             return RedirectToAction("Agregar");
+        }
+
+        [HttpGet]
+        public JsonResult getReclamos()
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            List<DtoReclamo> colReclamos = controller.ListAll().Cast<DtoReclamo>().ToList();
+            var reclamos = colReclamos.Select(i => new { ID = i.ID, Estado = i.Estado.ToString(), FechaHoraIngreso = i.FechaHoraIngreso, IDCuadrilla = i.IDCuadrilla, IDZona = i.IDZona, Latitud = i.Latitud, Longitud = i.Longitud, Observaciones = i.Observaciones, difHoras = Math.Round(((TimeSpan)(DateTime.Now - i.FechaHoraIngreso)).TotalHours)}); // Si no se hace 
+            return Json(reclamos, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public ActionResult Editar(long id)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            DtoReclamo dto = controller.getElementById(id);
+            List<SelectListItem> colEstados = new List<SelectListItem>();
+            foreach (string item in Enum.GetNames(typeof(Estado)))
+            {
+                SelectListItem option = new SelectListItem();
+                option.Text = item;
+                option.Value = Enum.Parse(typeof(Estado), item).ToString();
+                colEstados.Add(option);
+            }
+
+            ViewBag.colEstados = colEstados;
+            return View(dto);
+        }
+
+        [HttpPost] //Probar put
+        public ActionResult Editar(DtoReclamo dto)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            dto.Estado = (Estado)Enum.Parse(typeof(Estado), dto.estado);
+            controller.CambiarEstadoReclamo(dto);
+            return RedirectToAction("Listar");
+        }
+
+        [HttpGet]
+        public ActionResult NuevoReporte(long id)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            DtoReclamo dto = controller.getElementById(id);
+            return View(dto);
+        }
+
+        public ActionResult NuevoReporte(DtoReclamo dto)
+        {
+            ControllerReporte controller = new ControllerReporte();
+            List<string> colErrores = controller.GenerarReporte(dto);
+            string s = "";
+            if (colErrores.Count == 0)
+            {
+                s = controller.ToHtml(dto.directorio, dto.ID);
+            }
+
+            Process.Start(s); 
+            return RedirectToAction("Listar");
         }
     }
 }

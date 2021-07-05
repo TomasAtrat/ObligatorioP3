@@ -58,14 +58,13 @@ namespace MVCWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(DtoCuadrilla dto)
+        public ActionResult Editar(DtoCuadrilla dto)
         {
-            LControllerCuadrilla cuadrillaNueva = new LControllerCuadrilla();
-            cuadrillaNueva.Modificacion((IDto)dto);
-
-            return Redirect("~/Cuadrilla/Listar");
+            IControllers controller = new LControllerCuadrilla();
+            dto.Estado = true;
+            controller.Modificacion(dto);
+            return RedirectToAction("Listar");
         }
-
 
         public ActionResult Delete(long id)
         {

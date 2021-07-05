@@ -22,6 +22,6 @@ namespace CommonSolution.Dto
         public string color { get; set; }
         public bool Estado;
         public List<DtoPunto> colPuntos { get; set; }
-        public List<DtoCuadrilla> colCuadrillas;
+        public List<DtoCuadrilla> colCuadrillas= new List<DtoCuadrilla>();
     }
 }

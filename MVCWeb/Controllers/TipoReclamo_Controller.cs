@@ -40,5 +40,21 @@ namespace MVCWeb.Controllers
             control.Baja(dto);
             return Redirect("Listar");
         }
+
+        [HttpGet]
+        public ActionResult Editar(long id)
+        {
+            L_ControllerTipoReclamo controllers = new L_ControllerTipoReclamo();
+            DtoTipoReclamo dto= controllers.ExtraerPorid(id);
+            return View(dto);
+        }
+
+        [HttpPost]
+        public ActionResult Editar(DtoTipoReclamo dto)
+        {
+            IControllers controller = new L_ControllerTipoReclamo();
+            controller.Modificacion(dto);
+            return RedirectToAction("Listar");
+        }
     }
 }

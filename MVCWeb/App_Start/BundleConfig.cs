@@ -25,6 +25,9 @@ namespace MVCWeb
             bundles.Add(new ScriptBundle("~/bundles/zonas").Include(
                          "~/Scripts/src/Zona.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/VisorReclamos").Include(
+                         "~/Scripts/src/VisorReclamos.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/reclamos").Include(
                          "~/Scripts/src/Reclamo.js"));
 
@@ -40,6 +43,7 @@ namespace MVCWeb
             bundles.Add(new StyleBundle("~/Content/CSS/css").Include(
                       "~/Content/CSS/bootstrap.css",
                       "~/Content/CSS/site.css"));
+
         }
     }
 }

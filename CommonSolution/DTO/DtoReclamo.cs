@@ -12,7 +12,10 @@ namespace CommonSolution.Dto
     public enum Estado { PENDIENTE, ASIGNADO, EN_PROCESO, RESUELTO, DESESTIMADO };
     public class DtoReclamo : IDto
     {
+        [Required]
         public Estado Estado;
+        [Required]
+        public string estado { get; set; }
         public long ID { get; set; }
         [DisplayName("ID de la zona")]
         public string IDZona { get; set; }
@@ -33,5 +36,7 @@ namespace CommonSolution.Dto
         public bool EstadoLogic;
         public List<DtoUsuario> colUsuarios;
         public DtoCuadrilla dtoCuadrilla;
+        [Required(ErrorMessage = "Se debe especificar un directorio")]
+        public string directorio { get; set; }
     }
 }

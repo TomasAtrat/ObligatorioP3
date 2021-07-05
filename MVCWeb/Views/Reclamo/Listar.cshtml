@@ -8,10 +8,15 @@
     <h1>Listar reclamos</h1>
 </div>
 
+@Html.Partial("Mapa")
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FechaHoraIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Observaciones)
@@ -31,10 +36,14 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
 <tr>
     <td>
         @Html.DisplayFor(modelItem => item.FechaHoraIngreso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Estado)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Observaciones)
@@ -52,11 +61,16 @@
         @Html.DisplayFor(modelItem => item.IDCuadrilla)
     </td>
     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+        @Html.ActionLink("Editar", "Editar", new { id = item.ID }) |
+        @Html.ActionLink("Hacer reporte", "NuevoReporte", new { id = item.ID }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.ID })
     </td>
 </tr>
-}
+    }
 
 </table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/VisorReclamos")
+    @Scripts.Render("~/bundles/googleMaps")
+}

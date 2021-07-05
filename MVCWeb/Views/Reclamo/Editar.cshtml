@@ -1,0 +1,55 @@
+﻿@model CommonSolution.Dto.DtoReclamo
+
+@{
+    ViewBag.Title = "Cambiar estado de reclamo";
+}
+
+<div class="starter-template" style="margin-top: -20px">
+    <h1>Cambiar estado del reclamo</h1>
+    <hr />
+</div>
+
+@using (Html.BeginForm("Editar", "Reclamo"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IDCuadrilla, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IDCuadrilla, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.IDCuadrilla, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Observaciones, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Cambiar estado</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.estado, (List<SelectListItem>)ViewBag.colEstados, "-- Estados --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
+                <input type="submit" id="submit" value="Submit" />
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}
