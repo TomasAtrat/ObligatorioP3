@@ -40,7 +40,8 @@ namespace BussinesLogic.Controladores
         public List<string> Baja(IDto dto)
         {
             List<string> colErrores = new List<string>();
-            this.repository.ZonaRepository.BajaZona((DtoZona)dto);
+            ((DtoZona)dto).Estado = false;
+            this.repository.ZonaRepository.ModificarZona(((DtoZona)dto));
             return colErrores;
         }
 

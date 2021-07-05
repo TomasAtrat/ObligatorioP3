@@ -152,7 +152,7 @@ function Baja(nombreZona, id) {
             contentType: "application/json",
             url: "http://localhost:60096/Zona/Baja/" + id,
             success: function (mensaje) {
-                window.load;
+                getZonas();
             },
             error: function (mensaje) {
             }

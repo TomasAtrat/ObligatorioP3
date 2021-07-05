@@ -16,9 +16,13 @@ namespace DataAccess.Repository
         public ZonaRepository()
         {
             this.zonaMapper = new ZonaMapper();
+            this.puntoMapper = new PuntoMapper();
+            this.cuadrillaMapper = new CuadrillaMapper();
         }
 
         private ZonaMapper zonaMapper;
+        private PuntoMapper puntoMapper;
+        private CuadrillaMapper cuadrillaMapper;
 
         public void AltaZona(DtoZona dto)
         {
@@ -76,11 +80,11 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_ZONA zona = context.t_ZONA.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
+                        t_ZONA zona = context.t_ZONA.FirstOrDefault(i => i.ID == dto.id);
                         zona.Nombre = dto.nombre;
                         zona.Color = dto.color;
-                        zona.t_PUNTO = (ICollection<t_PUNTO>)dto.colPuntos;
-                        zona.t_CUADRILLA_ZONA = (ICollection<t_CUADRILLA_ZONA>)dto.colCuadrillas;
+                        zona.t_PUNTO = this.puntoMapper.mapToEntity(dto.colPuntos);
+                        zona.t_CUADRILLA_ZONA = this.cuadrillaMapper.mapToEntity(dto.colCuadrillas);
                         context.SaveChanges();
                         tran.Commit();
                     }
