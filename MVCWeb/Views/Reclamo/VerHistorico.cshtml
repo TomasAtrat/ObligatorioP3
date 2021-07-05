@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CommonSolution.Dto.DtoHistoricoReclamo>
+
+@{
+    ViewBag.Title = "Ver historico";
+}
+
+
+<div class="starter-template" style="margin-top: -20px">
+    <h1>Ver histórico del reclamo</h1>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDReclamo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescripcionReclamo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoAnterior)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoActual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaHoraCambio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentarios)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IDReclamo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionReclamo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoAnterior)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EstadoActual)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaHoraCambio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comentarios)
+            </td>
+        </tr>
+    }
+
+</table>

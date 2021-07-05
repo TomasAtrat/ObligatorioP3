@@ -53,7 +53,7 @@ namespace MVCWeb.Controllers
         {
             ControllerReclamos controller = new ControllerReclamos();
             List<DtoReclamo> colReclamos = controller.ListAll().Cast<DtoReclamo>().ToList();
-            var reclamos = colReclamos.Select(i => new { ID = i.ID, Estado = i.Estado.ToString(), FechaHoraIngreso = i.FechaHoraIngreso, IDCuadrilla = i.IDCuadrilla, IDZona = i.IDZona, Latitud = i.Latitud, Longitud = i.Longitud, Observaciones = i.Observaciones, difHoras = Math.Round(((TimeSpan)(DateTime.Now - i.FechaHoraIngreso)).TotalHours)}); // Si no se hace 
+            var reclamos = colReclamos.Select(i => new { ID = i.ID, Estado = i.Estado.ToString(), FechaHoraIngreso = i.FechaHoraIngreso, IDCuadrilla = i.IDCuadrilla, IDZona = i.IDZona, Latitud = i.Latitud, Longitud = i.Longitud, Observaciones = i.Observaciones, difHoras = Math.Round(((TimeSpan)(DateTime.Now - i.FechaHoraIngreso)).TotalHours) }); // Si no se hace 
             return Json(reclamos, JsonRequestBehavior.AllowGet);
         }
 
@@ -75,7 +75,7 @@ namespace MVCWeb.Controllers
             return View(dto);
         }
 
-        [HttpPost] //Probar put
+        [HttpPost]
         public ActionResult Editar(DtoReclamo dto)
         {
             ControllerReclamos controller = new ControllerReclamos();
@@ -92,6 +92,7 @@ namespace MVCWeb.Controllers
             return View(dto);
         }
 
+        [HttpPost]
         public ActionResult NuevoReporte(DtoReclamo dto)
         {
             ControllerReporte controller = new ControllerReporte();
@@ -102,8 +103,24 @@ namespace MVCWeb.Controllers
                 s = controller.ToHtml(dto.directorio, dto.ID);
             }
 
-            Process.Start(s); 
+            Process.Start(s);
             return RedirectToAction("Listar");
+        }
+
+        [HttpGet]
+        public ActionResult ListarReclamos()
+        {
+            IControllers ReclamoController = new ControllerReclamos();
+            List<DtoReclamo> colReclamos = ReclamoController.ListAll().Cast<DtoReclamo>().OrderBy(i => i.FechaHoraIngreso).ToList();
+            return View(colReclamos);
+        }
+
+        [HttpGet]
+        public ActionResult VerHistorico(long id)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            List<DtoHistoricoReclamo> colDtos = controller.VerHistorico(id);
+            return View(colDtos);
         }
     }
 }

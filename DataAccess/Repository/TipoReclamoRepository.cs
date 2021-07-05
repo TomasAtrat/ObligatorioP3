@@ -76,7 +76,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_TIPO_RECLAMO tiporeclamo = context.t_TIPO_RECLAMO.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
+                        t_TIPO_RECLAMO tiporeclamo = context.t_TIPO_RECLAMO.FirstOrDefault(i => i.ID == dto.id);
 
                         tiporeclamo.Nombre = dto.nombre;
                         tiporeclamo.Descripcion = dto.descripcion;
@@ -87,6 +87,7 @@ namespace DataAccess.Repository
                     catch (Exception exce)
                     {
                         tran.Rollback();
+                        throw exce;
                     }
                 }
             }

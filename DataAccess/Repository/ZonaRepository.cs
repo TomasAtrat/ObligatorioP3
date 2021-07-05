@@ -83,8 +83,7 @@ namespace DataAccess.Repository
                         t_ZONA zona = context.t_ZONA.FirstOrDefault(i => i.ID == dto.id);
                         zona.Nombre = dto.nombre;
                         zona.Color = dto.color;
-                        zona.t_PUNTO = this.puntoMapper.mapToEntity(dto.colPuntos);
-                        zona.t_CUADRILLA_ZONA = this.cuadrillaMapper.mapToEntity(dto.colCuadrillas);
+                        zona.Estado = dto.Estado;
                         context.SaveChanges();
                         tran.Commit();
                     }
