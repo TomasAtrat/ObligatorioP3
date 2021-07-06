@@ -21,14 +21,13 @@ namespace BussinesLogic.Controladores
 
         public List<string> Alta(IDto dto)
         {
-            List<string> error = Verificacion((DtoReclamo)dto);
-            if (error.Count() == 0)
-            {
-                long idZona = AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
-                ((DtoReclamo)dto).IDZona = idZona.ToString();
-                ((DtoReclamo)dto).Estado = Estado.ASIGNADO;
-                dto = this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
-            }
+            List<string> error = new List<string>();
+
+            long idZona = AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
+            ((DtoReclamo)dto).IDZona = idZona.ToString();
+            ((DtoReclamo)dto).Estado = Estado.ASIGNADO;
+            dto = this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
+
             return error;
         }
 
@@ -75,26 +74,11 @@ namespace BussinesLogic.Controladores
 
         public List<string> Modificacion(IDto dto)
         {
-            List<string> errores = Verificacion((DtoReclamo)dto);
-            if (errores.Count() == 0)
-            {
-                this.repositorio.ReclamoRepository.ModificarReclamo((DtoReclamo)dto);
-            }
-            return errores;
-        }
-
-        public List<string> Verificacion(DtoReclamo rec)
-        {
             List<string> errores = new List<string>();
-            //if(rec.Estado.ToString() != "PENDIENTE" && rec.Estado.ToString() != "ASIGNADO" &&
-            //    rec.Estado.ToString() != "EN_PROCESO" && rec.Estado.ToString() != "RESUELTO" &&
-            //     rec.Estado.ToString() != "DESESTIMADO")
-            //    {
-            //    errores.Add("Estado incorrecto");
-            //}
+
+            this.repositorio.ReclamoRepository.ModificarReclamo((DtoReclamo)dto);
 
             return errores;
-
         }
 
         public List<IDto> ListAll()
@@ -117,6 +101,16 @@ namespace BussinesLogic.Controladores
         public List<DtoHistoricoReclamo> VerHistorico(long idReclamo)
         {
             return this.repositorio.Historico_Repository.getElementsByFK(idReclamo);
+        }
+
+        public List<DtoHistoricoReclamo> VerHistorico()
+        {
+            return this.repositorio.Historico_Repository.getElements();
+        }
+
+        public void ActualizarHistorico(DtoHistoricoReclamo dto)
+        {
+            this.repositorio.Historico_Repository.Actualizar(dto);
         }
     }
 }

@@ -11,7 +11,6 @@ namespace CommonSolution.Dto
 {
     public class DtoZona : IDto
     {
-        [ReadOnly(true)]
         public long id;
         [DisplayName("Nombre")]
         [Required]

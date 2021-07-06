@@ -34,6 +34,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Comentarios, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comentarios, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.Comentarios, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <label class="control-label col-md-2">Cambiar estado</label>
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.estado, (List<SelectListItem>)ViewBag.colEstados, "-- Estados --", new { @class = "form-control" })

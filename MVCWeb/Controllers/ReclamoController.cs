@@ -52,7 +52,7 @@ namespace MVCWeb.Controllers
         public JsonResult getReclamos()
         {
             ControllerReclamos controller = new ControllerReclamos();
-            List<DtoReclamo> colReclamos = controller.ListAll().Cast<DtoReclamo>().ToList();
+            List<DtoReclamo> colReclamos = controller.ListAll().Cast<DtoReclamo>().Where(i=>i.Estado!= Estado.RESUELTO).ToList();
             var reclamos = colReclamos.Select(i => new { ID = i.ID, Estado = i.Estado.ToString(), FechaHoraIngreso = i.FechaHoraIngreso, IDCuadrilla = i.IDCuadrilla, IDZona = i.IDZona, Latitud = i.Latitud, Longitud = i.Longitud, Observaciones = i.Observaciones, difHoras = Math.Round(((TimeSpan)(DateTime.Now - i.FechaHoraIngreso)).TotalHours) }); // Si no se hace 
             return Json(reclamos, JsonRequestBehavior.AllowGet);
         }
@@ -81,6 +81,9 @@ namespace MVCWeb.Controllers
             ControllerReclamos controller = new ControllerReclamos();
             dto.Estado = (Estado)Enum.Parse(typeof(Estado), dto.estado);
             controller.CambiarEstadoReclamo(dto);
+            DtoHistoricoReclamo dtoHistoricoReclamo = controller.VerHistorico().Last();
+            dtoHistoricoReclamo.Comentarios = dto.Comentarios;
+            controller.ActualizarHistorico(dtoHistoricoReclamo);
             return RedirectToAction("Listar");
         }
 
@@ -122,5 +125,6 @@ namespace MVCWeb.Controllers
             List<DtoHistoricoReclamo> colDtos = controller.VerHistorico(id);
             return View(colDtos);
         }
+
     }
 }

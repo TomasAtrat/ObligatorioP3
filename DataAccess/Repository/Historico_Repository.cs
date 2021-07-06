@@ -3,6 +3,8 @@ using DataAccess.Mapper;
 using DataAccess.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
 
 using System.Text;
@@ -38,6 +40,28 @@ namespace DataAccess.Repository
                 colDtos = this.historico_Mapper.mapToDto(context.t_HISTORICO_ESTADO_RECLAMO.AsNoTracking().Where(i=>i.IDReclamo==idReclamo).ToList());
             }
             return colDtos;
+        }
+
+        public void Actualizar(DtoHistoricoReclamo dto)
+        {
+            using (Context context= new Context())
+            {
+                using (DbContextTransaction tran= context.Database.BeginTransaction(IsolationLevel.ReadCommitted))
+                {                  
+                    try
+                    {
+                        t_HISTORICO_ESTADO_RECLAMO entity = context.t_HISTORICO_ESTADO_RECLAMO.FirstOrDefault(i => i.ID == dto.ID);
+                        entity.Comentarios = dto.Comentarios;
+                        context.SaveChanges();
+                        tran.Commit();
+                    }
+                    catch (Exception e)
+                    {
+                        tran.Rollback();
+                        throw e;
+                    }
+                }
+            }
         }
     }
 }

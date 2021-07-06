@@ -33,9 +33,13 @@ namespace CommonSolution.Dto
         public double Latitud { get; set; }
         [Required]
         public double Longitud { get; set; }
+        [Required]
+        [StringLength(250)]
+        public string Comentarios { get; set; }
         public bool EstadoLogic;
         public List<DtoUsuario> colUsuarios;
         public DtoCuadrilla dtoCuadrilla;
+        [DisplayName("Cuadrilla")]
         [Required(ErrorMessage = "Se debe especificar un directorio")]
         public string directorio { get; set; }
     }

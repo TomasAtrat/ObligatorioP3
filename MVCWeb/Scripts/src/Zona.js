@@ -87,6 +87,15 @@ function AgregarZona() {
         })
 }
 
+
+
+function Validate() {
+    let nombre = document.getElementById("nombre").value;
+    if (!(nombre == "" || nombre.length>50 || locations == null || locations == 0)) {
+        AgregarZona();
+    }
+}
+
 function drawPolygons(path, color, name, id, cantidadCuadrillas) {
     var polygon = new google.maps.Polygon({
         path: path,
