@@ -8,29 +8,12 @@ window.onload = load;
 
 function load() {
     initMap();
-    map.addListener("rightclick", (mapsMouseEvent) => {
-        AddLocation(mapsMouseEvent.latLng.lat(), mapsMouseEvent.latLng.lng())
-    });
+
     map.addListener("dblclick", (mapsMouseEvent) => {
         drawPolygon()
     });
+
     getZonas();
-}
-
-function AddLocation(lat, lng) {
-    var location = { lat, lng };
-    const icon = "../../Content/IMG/outline_gps_fixed_black_24dp.png";
-    const marker = new google.maps.Marker({
-        position: location,
-        icon: icon,
-        draggable: true,
-        map: map
-    })
-    markers.push(marker);
-}
-
-function submit() {
-    clearFields()
 }
 
 function clearFields() {
@@ -58,8 +41,6 @@ function drawPolygon() {
         map: map,
         fillColor: color,
     });
-
-    //Las ublicaciones hay que guardarlas en la base de datos y posteriormente eliminarlas de memoria para seguir ingresando
 }
 
 function AgregarZona() {

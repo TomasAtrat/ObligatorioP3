@@ -5,7 +5,7 @@ window.onload = load;
 
 function load() {
     initMap();
-    map.addListener("rightclick", (mapsMouseEvent) => {
+    map.addListener("click", (mapsMouseEvent) => {
         addMarker(mapsMouseEvent.latLng.lat(), mapsMouseEvent.latLng.lng())
         document.getElementById("IDZona").value = "-1";
     });
@@ -19,7 +19,7 @@ function drawPolygons(path, color, name, id) {
         map: map,
         fillColor: color,
     });
-    polygon.addListener("rightclick", (mapsMouseEvent) => {
+    polygon.addListener("click", (mapsMouseEvent) => {
         addMarker(mapsMouseEvent.latLng.lat(), mapsMouseEvent.latLng.lng()),
             document.getElementById("IDZona").value = id
     });
@@ -29,7 +29,7 @@ function getZonas() {
     $.ajax({
         type: "GET",
         contentType: "application/json",
-        url: "http://localhost:60096/Zona/getZonas",
+        url: "http://localhost:49553/Zona/getZonas",
         success: function (mensaje) {
             if (mensaje != null) {
                 for (i in mensaje) {
