@@ -31,7 +31,6 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        reclamo.Estado = "PENDIENTE";
                         reclamo.FechaHoraIngreso = DateTime.Now;
                         reclamo.EstadoL = true; //Habilitado
                         context.t_RECLAMO.Add(reclamo);

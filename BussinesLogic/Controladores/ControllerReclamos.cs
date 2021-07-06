@@ -34,26 +34,30 @@ namespace BussinesLogic.Controladores
         private long AsignarCuadrilla(DtoReclamo dto)
         {
             DtoCuadrilla dtoCuad = new DtoCuadrilla();
-
-            if (long.Parse(dto.IDZona) == -1)
+            if (this.repositorio.CuadrillaRepository.getElements().Count > 0)
             {
-                dtoCuad = this.repositorio.CuadrillaRepository.getElements().OrderBy(i => i.colReclamos.Count).First();
-            }
-            else
-            {
-                List<DtoCuadrilla> cuadrillas = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i => i.colReclamos.Count).ToList();
-                if (cuadrillas == null || cuadrillas.Count == 0)
+                if (long.Parse(dto.IDZona) == -1)
                 {
                     dtoCuad = this.repositorio.CuadrillaRepository.getElements().OrderBy(i => i.colReclamos.Count).First();
                 }
                 else
                 {
-                    dtoCuad = cuadrillas.First();  //Asigna la cuadrilla de una manera balanceada  
+                    List<DtoCuadrilla> cuadrillas = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i => i.colReclamos.Count).ToList();
+                    if (cuadrillas == null || cuadrillas.Count == 0)
+                    {
+                        dtoCuad = this.repositorio.CuadrillaRepository.getElements().OrderBy(i => i.colReclamos.Count).First();
+                    }
+                    else
+                    {
+                        dtoCuad = cuadrillas.First();  //Asigna la cuadrilla de una manera balanceada  
+                    }
                 }
+
+                dto.IDCuadrilla = dtoCuad.id;
+                return dtoCuad.idZona;
             }
 
-            dto.IDCuadrilla = dtoCuad.id;
-            return dtoCuad.idZona;
+            return -1;
         }
 
         public List<string> Baja(IDto dto)

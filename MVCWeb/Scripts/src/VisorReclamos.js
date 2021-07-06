@@ -3,15 +3,12 @@
 var map;
 var markers = [];
 var actualInfoWindow;
-
 var infowindow;
     
 function load() {
     initMap();
     getReclamos();
 }
-
-
 
 function getReclamos() {
 
