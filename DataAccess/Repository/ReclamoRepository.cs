@@ -56,7 +56,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_RECLAMO reclamo = context.t_RECLAMO.AsNoTracking().FirstOrDefault(i => i.ID == dto.ID);
+                        t_RECLAMO reclamo = context.t_RECLAMO.FirstOrDefault(i => i.ID == dto.ID);
 
                         reclamo.IDCuadrilla = dto.IDCuadrilla;
                         reclamo.IDTipoReclamo = dto.IDTipoReclamo;

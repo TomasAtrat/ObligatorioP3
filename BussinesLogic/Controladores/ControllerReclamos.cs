@@ -18,13 +18,13 @@ namespace BussinesLogic.Controladores
             this.repositorio = new Repository();
         }
 
-       
+
         public List<string> Alta(IDto dto)
         {
             List<string> error = Verificacion((DtoReclamo)dto);
-            if(error.Count() ==0)
+            if (error.Count() == 0)
             {
-                long idZona= AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
+                long idZona = AsignarCuadrilla((DtoReclamo)dto); //Asignación por referencia
                 ((DtoReclamo)dto).IDZona = idZona.ToString();
                 ((DtoReclamo)dto).Estado = Estado.ASIGNADO;
                 dto = this.repositorio.ReclamoRepository.AltaReclamo((DtoReclamo)dto);
@@ -42,8 +42,8 @@ namespace BussinesLogic.Controladores
             }
             else
             {
-                List<DtoCuadrilla> cuadrillas = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i => i.colReclamos.Count).ToList(); 
-                if(cuadrillas == null || cuadrillas.Count==0)
+                List<DtoCuadrilla> cuadrillas = this.repositorio.CuadrillaRepository.getCuadrillasByZona(long.Parse(dto.IDZona)).OrderBy(i => i.colReclamos.Count).ToList();
+                if (cuadrillas == null || cuadrillas.Count == 0)
                 {
                     dtoCuad = this.repositorio.CuadrillaRepository.getElements().OrderBy(i => i.colReclamos.Count).First();
                 }
@@ -51,7 +51,7 @@ namespace BussinesLogic.Controladores
                 {
                     dtoCuad = cuadrillas.First();  //Asigna la cuadrilla de una manera balanceada  
                 }
-            } 
+            }
 
             dto.IDCuadrilla = dtoCuad.id;
             return dtoCuad.idZona;
@@ -62,9 +62,9 @@ namespace BussinesLogic.Controladores
             List<string> errores = new List<string>();
             bool existe = this.repositorio.ReclamoRepository.VerificarExistenica(((DtoReclamo)dto).ID);
 
-            if(existe)
-            { 
-            this.repositorio.ReclamoRepository.EliminarReclamo((DtoReclamo)dto);
+            if (existe)
+            {
+                this.repositorio.ReclamoRepository.EliminarReclamo((DtoReclamo)dto);
             }
             else
             {
@@ -76,7 +76,7 @@ namespace BussinesLogic.Controladores
         public List<string> Modificacion(IDto dto)
         {
             List<string> errores = Verificacion((DtoReclamo)dto);
-            if(errores.Count() == 0)
+            if (errores.Count() == 0)
             {
                 this.repositorio.ReclamoRepository.ModificarReclamo((DtoReclamo)dto);
             }
@@ -92,7 +92,7 @@ namespace BussinesLogic.Controladores
             //    {
             //    errores.Add("Estado incorrecto");
             //}
-           
+
             return errores;
 
         }
@@ -114,5 +114,9 @@ namespace BussinesLogic.Controladores
             return this.repositorio.ReclamoRepository.GetElementById(id);
         }
 
+        public List<DtoHistoricoReclamo> VerHistorico(long idReclamo)
+        {
+            return this.repositorio.Historico_Repository.getElementsByFK(idReclamo);
+        }
     }
 }

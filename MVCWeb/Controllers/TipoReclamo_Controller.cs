@@ -26,6 +26,7 @@ namespace MVCWeb.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Listar()
         {
             IControllers control = new L_ControllerTipoReclamo();
@@ -33,12 +34,13 @@ namespace MVCWeb.Controllers
             return View(lista);
         }
 
+
         public ActionResult Delete(long id)
         {
             L_ControllerTipoReclamo control = new L_ControllerTipoReclamo();
             DtoTipoReclamo dto = (DtoTipoReclamo)control.ExtraerPorid(id);
             control.Baja(dto);
-            return Redirect("Listar");
+            return RedirectToAction("Listar");
         }
 
         [HttpGet]

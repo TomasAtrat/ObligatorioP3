@@ -76,7 +76,7 @@ namespace DataAccess.Repository
                 {
                     try
                     {
-                        t_TIPO_RECLAMO tiporeclamo = context.t_TIPO_RECLAMO.AsNoTracking().FirstOrDefault(i => i.ID == dto.id);
+                        t_TIPO_RECLAMO tiporeclamo = context.t_TIPO_RECLAMO.FirstOrDefault(i => i.ID == dto.id);
 
                         tiporeclamo.Nombre = dto.nombre;
                         tiporeclamo.Descripcion = dto.descripcion;
@@ -87,6 +87,7 @@ namespace DataAccess.Repository
                     catch (Exception exce)
                     {
                         tran.Rollback();
+                        throw exce;
                     }
                 }
             }
@@ -116,7 +117,7 @@ namespace DataAccess.Repository
             List<DtoTipoReclamo> tiporeclamo = new List<DtoTipoReclamo>();
             using (Context context = new Context())
             {
-                List<t_TIPO_RECLAMO> entity = context.t_TIPO_RECLAMO.Select(s => s).ToList();
+                List<t_TIPO_RECLAMO> entity = context.t_TIPO_RECLAMO.AsNoTracking().ToList();
                 tiporeclamo = this.TipoReclamoMapper.maptoListDto(entity);
             }
             return tiporeclamo;

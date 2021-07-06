@@ -223,6 +223,8 @@
     <Content Include="Views\Reclamo\Editar.cshtml" />
     <Content Include="Views\Reclamo\NuevoReporte.cshtml" />
     <Content Include="Views\TipoReclamo_\Editar.cshtml" />
+    <Content Include="Views\Reclamo\ListarReclamos.cshtml" />
+    <Content Include="Views\Reclamo\VerHistorico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

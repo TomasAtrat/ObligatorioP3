@@ -28,6 +28,7 @@ namespace DataAccess.Mapper
             dto.IDReclamo = entity.IDReclamo;
             dto.Latitud = entity.Latitud;
             dto.Longitud = entity.Longitud;
+            dto.DescripcionReclamo = entity.DescripcionReclamo;
             return dto;            
         }
 

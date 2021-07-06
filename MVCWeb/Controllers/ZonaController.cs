@@ -54,7 +54,8 @@ namespace MVCWeb.Controllers
         {
             ControllerZona ControllerZona = new ControllerZona();
             DtoZona dto = ControllerZona.getElementById(id);
-            ControllerZona.Baja(dto);
+            dto.Estado = false;
+            ControllerZona.Modificacion(dto);
             return RedirectToAction("Listar");
         }
     }
