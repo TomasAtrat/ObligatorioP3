@@ -61,8 +61,8 @@ namespace DataAccess.Repository
                         reclamo.IDCuadrilla = dto.IDCuadrilla;
                         reclamo.IDTipoReclamo = dto.IDTipoReclamo;
                         reclamo.IDZona = long.Parse(dto.IDZona);
-                        reclamo.Latitud = dto.Latitud;
-                        reclamo.Longitud = dto.Longitud;
+                        reclamo.Latitud =double.Parse(dto.Latitud);
+                        reclamo.Longitud = double.Parse(dto.Longitud);
                         reclamo.Observaciones = dto.Observaciones;
                         reclamo.Estado = dto.Estado.ToString();
                         reclamo.FechaHoraIngreso = dto.FechaHoraIngreso;

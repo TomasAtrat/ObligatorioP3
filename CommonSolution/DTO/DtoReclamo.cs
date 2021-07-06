@@ -30,9 +30,10 @@ namespace CommonSolution.Dto
         [StringLength(250)]
         public string Observaciones { get; set; }
         [Required]
-        public double Latitud { get; set; }
+        public string Latitud { get; set; }
+
         [Required]
-        public double Longitud { get; set; }
+        public string Longitud { get; set; }
         public bool EstadoLogic;
         public List<DtoUsuario> colUsuarios;
         public DtoCuadrilla dtoCuadrilla;
