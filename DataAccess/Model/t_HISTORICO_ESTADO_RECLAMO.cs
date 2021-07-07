@@ -24,5 +24,6 @@ namespace DataAccess.Model
         public double Longitud { get; set; }
         public long IDReclamo { get; set; }
         public string DescripcionReclamo { get; set; }
+        public Nullable<long> IDCuadrilla { get; set; }
     }
 }

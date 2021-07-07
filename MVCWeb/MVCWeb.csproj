@@ -128,6 +128,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CuadrillaController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\TipoReclamo_Controller.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ReclamoController.cs" />
@@ -220,6 +221,7 @@
     <Content Include="Views\TipoReclamo_\Editar.cshtml" />
     <Content Include="Views\Reclamo\ListarReclamos.cshtml" />
     <Content Include="Views\Reclamo\VerHistorico.cshtml" />
+    <Content Include="Views\Reporte\ReclamosAtrasados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

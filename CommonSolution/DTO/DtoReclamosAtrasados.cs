@@ -10,6 +10,6 @@ namespace CommonSolution.DTO
     public class DtoReclamosAtrasados
     {
         public DtoReclamo reclamo;
-        public float cantidadHorasRetraso;
+        public int cantidadHorasRetraso;
     }
 }

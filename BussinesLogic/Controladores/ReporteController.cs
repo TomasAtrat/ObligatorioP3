@@ -30,16 +30,22 @@ namespace BussinesLogic.Controladores
 
         public List<DtoReclamosAtrasados> getReclamosAtrasados()
         {
-            List<DtoReclamo> colDtos = this.repository.ReclamoRepository.getElements().Where(i => i.Estado.ToString() == "PENDIENTE").ToList();
+            List<DtoReclamo> colDtos = this.repository.ReclamoRepository.getElements().Where(i => i.Estado.ToString() != "RESUELTO").ToList();
             List<DtoReclamosAtrasados> colReclamos = new List<DtoReclamosAtrasados>();
             foreach (DtoReclamo item in colDtos)
             {
                 DtoReclamosAtrasados dto = new DtoReclamosAtrasados();
                 dto.reclamo = item;
-                dto.cantidadHorasRetraso = (DateTime.Now - item.FechaHoraIngreso).Value.Hours;
+                dto.cantidadHorasRetraso = (int)Math.Round(((TimeSpan)(DateTime.Now - item.FechaHoraIngreso)).TotalHours);
                 colReclamos.Add(dto);
             }
+            colReclamos.OrderByDescending(i => i.cantidadHorasRetraso);
             return colReclamos;
+        }
+
+        public void cuadrillasMasEficientes()
+        {
+
         }
 
         public List<string> GenerarReporte(DtoReclamo dto)

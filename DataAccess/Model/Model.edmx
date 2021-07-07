@@ -38,6 +38,7 @@
           <Property Name="Longitud" Type="float" Nullable="false" />
           <Property Name="IDReclamo" Type="bigint" Nullable="false" />
           <Property Name="DescripcionReclamo" Type="varchar" MaxLength="250" />
+          <Property Name="IDCuadrilla" Type="bigint" />
         </EntityType>
         <EntityType Name="t_PUNTO">
           <Key>
@@ -104,6 +105,12 @@
           <Property Name="Color" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Estado" Type="bit" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'AlcaldiaToledo.dbo.VW_HistoricoDateDiffByCuadrilla' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="VW_HistoricoDateDiffByCuadrilla">
+          <Property Name="suma" Type="int" />
+          <Property Name="IDCuadrilla" Type="bigint" />
+        </EntityType>-->
         <Association Name="FK_t_CUADRILLA_ZONA_t_CUADRILLA">
           <End Role="t_CUADRILLA" Type="Self.t_CUADRILLA" Multiplicity="1" />
           <End Role="t_CUADRILLA_ZONA" Type="Self.t_CUADRILLA_ZONA" Multiplicity="*" />
@@ -272,6 +279,7 @@
           <Property Name="Longitud" Type="Double" Nullable="false" />
           <Property Name="IDReclamo" Type="Int64" Nullable="false" />
           <Property Name="DescripcionReclamo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IDCuadrilla" Type="Int64" />
         </EntityType>
         <EntityType Name="t_PUNTO">
           <Key>
@@ -465,6 +473,7 @@
           <EntitySetMapping Name="t_HISTORICO_ESTADO_RECLAMO">
             <EntityTypeMapping TypeName="AlcaldiaToledoModel.t_HISTORICO_ESTADO_RECLAMO">
               <MappingFragment StoreEntitySet="t_HISTORICO_ESTADO_RECLAMO">
+                <ScalarProperty Name="IDCuadrilla" ColumnName="IDCuadrilla" />
                 <ScalarProperty Name="DescripcionReclamo" ColumnName="DescripcionReclamo" />
                 <ScalarProperty Name="IDReclamo" ColumnName="IDReclamo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
