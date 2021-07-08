@@ -109,6 +109,9 @@
     <Compile Include="Model\t_ZONA.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\VW_HistoricoDateDiffByCuadrilla.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="PDF_GENERATOR\GeneradorPDF.cs" />
     <Compile Include="Persistencia\Reportes.cs" />
     <Compile Include="Persistencia\Repository.cs" />

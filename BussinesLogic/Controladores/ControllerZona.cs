@@ -74,6 +74,11 @@ namespace BussinesLogic.Controladores
             return colErrores;
         }
 
+        public bool existeNombre(string nombre)
+        {
+            return this.repository.ZonaRepository.existeNombreZona(nombre);
+        }
+
         public void listar(IDto dto)
         {
             throw new NotImplementedException();

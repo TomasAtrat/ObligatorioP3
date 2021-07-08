@@ -205,5 +205,14 @@ namespace DataAccess.Repository
             return colDtos;
         }
 
+        public List<DtoCuadrilla> getCuadrillasFromView()
+        {
+            List<DtoCuadrilla> colDtos = new List<DtoCuadrilla>();
+            using (Context context= new Context())
+            {
+                colDtos = this.cuadrillaMapper.mapToDtoFromView(context.VW_HistoricoDateDiffByCuadrilla.AsNoTracking().ToList());
+            }
+            return colDtos;
+        }
     }
 }

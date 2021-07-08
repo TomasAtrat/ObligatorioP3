@@ -11,6 +11,7 @@ namespace CommonSolution.Dto
 {
     public class DtoCuadrilla : IDto
     {
+        [DisplayName("ID")]
         public long id { get; set; }
         [DisplayName("Encargado")]
         [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
@@ -30,6 +31,9 @@ namespace CommonSolution.Dto
         [Required]
         public long idZona { get; set; }
         public bool Estado;
+        public int sumaHoras;
+        [DisplayName("Promedio realización reclamos en horas")]
+        public double promedio { get; set; }
 
         public DtoZona dtoZona;
         public List<DtoReclamo> colReclamos = new List<DtoReclamo>();

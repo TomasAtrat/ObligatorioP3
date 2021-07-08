@@ -57,7 +57,7 @@ namespace BussinesLogic.Controladores
                 colErrores.Add(e.Message);
             }
 
-            return colErrores;            
+            return colErrores;
         }
 
         public List<IDto> ListAll()
@@ -77,5 +77,6 @@ namespace BussinesLogic.Controladores
         {
             return this.repository.CuadrillaRepository.getElementById(id);
         }
+
     }
 }

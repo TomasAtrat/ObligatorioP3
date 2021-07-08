@@ -114,5 +114,15 @@ namespace DataAccess.Repository
             }
             return colZonas;
         }
+
+        public bool existeNombreZona(string nombre)
+        {
+            bool existe;
+            using (Context context= new Context())
+            {
+                existe = context.t_ZONA.AsNoTracking().Any(i => (bool)i.Estado && i.Nombre == nombre);
+            }
+            return existe;
+        }
     }
 }

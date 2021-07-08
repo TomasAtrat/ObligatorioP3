@@ -56,5 +56,14 @@ namespace MVCWeb.Controllers
             ControllerZona.Modificacion(dto);
             return RedirectToAction("Listar");
         }
+
+        public JsonResult ValidarNombre(string nombre)
+        {
+            bool res = true;
+            ControllerZona controller = new ControllerZona();
+            if (controller.existeNombre(nombre))
+                res = false;
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
     }
 }

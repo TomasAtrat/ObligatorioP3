@@ -222,6 +222,7 @@
     <Content Include="Views\Reclamo\ListarReclamos.cshtml" />
     <Content Include="Views\Reclamo\VerHistorico.cshtml" />
     <Content Include="Views\Reporte\ReclamosAtrasados.cshtml" />
+    <Content Include="Views\Reporte\CuadrillasMasEficientes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

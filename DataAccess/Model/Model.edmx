@@ -39,6 +39,7 @@
           <Property Name="IDReclamo" Type="bigint" Nullable="false" />
           <Property Name="DescripcionReclamo" Type="varchar" MaxLength="250" />
           <Property Name="IDCuadrilla" Type="bigint" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="t_PUNTO">
           <Key>
@@ -106,11 +107,14 @@
           <Property Name="Estado" Type="bit" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'AlcaldiaToledo.dbo.VW_HistoricoDateDiffByCuadrilla' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+advertencia 6002: La tabla o vista 'AlcaldiaToledo.dbo.VW_HistoricoDateDiffByCuadrilla' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="VW_HistoricoDateDiffByCuadrilla">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" />
           <Property Name="suma" Type="int" />
-          <Property Name="IDCuadrilla" Type="bigint" />
-        </EntityType>-->
+        </EntityType>
         <Association Name="FK_t_CUADRILLA_ZONA_t_CUADRILLA">
           <End Role="t_CUADRILLA" Type="Self.t_CUADRILLA" Multiplicity="1" />
           <End Role="t_CUADRILLA_ZONA" Type="Self.t_CUADRILLA_ZONA" Multiplicity="*" />
@@ -209,6 +213,12 @@ advertencia 6013: La tabla o vista 'AlcaldiaToledo.dbo.VW_HistoricoDateDiffByCua
           <EntitySet Name="t_TIPO_RECLAMO" EntityType="Self.t_TIPO_RECLAMO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_USUARIO" EntityType="Self.t_USUARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="t_ZONA" EntityType="Self.t_ZONA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VW_HistoricoDateDiffByCuadrilla" EntityType="Self.VW_HistoricoDateDiffByCuadrilla" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VW_HistoricoDateDiffByCuadrilla].[ID] AS [ID], 
+    [VW_HistoricoDateDiffByCuadrilla].[suma] AS [suma]
+    FROM [dbo].[VW_HistoricoDateDiffByCuadrilla] AS [VW_HistoricoDateDiffByCuadrilla]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_t_CUADRILLA_ZONA_t_CUADRILLA" Association="Self.FK_t_CUADRILLA_ZONA_t_CUADRILLA">
             <End Role="t_CUADRILLA" EntitySet="t_CUADRILLA" />
             <End Role="t_CUADRILLA_ZONA" EntitySet="t_CUADRILLA_ZONA" />
@@ -280,6 +290,7 @@ advertencia 6013: La tabla o vista 'AlcaldiaToledo.dbo.VW_HistoricoDateDiffByCua
           <Property Name="IDReclamo" Type="Int64" Nullable="false" />
           <Property Name="DescripcionReclamo" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="IDCuadrilla" Type="Int64" />
+          <Property Name="NombreUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="t_PUNTO">
           <Key>
@@ -429,6 +440,7 @@ advertencia 6013: La tabla o vista 'AlcaldiaToledo.dbo.VW_HistoricoDateDiffByCua
             <End Role="t_CUADRILLA_ZONA" EntitySet="t_CUADRILLA_ZONA" />
             <End Role="t_RECLAMO" EntitySet="t_RECLAMO" />
           </AssociationSet>
+          <EntitySet Name="VW_HistoricoDateDiffByCuadrilla" EntityType="AlcaldiaToledoModel.VW_HistoricoDateDiffByCuadrilla" />
         </EntityContainer>
         <Association Name="FK_ZonaReclamo1">
           <End Type="AlcaldiaToledoModel.t_CUADRILLA_ZONA" Role="t_CUADRILLA_ZONA" Multiplicity="1" />
@@ -444,6 +456,13 @@ advertencia 6013: La tabla o vista 'AlcaldiaToledo.dbo.VW_HistoricoDateDiffByCua
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="VW_HistoricoDateDiffByCuadrilla">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" />
+          <Property Name="suma" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -473,6 +492,7 @@ advertencia 6013: La tabla o vista 'AlcaldiaToledo.dbo.VW_HistoricoDateDiffByCua
           <EntitySetMapping Name="t_HISTORICO_ESTADO_RECLAMO">
             <EntityTypeMapping TypeName="AlcaldiaToledoModel.t_HISTORICO_ESTADO_RECLAMO">
               <MappingFragment StoreEntitySet="t_HISTORICO_ESTADO_RECLAMO">
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
                 <ScalarProperty Name="IDCuadrilla" ColumnName="IDCuadrilla" />
                 <ScalarProperty Name="DescripcionReclamo" ColumnName="DescripcionReclamo" />
                 <ScalarProperty Name="IDReclamo" ColumnName="IDReclamo" />
@@ -555,6 +575,14 @@ advertencia 6013: La tabla o vista 'AlcaldiaToledo.dbo.VW_HistoricoDateDiffByCua
               <ScalarProperty Name="Password" ColumnName="Password" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="VW_HistoricoDateDiffByCuadrilla">
+            <EntityTypeMapping TypeName="AlcaldiaToledoModel.VW_HistoricoDateDiffByCuadrilla">
+              <MappingFragment StoreEntitySet="VW_HistoricoDateDiffByCuadrilla">
+                <ScalarProperty Name="suma" ColumnName="suma" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

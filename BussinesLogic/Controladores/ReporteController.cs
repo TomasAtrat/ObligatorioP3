@@ -43,9 +43,35 @@ namespace BussinesLogic.Controladores
             return colReclamos;
         }
 
-        public void cuadrillasMasEficientes()
+        public DtoCuadrilla mergePropertiesOFCuadrilla(long id)
         {
+            DtoCuadrilla dto = this.repository.CuadrillaRepository.getElementById(id);
+            List<DtoCuadrilla> colDtos = this.repository.CuadrillaRepository.getElements().Where(i => i.id == id).ToList();
+            foreach (DtoCuadrilla item in colDtos)
+            {
+                foreach (DtoReclamo rec in item.colReclamos)
+                {
+                    dto.colReclamos.Add(rec);
+                }
+            }
+            return dto;
+        }
 
+        public List<DtoCuadrilla> cuadrillasMasEficientes()
+        {
+            List<DtoCuadrilla> colDtos = this.repository.CuadrillaRepository.getCuadrillasFromView();
+            foreach (DtoCuadrilla item in colDtos)
+            {
+                DtoCuadrilla dto = this.mergePropertiesOFCuadrilla(item.id);
+                item.promedio = item.sumaHoras / dto.colReclamos.Count();
+                item.nombre = dto.nombre;
+                item.idZona = dto.idZona;
+                item.Observaciones = dto.Observaciones;
+                item.encargado = dto.encargado;
+                item.idZona = dto.idZona;
+                item.cantidadPeones = dto.cantidadPeones;
+            }
+            return colDtos;
         }
 
         public List<string> GenerarReporte(DtoReclamo dto)

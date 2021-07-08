@@ -92,6 +92,21 @@ namespace DataAccess.Mapper
                 colDto.ForEach(i => colCuadrillas.Add(this.mapToEntity(i)));
             return colCuadrillas;
         }
+        
+        public DtoCuadrilla mapToDtoFromView(VW_HistoricoDateDiffByCuadrilla vista)
+        {
+            DtoCuadrilla dto = new DtoCuadrilla();
+            dto.sumaHoras = (int)vista.suma;
+            dto.id = vista.ID;
+            return dto;
+        }
 
+        public List<DtoCuadrilla> mapToDtoFromView(List<VW_HistoricoDateDiffByCuadrilla> colViews)
+        {
+            List<DtoCuadrilla> colDtos = new List<DtoCuadrilla>();
+            if (colViews != null)
+                colViews.ForEach(i => colDtos.Add(this.mapToDtoFromView(i)));
+            return colDtos;
+        }
     }
 }
