@@ -26,7 +26,7 @@ namespace DataAccess.Repository
 
         public void AltaCuadrilla(DtoCuadrilla dto)
         {
-            t_CUADRILLA cuadrilla = this.cuadrillaMapper.maptoentity(dto);
+            t_CUADRILLA cuadrilla = this.cuadrillaMapper.mapToCommonEntity(dto);
             t_CUADRILLA_ZONA entity = this.cuadrillaMapper.mapToEntity(dto);
             entity.t_CUADRILLA = cuadrilla;
 
@@ -126,7 +126,7 @@ namespace DataAccess.Repository
             List<DtoCuadrilla> colCuadrillas = new List<DtoCuadrilla>();
             using (Context context = new Context())
             {
-                colCuadrillas = this.cuadrillaMapper.maptoDto(context.t_CUADRILLA.AsNoTracking().Where(s => s.Estado == true).ToList());
+                colCuadrillas = this.cuadrillaMapper.mapToDto(context.t_CUADRILLA.AsNoTracking().Where(s => s.Estado == true).ToList());
             }
             return colCuadrillas;
         }

@@ -116,5 +116,10 @@ namespace BussinesLogic.Controladores
         {
             this.repositorio.Historico_Repository.Actualizar(dto);
         }
+
+        public List<DtoReclamo> ListarPorEstado(string estado)
+        {
+            return this.repositorio.ReclamoRepository.ListarPorEstado(estado);
+        }
     }
 }

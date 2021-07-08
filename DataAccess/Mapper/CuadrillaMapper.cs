@@ -28,35 +28,24 @@ namespace DataAccess.Mapper
             return dto;
         }
 
-        public t_CUADRILLA maptoentity(DtoCuadrilla dto)
+        public t_CUADRILLA mapToCommonEntity(DtoCuadrilla dto)
         {
-            t_CUADRILLA cuadrilla = new t_CUADRILLA();
-
-            cuadrilla.ID = dto.id;
-            cuadrilla.Nombre = dto.nombre;
-            cuadrilla.Encargado = dto.encargado;
-            cuadrilla.CantidadPeones = (short)dto.cantidadPeones;
-            cuadrilla.Observaciones = dto.Observaciones;
-
-            return cuadrilla;
+            t_CUADRILLA entity = new t_CUADRILLA();
+            entity.CantidadPeones = (short)dto.cantidadPeones;
+            entity.Encargado = dto.encargado;
+            entity.Estado = dto.Estado;
+            entity.ID = dto.id;
+            entity.Nombre = dto.nombre;
+            entity.Observaciones = dto.Observaciones;
+            return entity;
         }
 
-        public List<DtoCuadrilla> maptoDto(List<t_CUADRILLA> entity)
+        public List<t_CUADRILLA> mapToCommonEntity(List<DtoCuadrilla> colDtos)
         {
-            List<DtoCuadrilla> colDtos = new List<DtoCuadrilla>();
-            if (entity != null)
-                entity.ForEach(i => colDtos.Add(this.mapToDto(i)));
-
-            return colDtos;
-        }
-
-        public List<t_CUADRILLA> maptoDto(List<DtoCuadrilla> dto)
-        {
-            List<t_CUADRILLA> Colentity = new List<t_CUADRILLA>();
-            if (dto != null)
-                dto.ForEach(i => Colentity.Add(this.maptoentity(i)));
-
-            return Colentity;
+            List<t_CUADRILLA> colCuadrillas = new List<t_CUADRILLA>();
+            if (colDtos != null)
+                colDtos.ForEach(i => colCuadrillas.Add(this.mapToCommonEntity(i)));
+            return colCuadrillas;
         }
 
         public DtoCuadrilla mapToDto(t_CUADRILLA_ZONA cuadrilla)
@@ -64,7 +53,7 @@ namespace DataAccess.Mapper
             DtoCuadrilla dto = new DtoCuadrilla();
             dto.idZona = cuadrilla.IDZona;
             dto.id = cuadrilla.IDCuadrilla;
-            dto.colReclamos = this.reclamoMapper.mapToListDto(cuadrilla.t_RECLAMO1.ToList());
+            dto.colReclamos = this.reclamoMapper.mapToDto(cuadrilla.t_RECLAMO1.ToList());
             return dto;
         }
 
@@ -106,6 +95,14 @@ namespace DataAccess.Mapper
             List<DtoCuadrilla> colDtos = new List<DtoCuadrilla>();
             if (colViews != null)
                 colViews.ForEach(i => colDtos.Add(this.mapToDtoFromView(i)));
+            return colDtos;
+        }
+
+        public List<DtoCuadrilla> mapToDto(List<t_CUADRILLA> colCuad)
+        {
+            List<DtoCuadrilla> colDtos = new List<DtoCuadrilla>();
+            if (colCuad != null)
+                colCuad.ForEach(i => colDtos.Add(this.mapToDto(i)));
             return colDtos;
         }
     }

@@ -64,7 +64,7 @@ function drawPolygon() {
 
 function AgregarZona() {
     let nombre = document.getElementById("nombre").value;
-    let color = document.getElementById("color").value;   
+    let color = document.getElementById("color").value;
     let puntos = [];
 
     for (i in locations) {
@@ -73,26 +73,28 @@ function AgregarZona() {
     }
 
     let zona = { nombre: nombre, color: color, colPuntos: puntos };
-        $.ajax({
-            type: "POST",
-            data: JSON.stringify(zona),
-            contentType: "application/json",
-            url: "http://localhost:60096/Zona/AgregarZona",
-            success: function (respuesta) {
-                $("#nombre").val("");
-            },
-            error: function (respuesta) {
+    $.ajax({
+        type: "POST",
+        data: JSON.stringify(zona),
+        contentType: "application/json",
+        url: "http://localhost:60096/Zona/AgregarZona",
+        success: function (respuesta) {
+            $("#nombre").val("");
+        },
+        error: function (respuesta) {
 
-            }
-        })
+        }
+    })
 }
 
 
 
 function Validate() {
     let nombre = document.getElementById("nombre").value;
-    if (!(nombre == "" || nombre.length>50 || locations == null || locations == 0)) {
+    if (!(nombre == "" || nombre.length > 50 || locations == null || locations == 0)) {
         AgregarZona();
+    } else if (location == null) {
+        alert("Se debe ingresar al menos tres puntos para crear la zona");
     }
 }
 
@@ -109,7 +111,7 @@ function drawPolygons(path, color, name, id, cantidadCuadrillas) {
             actualInfoWindow.close();
         }
         infowindow.open({
-            
+
             map,
             shouldFocus: false,
         });
@@ -143,8 +145,8 @@ function getZonas() {
 function AddInfoWindow(id, Nombre, cantidad, location) {
     contentString = '<h7 style= "font-weight: bold"> ID: </h7>' + id +
         '<h7 style= "font-weight: bold"> Nombre: </h7>' + Nombre +
-        '<h7 style= "font-weight: bold"> Cantidad de cuadrillas: </h7>' + cantidad + "<br />"+
-        "<button title= 'Dar de baja' onclick='Baja(\"" + Nombre + "\" "+ "," + id + ")'> Dar de baja </button>" ;
+        '<h7 style= "font-weight: bold"> Cantidad de cuadrillas: </h7>' + cantidad + "<br />" +
+        "<button title= 'Dar de baja' onclick='Baja(\"" + Nombre + "\" " + "," + id + ")'> Dar de baja </button>";
 
     infowindow = new google.maps.InfoWindow({
         content: contentString,

@@ -115,7 +115,7 @@ namespace DataAccess.Repository
             List<DtoReclamo> colDtos = null;
             using (Context context = new Context())
             {
-                colDtos = this.reclamoMapper.mapToListDto(context.t_RECLAMO.AsNoTracking().Where(s => s.EstadoL == true).ToList());
+                colDtos = this.reclamoMapper.mapToDto(context.t_RECLAMO.AsNoTracking().Where(s => s.EstadoL == true).ToList());
             }
             return colDtos;
         }
@@ -134,10 +134,20 @@ namespace DataAccess.Repository
             List<DtoReclamo> colreclamos = null;
             using (Context contex = new Context())
             {
-                colreclamos = this.reclamoMapper.mapToListDto(contex.t_RECLAMO.AsNoTracking().Where(w => w.FechaHoraIngreso >= inicio && w.FechaHoraIngreso <= fin).ToList());
+                colreclamos = this.reclamoMapper.mapToDto(contex.t_RECLAMO.AsNoTracking().Where(w => w.FechaHoraIngreso >= inicio && w.FechaHoraIngreso <= fin).ToList());
             }
             return colreclamos;
 
+        }
+
+        public List<DtoReclamo> ListarPorEstado(string estado)
+        {
+            List<DtoReclamo> colReclamos = new List<DtoReclamo>();
+            using (Context context= new Context())
+            {
+                colReclamos = this.reclamoMapper.mapToDto(context.t_RECLAMO.AsNoTracking().Where(i => i.Estado == estado).ToList());
+            }
+            return colReclamos;
         }
     }  
 }

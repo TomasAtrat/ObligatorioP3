@@ -127,5 +127,13 @@ namespace MVCWeb.Controllers
             return View(colDtos);
         }
 
+        [HttpGet]
+        public ActionResult ListarPorEstado(string estado)
+        {
+            ControllerReclamos controller = new ControllerReclamos();
+            List<DtoReclamo> colDtos = controller.ListarPorEstado(estado);
+            return View("Listar", colDtos);
+        }
+
     }
 }

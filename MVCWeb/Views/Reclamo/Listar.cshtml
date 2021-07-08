@@ -12,6 +12,15 @@
 
 @Html.Partial("Mapa")
 
+<span>Filtrar por estado: </span>
+@Html.ActionLink("PENDIENTE", "ListarPorEstado", new { estado = "PENDIENTE" }) |
+@Html.ActionLink("ASIGNADO", "ListarPorEstado", new { estado = "ASIGNADO" }) |
+@Html.ActionLink("EN PROCESO", "ListarPorEstado", new { estado = "EN_PROCESO" }) |
+@Html.ActionLink("RESUELTO", "ListarPorEstado", new { estado = "RESUELTO" }) |
+@Html.ActionLink("DESESTIMADO", "ListarPorEstado", new { estado = "DESESTIMADO" }) |
+@Html.ActionLink("TODOS LOS RECLAMOS", "Listar")
+<br />
+<br />
 <table class="table">
     <tr>
         <th>
