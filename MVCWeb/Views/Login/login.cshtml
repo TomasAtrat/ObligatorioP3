@@ -4,14 +4,15 @@
     ViewBag.Title = "login";
 }
 
-<h2>login</h2>
-
-@using (Html.BeginForm("login","Login")) 
+<div class="starter-template" style="margin-top: -20px">
+    <h1>Login</h1>
+</div>
+@using (Html.BeginForm("login", "Login"))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -38,6 +39,8 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+@section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval");
+}
+

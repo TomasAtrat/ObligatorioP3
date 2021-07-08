@@ -11,15 +11,15 @@ namespace CommonSolution.DTO
     public class DtoLogin
     {
 
-        [DisplayName("Nombre Usuario")]
+        [DisplayName("Nombre de usuario")]
         [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
 
         public string NombreUsuario { get; set; }
 
-        [DisplayName("Password")]
-        [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
-        [Required(ErrorMessage = "El {0} es requerido")]
+        [DisplayName("Contraseña")]
+        [StringLength(100, ErrorMessage = "La {0} no puede superar {1}")]
+        [Required(ErrorMessage = "La {0} es requerido")]
 
         public string Password { get; set; }
     }

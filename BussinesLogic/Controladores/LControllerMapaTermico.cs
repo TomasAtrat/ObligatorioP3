@@ -17,16 +17,16 @@ namespace BussinesLogic.Controladores
         }
         private Repository repository;
 
-       public List<DtoReclamo> PuntosReclamos(DateTime inicio, DateTime fin)
-        {
-            List<DtoReclamo> colpuntos = new List<DtoReclamo>();
+       //public List<DtoReclamo> PuntosReclamos(DateTime inicio, DateTime fin)
+       // {
+       //     List<DtoReclamo> colpuntos = new List<DtoReclamo>();
            
-            colpuntos = this.repository.ReclamoRepository.reclamoPorFecha(inicio, fin);
+       //     colpuntos = this.repository.ReclamoRepository.reclamoPorFecha(inicio, fin);
 
 
-            return colpuntos;
+       //     return colpuntos;
 
-        }
+       // }
             
 
 
