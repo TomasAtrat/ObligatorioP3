@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace MVCWeb.Controllers
 {
     public class UsuarioController : Controller
@@ -24,7 +25,7 @@ namespace MVCWeb.Controllers
             return Redirect("Listar");
 
         }
-
+        
         public ActionResult Listar()
         {
             LControllerUsuario controller = new LControllerUsuario();
@@ -33,7 +34,7 @@ namespace MVCWeb.Controllers
             
 
         }
-
+        
         public ActionResult ListarClientes()
         {
             LControllerUsuario controller = new LControllerUsuario();
@@ -55,12 +56,12 @@ namespace MVCWeb.Controllers
 
         }
         
-      public ActionResult Edit(string NombreUsuario, string password)
+        public ActionResult Edit(string NombreUsuario, string password)
         {
             LControllerUsuario context = new LControllerUsuario();
             return View(context.ExtraerPorNyP(NombreUsuario, password));
         }
-
+        
         [HttpPost]
         public ActionResult Edit(DtoUsuario UppDateUser)
         {

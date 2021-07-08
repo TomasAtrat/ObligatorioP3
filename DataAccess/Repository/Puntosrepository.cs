@@ -100,5 +100,7 @@ namespace DataAccess.Repository
             }
             return dtoPuntos;
         }
+
+      
     }
 }

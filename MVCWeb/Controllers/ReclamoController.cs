@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace MVCWeb.Controllers
 {
+    
     public class ReclamoController : Controller
     {
         // GET: Reclamo

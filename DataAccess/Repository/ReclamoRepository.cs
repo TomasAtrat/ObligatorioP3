@@ -60,8 +60,8 @@ namespace DataAccess.Repository
                         reclamo.IDCuadrilla = dto.IDCuadrilla;
                         reclamo.IDTipoReclamo = dto.IDTipoReclamo;
                         reclamo.IDZona = long.Parse(dto.IDZona);
-                        reclamo.Latitud = dto.Latitud;
-                        reclamo.Longitud = dto.Longitud;
+                        reclamo.Latitud =double.Parse(dto.Latitud);
+                        reclamo.Longitud = double.Parse(dto.Longitud);
                         reclamo.Observaciones = dto.Observaciones;
                         reclamo.Estado = dto.Estado.ToString();
                         reclamo.FechaHoraIngreso = dto.FechaHoraIngreso;
@@ -129,5 +129,15 @@ namespace DataAccess.Repository
             }
             return existe;
         }
-    }
+        public List<DtoReclamo> reclamoPorFecha(DateTime inicio, DateTime fin)
+        {
+            List<DtoReclamo> colreclamos = null;
+            using (Context contex = new Context())
+            {
+                colreclamos = this.reclamoMapper.mapToListDto(contex.t_RECLAMO.AsNoTracking().Where(w => w.FechaHoraIngreso >= inicio && w.FechaHoraIngreso <= fin).ToList());
+            }
+            return colreclamos;
+
+        }
+    }  
 }
