@@ -73,5 +73,10 @@ namespace BussinesLogic.Controladores
         {
             return this.repository.TipoReclamoRepository.getElementByIdTipoReclamo(id);
         }
+
+        public bool ExisteNombre(string nombre)
+        {
+            return this.repository.TipoReclamoRepository.ExisteTipoReclamo(nombre);
+        }
     }
 }

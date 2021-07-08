@@ -215,7 +215,6 @@
     <Content Include="Views\TipoReclamo_\Listar.cshtml" />
     <Content Include="Views\Cuadrilla\Edit.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
-    <Content Include="Views\Zona\Listar.cshtml" />
     <Content Include="Views\Reclamo\Editar.cshtml" />
     <Content Include="Views\Reclamo\NuevoReporte.cshtml" />
     <Content Include="Views\TipoReclamo_\Editar.cshtml" />

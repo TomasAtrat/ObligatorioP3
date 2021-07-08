@@ -58,5 +58,14 @@ namespace MVCWeb.Controllers
             controller.Modificacion(dto);
             return RedirectToAction("Listar");
         }
+
+        public JsonResult ValidarNombre(string nombre)
+        {
+            bool res = true;
+            L_ControllerTipoReclamo controller = new L_ControllerTipoReclamo();
+            if (controller.ExisteNombre(nombre))
+                res = false;
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
     }
 }

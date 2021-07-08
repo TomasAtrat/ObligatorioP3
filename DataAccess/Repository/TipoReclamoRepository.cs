@@ -103,15 +103,7 @@ namespace DataAccess.Repository
 
 
         }
-        public bool ExisteTipoReclamo(long id)
-        {
-            bool existe = false;
-            using (Context context = new Context())
-            {
-                existe = context.t_TIPO_RECLAMO.AsNoTracking().Any(a => a.ID == id);
-            }
-            return existe;
-        }
+
         public List<DtoTipoReclamo> ListarTipoReclamo()
         {
             List<DtoTipoReclamo> tiporeclamo = new List<DtoTipoReclamo>();
@@ -121,6 +113,16 @@ namespace DataAccess.Repository
                 tiporeclamo = this.TipoReclamoMapper.maptoListDto(entity);
             }
             return tiporeclamo;
+        }
+
+        public bool ExisteTipoReclamo(string nombre)
+        {
+            bool existe = false;
+            using (Context context = new Context())
+            {
+                existe = context.t_TIPO_RECLAMO.AsNoTracking().Any(a => a.Nombre == nombre);
+            }
+            return existe;
         }
     }
 }
