@@ -10,7 +10,7 @@ using System.Web.Security;
 
 namespace MVCWeb.Controllers
 {
-    public class LoginController : Controller
+    public class loginController : Controller
     {
         public ActionResult Login()
         {

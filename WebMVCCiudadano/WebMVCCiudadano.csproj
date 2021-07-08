@@ -222,10 +222,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BussinesLogic\BussinesLogic.csproj">
-      <Project>{0FAF8D8A-2F65-4549-A9BA-539648096B52}</Project>
-      <Name>BussinesLogic</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CommonSolution\CommonSolution.csproj">
       <Project>{F9C2D826-E055-401F-B807-02B7A7990A81}</Project>
       <Name>CommonSolution</Name>
