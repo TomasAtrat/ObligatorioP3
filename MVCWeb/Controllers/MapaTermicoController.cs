@@ -17,7 +17,15 @@ namespace MVCWeb.Controllers
             return View();
         }
 
+        [HttpPost]
+        public JsonResult ListPunto(DateTime Inicio, DateTime Fin)
+        {
+            LControllerMapaTermico Lcontroller= new LControllerMapaTermico();
+            List<DtoPunto> PuntosReclamo = Lcontroller.PuntosReclamos(Inicio, Fin);
 
+            return Json(PuntosReclamo,JsonRequestBehavior.AllowGet);
+        
+        }
 
 
     }

@@ -10,29 +10,33 @@
 {
     @Html.AntiForgeryToken()
 }    
-    <div class="form-horizontal">
+<div class="form-horizontal">
     <h4>Mapa Termico</h4>
-       <br/>
-       <br/>
-       <div id="CamposMtermicos">
-           <label>Fecha inicio Busqueda*</label>
-           
-           <label>Fecha fin Busqueda *</label>
-           <br />
-           <input type="date" id="iniciobusqueda" />
+    <br />
+    <br />
+    <div id="CamposMtermicos">
+        <label>Fecha inicio Busqueda*</label>
 
-          
-           <input type="date" id="finBusqueda" />
-           <hr />
-           @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-           
+        <label>Fecha fin Busqueda *</label>
+        <br />
+        <input type="date" id="iniciobusqueda" />
 
-           <div class="form-group">
-               <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
-                   <input type="submit" id="Busqueda" value="Buscar" onclick="FiltrarZomas()" />
-               </div>
-           </div>
-       </div>
-        
-    
-        
+
+        <input type="date" id="finBusqueda" />
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.Partial("Mapa")
+
+        <div class="form-group">
+            <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
+                <input type="submit" id="Busqueda" value="Buscar" onclick="Termico()" />
+            </div>
+        </div>
+    </div>
+    @section Scripts {
+
+        @Scripts.Render("~/bundles/Termico")
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/googleMaps")
+
+    }

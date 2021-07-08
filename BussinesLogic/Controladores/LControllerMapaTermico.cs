@@ -17,14 +17,23 @@ namespace BussinesLogic.Controladores
         }
         private Repository repository;
 
-       public List<DtoReclamo> PuntosReclamos(DateTime inicio, DateTime fin)
+       public List<DtoPunto> PuntosReclamos(DateTime inicio, DateTime fin)
         {
             List<DtoReclamo> colpuntos = new List<DtoReclamo>();
-           
+            List<DtoPunto> puntos = new List<DtoPunto>();
+            DtoPunto punto = new DtoPunto ();
             colpuntos = this.repository.ReclamoRepository.reclamoPorFecha(inicio, fin);
 
+            foreach (DtoReclamo item in colpuntos)
+            {
+                punto.lat = item.Latitud;
+                punto.lng = item.Longitud;
 
-            return colpuntos;
+                puntos.Add(punto);
+
+            }
+
+            return puntos;
 
         }
             
