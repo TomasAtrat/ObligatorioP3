@@ -29,7 +29,11 @@ namespace DataAccess.Repository
             {
                 usuario = context.t_USUARIO.AsNoTracking().FirstOrDefault(i => i.NombreUsuario == nickname && i.Password == password && i.Estado == true);
             }
-            return this.usuarioMapper.MapToDto(usuario);
+
+            if(usuario!=null)
+                return this.usuarioMapper.MapToDto(usuario);
+
+            return null;
         }
 
         public void AddUsuarioInBDD(DtoUsuario Dtousuario)

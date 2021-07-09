@@ -1,4 +1,5 @@
 ﻿using BussinesLogic.Controladores;
+using CommonSolution.Constantes;
 using CommonSolution.Dto;
 using CommonSolution.DTO;
 using System;
@@ -8,16 +9,15 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace MVCWeb.Controllers
+namespace WebMVCCiudadano.Controllers
 {
-    public class loginController : Controller
+    public class LoginController : Controller
     {
+
         public ActionResult Login()
         {
             if (User.Identity.IsAuthenticated == true)
-            {
-                return Redirect("/Home");
-            }
+                return Redirect("/Reclamo/Agregar");
 
             return View();
         }
@@ -25,20 +25,17 @@ namespace MVCWeb.Controllers
         [HttpPost]
         public ActionResult Login(DtoLogin dto)
         {
-            LControllerLogin login = new LControllerLogin();
-            DtoUsuario usuario = login.Registrado(dto.NombreUsuario, dto.Password);
-            if (usuario.NombreUsuario == dto.NombreUsuario && usuario.Password == dto.Password)
+            LControllerLogin controller = new LControllerLogin();
+            DtoUsuario usuario = controller.Registrado(dto.NombreUsuario, dto.Password);
+            if ((bool)!usuario.EsFuncionario)
             {
-
-                FormsAuthentication.SetAuthCookie(dto.NombreUsuario, true);
-
-
-                return Redirect("/Home");
+                FormsAuthentication.SetAuthCookie(dto.NombreUsuario, false);
+                Session[CLogin.KEY_SESSION_USERNAME] = dto.NombreUsuario;
+                return Redirect("/Reclamo/Agregar");
             }
-
             return View();
-
         }
+
         public ActionResult LogOut()
         {
             //SignOut() Limpia la Cookie de Autenticación

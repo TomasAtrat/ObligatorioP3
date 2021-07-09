@@ -10,6 +10,7 @@ using System.Web.Mvc;
 
 namespace MVCWeb.Controllers
 {
+    [Authorize]
     public class ReclamoController : Controller
     {
         public ActionResult Agregar()

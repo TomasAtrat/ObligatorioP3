@@ -19,42 +19,19 @@ namespace BussinesLogic.Controladores
 
         private Repository repository;
 
-
-        public string existeCuenta(string nickname, string password)
-        {
-            string url = "";
-            DtoUsuario dto = this.repository.UsuarioRepository.getElementById(nickname, password);
-            if (dto == null)
-            {
-                url = "";
-            }
-            else if ((bool)dto.EsFuncionario)
-            {
-                url = "";
-            }
-            else
-            {
-                url = "";
-            }
-            return url;
-        }
-
         public List<string> Alta(IDto dto)
         {
-            List<string> error = Validacion((DtoUsuario)dto);
+            List<string> error = new List<string>();
 
-            if (error.Count() == 0)
-
+            try
             {
-                try
-                {
-                  this.repository.UsuarioRepository.AddUsuarioInBDD((DtoUsuario)dto);
-                }
-                catch (Exception ex)
-                {
-                    error.Add(ex.Message);
-                }
+                this.repository.UsuarioRepository.AddUsuarioInBDD((DtoUsuario)dto);
             }
+            catch (Exception ex)
+            {
+                error.Add(ex.Message);
+            }
+
             return error;
         }
 
@@ -75,26 +52,11 @@ namespace BussinesLogic.Controladores
 
         public List<string> Modificacion(IDto dto)
         {
-            List<string> error = Validacion((DtoUsuario)dto);
-            if (error.Count() == 0)
-            {
-                this.repository.UsuarioRepository.UpDateUser((DtoUsuario)dto);
-            }
-            return error;
-        }
+            List<string> error = new List<string>();
 
-        public List<string> Validacion(DtoUsuario user)
-        {
-            List<string> errores = new List<string>();
-            if (user.Nombre.Count() > 51 && user.Apellido.Count() > 51 && user.NombreUsuario.Count() > 51)
-            {
-                errores.Add("Verifique el largo de los datos");
-            }
-            if (user.Password.Count() > 51)
-            {
-                errores.Add("Password demasiado largo");
-            }
-            return errores;
+            this.repository.UsuarioRepository.UpDateUser((DtoUsuario)dto);
+
+            return error;
         }
 
         public List<IDto> ListAll()
@@ -102,7 +64,7 @@ namespace BussinesLogic.Controladores
             return this.repository.UsuarioRepository.ListarUsuarios().Cast<IDto>().ToList();
         }
 
-        
+
         public List<DtoUsuario> ListarFuncionarios()
         {
             List<DtoUsuario> dtoUsuarios = this.repository.UsuarioRepository.ListarUsuarios();
@@ -123,12 +85,12 @@ namespace BussinesLogic.Controladores
         }
         public DtoUsuario ExtraerUsuaroFuncionario(DtoUsuario dto)
         {
-            return this.repository.UsuarioRepository.getElementById(dto.NombreUsuario , dto.Password);
+            return this.repository.UsuarioRepository.getElementById(dto.NombreUsuario, dto.Password);
         }
         public DtoUsuario ExtraerPorNyP(string nombre, string paswword)
         {
-            
-            return this.repository.UsuarioRepository.getElementById(nombre,paswword);
+
+            return this.repository.UsuarioRepository.getElementById(nombre, paswword);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CommonSolution.Dto
         [DisplayName("Nombre Usuario")] 
         [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
-       
+        
         public string NombreUsuario { get; set; }
         
         [DisplayName("Password")]

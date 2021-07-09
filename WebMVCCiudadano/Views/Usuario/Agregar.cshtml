@@ -1,18 +1,19 @@
 ﻿@model CommonSolution.Dto.DtoUsuario
 
 @{
-    ViewBag.Title = "usuario";
+    ViewBag.Title = "Registrarse";
 }
 
 
-
-@using (Html.BeginForm("Agregar","Usuario")) 
+<div class="starter-template" style="margin-top: -20px">
+    <h1>Registrarse</h1>
+    <hr />
+</div>
+@using (Html.BeginForm("Agregar", "Usuario"))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>DtoUsuario</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -63,18 +64,8 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EsFuncionario, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.EsFuncionario)
-                    @Html.ValidationMessageFor(model => model.EsFuncionario, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
+                <input type="submit" id="submit" value="Submit" />
             </div>
         </div>
     </div>

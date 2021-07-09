@@ -1,0 +1,43 @@
+﻿@model CommonSolution.DTO.DtoLogin
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Layout2.cshtml";
+}
+
+<div class="starter-template" style="margin-top: -20px">
+    <h1>Login</h1>
+    <hr />
+</div>
+
+<h3>@Session["ERROR"]</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NombreUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NombreUsuario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
+                <input type="submit" id="submit" value="Submit" />
+            </div>
+        </div>
+    </div>
+}

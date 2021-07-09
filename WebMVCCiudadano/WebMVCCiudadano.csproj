@@ -129,6 +129,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CuadrillaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReclamoController.cs" />
     <Compile Include="Controllers\TipoReclamo_Controller.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -209,6 +210,8 @@
     <Content Include="Scripts\support\jquery-3.4.1.min.map" />
     <Content Include="Scripts\support\jquery-3.4.1.slim.min.map" />
     <Content Include="Views\Reclamo\VerHistorico.cshtml" />
+    <Content Include="Views\Shared\Layout2.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -222,6 +225,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BussinesLogic\BussinesLogic.csproj">
+      <Project>{0FAF8D8A-2F65-4549-A9BA-539648096B52}</Project>
+      <Name>BussinesLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CommonSolution\CommonSolution.csproj">
       <Project>{F9C2D826-E055-401F-B807-02B7A7990A81}</Project>
       <Name>CommonSolution</Name>
