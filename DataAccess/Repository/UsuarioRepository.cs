@@ -134,5 +134,17 @@ namespace DataAccess.Repository
             }
             return existe;
         }
+
+        public DtoUsuario getUserByMail(string mail)
+        {
+            t_USUARIO user = new t_USUARIO();
+            using (Context context=new Context())
+            {
+                user = context.t_USUARIO.AsNoTracking().FirstOrDefault(i => i.Email == mail);
+            }
+            if (user != null)
+                return this.usuarioMapper.MapToDto(user);
+            return null;
+        }
     }
 }
