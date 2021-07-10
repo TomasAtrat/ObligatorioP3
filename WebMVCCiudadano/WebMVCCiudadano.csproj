@@ -212,6 +212,7 @@
     <Content Include="Views\Reclamo\VerHistorico.cshtml" />
     <Content Include="Views\Shared\Layout2.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Usuario\RecuperarCodigo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

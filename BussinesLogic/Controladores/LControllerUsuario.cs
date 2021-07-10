@@ -83,14 +83,20 @@ namespace BussinesLogic.Controladores
         {
             throw new NotImplementedException();
         }
+
         public DtoUsuario ExtraerUsuaroFuncionario(DtoUsuario dto)
         {
             return this.repository.UsuarioRepository.getElementById(dto.NombreUsuario, dto.Password);
         }
+
         public DtoUsuario ExtraerPorNyP(string nombre, string paswword)
         {
-
             return this.repository.UsuarioRepository.getElementById(nombre, paswword);
+        }
+
+        public bool ValidarNombre(string nombreUsuario)
+        {
+            return this.repository.UsuarioRepository.ValidarNombre(nombreUsuario);
         }
     }
 }

@@ -27,12 +27,15 @@ namespace WebMVCCiudadano.Controllers
         {
             LControllerLogin controller = new LControllerLogin();
             DtoUsuario usuario = controller.Registrado(dto.NombreUsuario, dto.Password);
-            if ((bool)!usuario.EsFuncionario)
+            if (usuario!=null && (bool)!usuario.EsFuncionario)
             {
                 FormsAuthentication.SetAuthCookie(dto.NombreUsuario, false);
                 Session[CLogin.KEY_SESSION_USERNAME] = dto.NombreUsuario;
+                Session[CLogin.KEY_SESSION_ERROR] = "";
                 return Redirect("/Reclamo/Agregar");
-            }
+            }            
+            Session[CLogin.KEY_SESSION_ERROR] = "Ups... al parecer no te has registrado aún.";
+
             return View();
         }
 

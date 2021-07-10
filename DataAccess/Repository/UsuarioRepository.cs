@@ -125,5 +125,14 @@ namespace DataAccess.Repository
             return ListUsuarios;
         }
 
+        public bool ValidarNombre(string userName)
+        {
+            bool existe;
+            using (Context context= new Context())
+            {
+                existe = context.t_USUARIO.Any(i => i.NombreUsuario == userName);
+            }
+            return existe;
+        }
     }
 }

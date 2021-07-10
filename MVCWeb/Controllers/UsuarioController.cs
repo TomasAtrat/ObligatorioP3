@@ -41,9 +41,6 @@ namespace MVCWeb.Controllers
             List<DtoUsuario> dto = controller.ListarUsuarios();
             return View(dto);
         }
-
-
-
         
         public ActionResult Delete(string NombreUsuario, string password)
         {
@@ -69,6 +66,15 @@ namespace MVCWeb.Controllers
             context.Modificacion(UppDateUser);
 
             return Redirect("Listar");
+        }
+
+        public JsonResult ValidarNombre(string NombreUsuario)
+        {
+            bool res = true;
+            LControllerUsuario controller = new LControllerUsuario();
+            if (controller.ValidarNombre(NombreUsuario))
+                res = false;
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -25,7 +25,24 @@ namespace MVCWeb.Controllers
 
             return View();
         }
-        
 
+        public JsonResult ValidarNombre(string NombreUsuario)
+        {
+            bool res = true;
+            LControllerUsuario controller = new LControllerUsuario();
+            if (controller.ValidarNombre(NombreUsuario))
+                res = false;
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult RecuperarCodigo()
+        {
+            return View();
+        }
+
+        public ActionResult RecuperarCodigo(DtoUsuario dto)
+        {
+            return View();
+        }
     }
 }

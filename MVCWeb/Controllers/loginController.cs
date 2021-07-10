@@ -27,7 +27,7 @@ namespace MVCWeb.Controllers
         {
             LControllerLogin login = new LControllerLogin();
             DtoUsuario usuario = login.Registrado(dto.NombreUsuario, dto.Password);
-            if (usuario.NombreUsuario == dto.NombreUsuario && usuario.Password == dto.Password && dto != null)
+            if (usuario.NombreUsuario == dto.NombreUsuario && usuario.Password == dto.Password)
             {
 
                 FormsAuthentication.SetAuthCookie(dto.NombreUsuario, true);

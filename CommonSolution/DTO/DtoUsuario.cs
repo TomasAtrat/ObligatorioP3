@@ -6,42 +6,43 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace CommonSolution.Dto
 {
     public class DtoUsuario : IDto
     {
         [DisplayName("Nombre Usuario")] 
-        [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
+        [StringLength(50, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
-        
+        [Remote("ValidarNombre", "Usuario", ErrorMessage = "Ya existe un usuario con ese nombre")]
         public string NombreUsuario { get; set; }
         
-        [DisplayName("Password")]
-        [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
-        [Required(ErrorMessage = "El {0} es requerido")]
+        [DisplayName("Contraseña")]
+        [StringLength(50, ErrorMessage = "La {0} no puede superar {1}")]
+        [Required(ErrorMessage = "La {0} es requerido")]
 
         public string Password { get; set; }
       
         [DisplayName("Nombre")]
-        [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
+        [StringLength(50, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
         public string Nombre { get; set; }
        
         [DisplayName("Apellido")]
-        [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
+        [StringLength(50, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
 
         public string Apellido { get; set; }
 
         [DisplayName("Email")]
-        [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
+        [StringLength(320, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
 
         public string Email { get; set; }
 
         [DisplayName("Telefono")]
-        [StringLength(100, ErrorMessage = "El {0} no puede superar {1}")]
+        [StringLength(50, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
 
         public string Telefono { get; set; }
