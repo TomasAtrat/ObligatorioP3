@@ -12,29 +12,24 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">TOLEDO</a>
+        <a class="navbar-brand" href="#">TOLEDO <br /> RESPONDE</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item"> @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" }) </li>
-                <li class="nav-item"> @Html.ActionLink("Agregar Tipo de reclamo", "Agregar", "TipoReclamo_", null, new { @class = "nav-link" }) </li>
-                <li class="nav-item"> @Html.ActionLink("Listar Tipo de reclamo", "Listar", "TipoReclamo_", null, new { @class = "nav-link" }) </li>
-                <li class="nav-item"> @Html.ActionLink("Agregar zona", "Agregar", "Zona", null, new { @class = "nav-link" }) </li>
-                <li class="nav-item"> @Html.ActionLink("Nueva Cuadrilla", "Agregar", "Cuadrilla", null, new { @class = "nav-link" }) </li>
-                <li class="nav-item"> @Html.ActionLink("Listar Cuadrilla", "Listar", "Cuadrilla", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Nuevo tipo de reclamo", "Agregar", "TipoReclamo_", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Tipos de reclamo", "Listar", "TipoReclamo_", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Nueva zona", "Agregar", "Zona", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Nueva cuadrilla", "Agregar", "Cuadrilla", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Listar cuadrillas", "Listar", "Cuadrilla", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Listar reclamos", "Listar", "Reclamo", null, new { @class = "nav-link" }) </li>
-                <li class="nav-item"> @Html.ActionLink("Nuevo Usuario", "Agregar", "Usuario", null, new { @class = "nav-link" }) </li>
-                <li class="nav-item"> @Html.ActionLink("Listar Funcionarios", "Listar", "Usuario", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Nuevo funcionario", "Agregar", "Usuario", null, new { @class = "nav-link" }) </li>
+                <li class="nav-item"> @Html.ActionLink("Listar funcionarios", "Listar", "Usuario", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Reclamos atrasados", "ReclamosAtrasados", "Reporte", null, new { @class = "nav-link" }) </li>
                 <li class="nav-item"> @Html.ActionLink("Cuadrillas más eficientes", "CuadrillasMasEficientes", "Reporte", null, new { @class = "nav-link" }) </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
     </nav>
     <main role="main" class="container">

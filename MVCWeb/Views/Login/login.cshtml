@@ -1,13 +1,17 @@
 ﻿@model CommonSolution.DTO.DtoLogin
 
 @{
-    ViewBag.Title = "login";
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/Layout2.cshtml";
 }
 
 <div class="starter-template" style="margin-top: -20px">
     <h1>Login</h1>
+    <hr />
+    <h4>@Session["ERROR"]</h4>
 </div>
-@using (Html.BeginForm("login", "Login"))
+
+@using (Html.BeginForm("Login", "Login"))
 {
     @Html.AntiForgeryToken()
 

@@ -223,7 +223,7 @@
     <Content Include="Views\Reclamo\VerHistorico.cshtml" />
     <Content Include="Views\Reporte\ReclamosAtrasados.cshtml" />
     <Content Include="Views\Reporte\CuadrillasMasEficientes.cshtml" />
-    <Content Include="Views\Login\login.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

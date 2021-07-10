@@ -61,8 +61,8 @@ namespace MVCWeb.Controllers
 
             string subject = "Recupera tu cuenta de TOLEDO RESPONDE";
             string message = $"<h2>¡Hola {user.NombreUsuario}! </h2> <p> Tu nombre de usuario en TOLEDO RESPONDE es: <b>{user.NombreUsuario} </b>" +
-                $"y tu contraseña es: <b> {user.Password}. </b> </p> <p> ¡Muchas gracias por tu colaboración con la comunidad! </p> " +
-                $" <br /> <p> Si no has solicitado esta información puedes ignorar este mensaje </p>";
+                            $"y tu contraseña es: <b> {user.Password}. </b> </p> <p> ¡Muchas gracias por tu colaboración con la comunidad! </p> " +
+                            $" <br /> <p> Si no has solicitado esta información puedes ignorar este mensaje </p>";
             MailMessage mailMessage = new MailMessage();
             mailMessage.To.Add(user.Email);
             mailMessage.Subject = subject;

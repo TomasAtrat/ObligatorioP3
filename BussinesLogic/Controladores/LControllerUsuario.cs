@@ -103,5 +103,10 @@ namespace BussinesLogic.Controladores
         {
             return this.repository.UsuarioRepository.getUserByMail(mail);
         }
+
+        public bool ValidarMail(string mail)
+        {
+            return this.repository.UsuarioRepository.ValidarMail(mail);
+        }
     }
 }

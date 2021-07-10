@@ -146,5 +146,15 @@ namespace DataAccess.Repository
                 return this.usuarioMapper.MapToDto(user);
             return null;
         }
+
+        public bool ValidarMail(string mail)
+        {
+            bool existe;
+            using (Context context= new Context())
+            {
+                existe = context.t_USUARIO.Any(i => i.Email == mail);
+            }
+            return existe;
+        }
     }
 }

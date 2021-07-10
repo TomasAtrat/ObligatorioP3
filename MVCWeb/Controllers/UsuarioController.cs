@@ -31,8 +31,6 @@ namespace MVCWeb.Controllers
             LControllerUsuario controller = new LControllerUsuario();
             List<DtoUsuario> dto = controller.ListarFuncionarios();
             return View(dto);
-            
-
         }
         
         public ActionResult ListarClientes()
@@ -76,5 +74,15 @@ namespace MVCWeb.Controllers
                 res = false;
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult ValidarMail(string Email)
+        {
+            bool res = true;
+            LControllerUsuario controller = new LControllerUsuario();
+            if (controller.ValidarMail(Email))
+                res = false;
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+        
     }
 }
