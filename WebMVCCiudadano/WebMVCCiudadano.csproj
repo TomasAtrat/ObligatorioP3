@@ -127,11 +127,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CuadrillaController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ReclamoController.cs" />
-    <Compile Include="Controllers\TipoReclamo_Controller.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ZonaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -197,16 +194,12 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Reclamo\Agregar.cshtml" />
     <Content Include="Views\Reclamo\ListarReclamos.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\Mapa.cshtml" />
     <Content Include="Views\Usuario\Agregar.cshtml" />
-    <Content Include="Views\Usuario\Edit.cshtml" />
-    <Content Include="Views\Usuario\Listar.cshtml" />
-    <Content Include="Views\Usuario\ListarClientes.cshtml" />
     <Content Include="Scripts\support\jquery-3.4.1.min.map" />
     <Content Include="Scripts\support\jquery-3.4.1.slim.min.map" />
     <Content Include="Views\Reclamo\VerHistorico.cshtml" />

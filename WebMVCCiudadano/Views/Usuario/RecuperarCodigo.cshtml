@@ -1,7 +1,7 @@
 ﻿@model CommonSolution.Dto.DtoUsuario
 
 @{
-    ViewBag.Title = "RecuperarCodigo";
+    ViewBag.Title = "Recuperar contraseña";
     Layout = "~/Views/Shared/Layout2.cshtml";
 }
 
@@ -9,8 +9,9 @@
     <h1>Recuperar contraseña</h1>
     <p class="lead">Escribe tu correo electrónico para recuperar tu contraseña</p>
     <hr />
+    <h4>@Session["EMAIL_MSSG"]</h4>
 </div>
-@using (Html.BeginForm())
+@using (Html.BeginForm("RecuperarCodigo", "Usuario"))
 {
     @Html.AntiForgeryToken()
 
@@ -24,7 +25,7 @@
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        
         <div class="form-group">
             <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
                 <input type="submit" id="submit" value="Submit" />

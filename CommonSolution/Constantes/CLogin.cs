@@ -11,5 +11,6 @@ namespace CommonSolution.Constantes
         public const string KEY_SESSION_USERNAME = "USERNAME";
         public const string KEY_SESSION_PASSWORD = "PASSWORD";
         public const string KEY_SESSION_ERROR = "ERROR";
+        public const string KEY_SESSION_EMAIL_MSSG = "EMAIL_MSSG";
     }
 }
