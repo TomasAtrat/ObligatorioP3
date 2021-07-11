@@ -156,6 +156,7 @@
     <Content Include="Content\IMG\green-dot.png" />
     <Content Include="Content\IMG\MaquinaEsc.png" />
     <Content Include="Content\IMG\outline_gps_fixed_black_24dp.png" />
+    <Content Include="Content\IMG\red-dot.png" />
     <Content Include="Content\IMG\toledoFondo.jpg" />
     <Content Include="Content\IMG\ToledoFondoIngreso.jpg" />
     <Content Include="Content\IMG\yellow-dot.png" />
@@ -207,7 +208,6 @@
     <Content Include="Views\Usuario\Agregar.cshtml" />
     <Content Include="Views\Cuadrilla\Agregar.cshtml" />
     <Content Include="Views\Cuadrilla\Listar.cshtml" />
-    <Content Include="Views\Cuadrilla\lstado.cshtml" />
     <Content Include="Views\Usuario\Listar.cshtml" />
     <Content Include="Views\Reclamo\Agregar.cshtml" />
     <Content Include="Views\Reclamo\Listar.cshtml" />
@@ -224,6 +224,9 @@
     <Content Include="Views\Reporte\ReclamosAtrasados.cshtml" />
     <Content Include="Views\Reporte\CuadrillasMasEficientes.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Cuadrilla\ReclamosPorIdCuadrilla.cshtml" />
+    <Content Include="Views\Shared\Layout2.cshtml" />
+    <Content Include="Views\Usuario\RecuperarCodigo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

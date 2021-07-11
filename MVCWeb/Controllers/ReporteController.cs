@@ -26,6 +26,5 @@ namespace MVCWeb.Controllers
             List<DtoCuadrilla> colDtos = controller.cuadrillasMasEficientes().OrderBy(i => i.promedio).ToList();
             return View(colDtos);
         }
-
     }
 }

@@ -67,9 +67,7 @@ namespace BussinesLogic.Controladores
 
         public List<DtoUsuario> ListarFuncionarios()
         {
-            List<DtoUsuario> dtoUsuarios = this.repository.UsuarioRepository.ListarUsuarios();
-            return dtoUsuarios.Where(i => i.EsFuncionario == true).ToList();
-
+            return this.repository.UsuarioRepository.ListarUsuarios().Where(i => i.EsFuncionario==true).ToList();
         }
 
         public List<DtoUsuario> ListarUsuarios()

@@ -4,18 +4,14 @@
     ViewBag.Title = "Listar";
 }
 
-<h2>Listar</h2>
+<div class="starter-template" style="margin-top: -20px">
+    <h1>Listar funcionarios</h1>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Agregar")
-</p>
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.NombreUsuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nombre)
@@ -37,9 +33,6 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.NombreUsuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nombre)

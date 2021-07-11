@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CommonSolution.Dto.DtoReclamo>
+
+@{
+    ViewBag.Title = "Reclamos por cuadrilla";
+}
+
+<div class="starter-template" style="margin-top: -20px">
+    <h1>Reclamos asignados a cuadrilla</h1>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDZona)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IDTipoReclamo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaHoraIngreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitud)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ID)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Estado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDZona)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IDTipoReclamo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FechaHoraIngreso)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Observaciones)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Latitud)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Longitud)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Observaciones)
+    </td>
+</tr>
+    }
+
+</table>

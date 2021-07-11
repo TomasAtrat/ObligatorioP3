@@ -52,7 +52,11 @@ namespace MVCWeb.Controllers
             {
                 this.EnviarMail(user);
             }
-            //Session[CLogin.KEY_SESSION_EMAIL_MSSG] = $"Ups... parece que aún no te has registrado";
+            else
+            {
+                Session[CLogin.KEY_SESSION_EMAIL_MSSG] = $"Ups... parece que aún no te has registrado";
+            }
+
             return View();
         }
 

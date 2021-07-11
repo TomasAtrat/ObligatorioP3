@@ -75,5 +75,13 @@ namespace MVCWeb.Controllers
             return Redirect("~/Cuadrilla/Listar");
         }
 
+        [HttpGet]
+        public ActionResult ReclamosPorIdCuadrilla(long id)
+        {
+            ControllerReclamos control = new ControllerReclamos();
+            List<DtoReclamo> ListaDeReclamos = control.ListAll().Cast<DtoReclamo>().ToList();
+            ListaDeReclamos = ListaDeReclamos.Where(w => w.Estado.ToString() == "ASIGNADO" || w.Estado.ToString() == "EN_PROCESO").ToList();
+            return View(ListaDeReclamos);
+        }
     }
 }

@@ -25,25 +25,27 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.encargado)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.nombre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.cantidadPeones)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Observaciones)
-    </td>
-    <td>
-        @Html.ActionLink("Modificar", "Edit", new {  id=item.id  }) |
-        @Html.ActionLink("Borrar", "Delete", new {  id=item.id  })
-    </td>
-</tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.encargado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidadPeones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observaciones)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.id }) |
+                @Html.ActionLink("Reclamos asignados", "ReclamosPorIdCuadrilla", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>
