@@ -1,5 +1,6 @@
 ﻿using BussinesLogic.Controladores;
 using BussinesLogic.Interfaces;
+using CommonSolution.Constantes;
 using CommonSolution.Dto;
 using System;
 using System.Collections.Generic;
@@ -84,6 +85,7 @@ namespace MVCWeb.Controllers
             controller.CambiarEstadoReclamo(dto);
             DtoHistoricoReclamo dtoHistoricoReclamo = controller.VerHistorico().Last();
             dtoHistoricoReclamo.Comentarios = dto.Comentarios;
+            dtoHistoricoReclamo.nombreUsuario = (string)Session[CLogin.KEY_SESSION_USERNAME];
             controller.ActualizarHistorico(dtoHistoricoReclamo);
             return RedirectToAction("Listar");
         }

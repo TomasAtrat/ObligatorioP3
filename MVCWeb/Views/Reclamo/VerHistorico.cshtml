@@ -29,6 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Comentarios)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreUsuario)
+        </th>
         <th></th>
     </tr>
 
@@ -52,6 +55,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Comentarios)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreUsuario)
             </td>
         </tr>
     }
