@@ -21,10 +21,9 @@ var infowindow;
 
    function Termico()
    {
-       var Fechainicio = document.getElementById("iniciobusqueda").value;
-       var FechaFin = document.getElementById("finBusqueda").value;
+       
        $.ajax({
-           type: "POST",
+           type:"GET",
            data: Inicio = Fechainicio , Fin = FechaFin,
            contentType: "application/json",
            url: "http://localhost:60096/MapaTermico/ListPunto",
