@@ -17,12 +17,11 @@ namespace MVCWeb.Controllers
             return View();
         }
 
-        [HttpPost]
-        public JsonResult ListPunto(DateTime Inicio, DateTime Fin)
+        [HttpGet]
+        public JsonResult ListPunto(DtoReclamo dto)
         {
             LControllerMapaTermico Lcontroller= new LControllerMapaTermico();
-            List<DtoPunto> PuntosReclamo = Lcontroller.PuntosReclamos(Inicio, Fin);
-
+            List<DtoPunto> PuntosReclamo = Lcontroller.PuntosReclamos(DateTime.Parse(dto.inicio), DateTime.Parse(dto.fin));
             return Json(PuntosReclamo,JsonRequestBehavior.AllowGet);
         
         }

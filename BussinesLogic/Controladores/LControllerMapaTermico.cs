@@ -22,7 +22,7 @@ namespace BussinesLogic.Controladores
             List<DtoReclamo> colpuntos = new List<DtoReclamo>();
             List<DtoPunto> puntos = new List<DtoPunto>();
             DtoPunto punto = new DtoPunto ();
-            colpuntos = this.repository.ReclamoRepository.reclamoPorFecha(inicio, fin);
+            colpuntos = this.repository.ReclamoRepository.reclamoPorFecha(inicio, fin));
 
             foreach (DtoReclamo item in colpuntos)
             {

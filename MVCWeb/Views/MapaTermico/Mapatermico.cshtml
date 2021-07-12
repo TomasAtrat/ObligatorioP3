@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-}    
+}
 <div class="form-horizontal">
     <h4>Mapa Termico</h4>
     <br />
@@ -29,14 +29,15 @@
 
         <div class="form-group">
             <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
-                <input type="submit" id="Busqueda" value="Buscar" onclick="Termico()" />
+                <input type="button" id="Busqueda" value="Buscar" onclick="Termico()" />
             </div>
         </div>
     </div>
-    @section Scripts {
+</div>
+@section Scripts {
 
-        @Scripts.Render("~/bundles/Termico")
-        @Scripts.Render("~/bundles/jqueryval")
-        @Scripts.Render("~/bundles/googleMaps")
+    @Scripts.Render("~/bundles/Termico")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/googleMaps")
 
-    }
+}
