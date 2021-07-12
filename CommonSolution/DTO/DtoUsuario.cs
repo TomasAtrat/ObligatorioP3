@@ -38,7 +38,6 @@ namespace CommonSolution.Dto
         [DisplayName("Email")]
         [StringLength(320, ErrorMessage = "El {0} no puede superar {1}")]
         [Required(ErrorMessage = "El {0} es requerido")]
-        [Remote("ValidarMail", "Usuario", ErrorMessage = "Ya existe una cuenta con ese correo")]
         public string Email { get; set; }
 
         [DisplayName("Telefono")]

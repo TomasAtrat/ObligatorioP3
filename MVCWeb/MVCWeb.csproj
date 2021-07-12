@@ -134,7 +134,6 @@
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Controllers\ReclamoController.cs" />
     <Compile Include="Controllers\ZonaController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +163,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\CSS\Site.css" />
+    <Content Include="Scripts\src\MapsTermico.js" />
     <Content Include="Scripts\src\Reclamo.js" />
     <Content Include="Scripts\src\VisorReclamos.js" />
     <Content Include="Scripts\support\bootstrap.js" />
@@ -200,9 +200,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Zona\Agregar.cshtml" />
     <Content Include="Views\Shared\Mapa.cshtml" />
     <Content Include="Views\Usuario\Agregar.cshtml" />
@@ -215,7 +212,6 @@
     <Content Include="Views\TipoReclamo_\Agregar.cshtml" />
     <Content Include="Views\TipoReclamo_\Listar.cshtml" />
     <Content Include="Views\Cuadrilla\Edit.cshtml" />
-    <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Reclamo\Editar.cshtml" />
     <Content Include="Views\Reclamo\NuevoReporte.cshtml" />
     <Content Include="Views\TipoReclamo_\Editar.cshtml" />
@@ -227,6 +223,7 @@
     <Content Include="Views\Cuadrilla\ReclamosPorIdCuadrilla.cshtml" />
     <Content Include="Views\Shared\Layout2.cshtml" />
     <Content Include="Views\Usuario\RecuperarCodigo.cshtml" />
+    <Content Include="Views\Reporte\MapaTermico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

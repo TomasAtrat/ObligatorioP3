@@ -1,0 +1,38 @@
+﻿@model CommonSolution.Dto.DtoReclamo
+
+@{
+    ViewBag.Title = "Mapa térmico de reclamos";
+}
+
+<div class="starter-template" style="margin-top: -20px">
+    <h1>Mapa térmico de reclamos</h1>
+    <hr />
+    <p class="lead">Mostrar reclamos en un intervalo de tiempo</p>
+</div>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <div id="CamposMtermicos" style="width:60%; margin: auto">
+            <label>Fecha de inicio *</label>
+            <input type="date" id="iniciobusqueda" />
+            <label>Fecha de fin *</label>
+            <input type="date" id="finBusqueda" max="@DateTime.Today" />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <hr />
+        </div>
+        @Html.Partial("Mapa")
+
+        <div class="form-group">
+            <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
+                <input type="button" id="Busqueda" value="Buscar" onclick="Termico()" />
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/Termico")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/googleMaps")
+}

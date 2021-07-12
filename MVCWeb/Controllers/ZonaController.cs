@@ -9,8 +9,7 @@ using System.Web.Mvc;
 
 namespace MVCWeb.Controllers
 {
-
-
+    [Authorize]
     public class ZonaController : Controller
     {
         public ActionResult Index()

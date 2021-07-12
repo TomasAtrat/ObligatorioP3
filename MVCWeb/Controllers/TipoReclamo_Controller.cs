@@ -10,6 +10,7 @@ using CommonSolution.Dto;
 
 namespace MVCWeb.Controllers
 {
+    [Authorize]
     public class TipoReclamo_Controller : Controller
     {
         public ActionResult Agregar()

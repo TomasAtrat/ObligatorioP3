@@ -18,13 +18,13 @@
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.id)
 
-<div class="form-group">
-    @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
-        @Html.EditorFor(model => model.id, new { htmlAttributes = new { @class = "form-control", @readonly= "readonly" } })
-        @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.id, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.id, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
+        </div>
     </div>
-</div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.encargado, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -59,8 +59,8 @@
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+        <div id="buttonContainer" style="width: 20%; margin: auto; text-align:center">
+            <input type="submit" id="submit" value="Submit" />
         </div>
     </div>
 </div>

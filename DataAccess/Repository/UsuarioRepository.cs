@@ -98,11 +98,8 @@ namespace DataAccess.Repository
                         t_USUARIO user = context.t_USUARIO.FirstOrDefault(f => f.NombreUsuario == usuario.NombreUsuario && f.Password == usuario.Password);
                         user.Apellido = usuario.Apellido;
                         user.Nombre = usuario.Nombre;
-                        user.NombreUsuario = usuario.NombreUsuario;
                         user.Password = usuario.Password;
-                        user.Email = usuario.Email;
                         user.Telefono = usuario.Telefono;
-                        user.EsFuncionario = usuario.EsFuncionario;
                         // user.t_RECLAMO = this.reclamosMapeo.mapToListDto(usuario.colReclamos);
                         context.SaveChanges();
                         trann.Commit();

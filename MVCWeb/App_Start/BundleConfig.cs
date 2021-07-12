@@ -32,7 +32,9 @@ namespace MVCWeb
                          "~/Scripts/src/Reclamo.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/googleMaps").Include(
-                     "~/Scripts/src/IniciarMapa.js"));
+                     "~/Scripts/src/IniciarMapa.js")); 
+            bundles.Add(new ScriptBundle("~/bundles/Termico").Include(
+                         "~/Scripts/src/MapsTermico.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/CSS/bootstrap.css",

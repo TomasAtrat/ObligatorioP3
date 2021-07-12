@@ -42,5 +42,7 @@ namespace CommonSolution.Dto
         [DisplayName("Cuadrilla")]
         [Required(ErrorMessage = "Se debe especificar un directorio")]
         public string directorio { get; set; }
+        public string inicio { get; set; }
+        public string fin { get; set; }
     }
 }

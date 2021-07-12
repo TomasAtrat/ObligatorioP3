@@ -52,6 +52,7 @@ namespace DataAccess.Repository
                     {
                         t_HISTORICO_ESTADO_RECLAMO entity = context.t_HISTORICO_ESTADO_RECLAMO.FirstOrDefault(i => i.ID == dto.ID);
                         entity.Comentarios = dto.Comentarios;
+                        entity.NombreUsuario = dto.nombreUsuario;
                         context.SaveChanges();
                         tran.Commit();
                     }

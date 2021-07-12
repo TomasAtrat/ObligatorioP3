@@ -15,11 +15,12 @@ namespace MVCWeb.Controllers
 {
     public class UsuarioController : Controller
     {
-        // GET: Usuario
+        [Authorize]
         public ActionResult Agregar()
         {
             return View();
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Agregar(DtoUsuario dto)
         {
@@ -28,21 +29,21 @@ namespace MVCWeb.Controllers
             Lusuario.Alta(dto);
             return View();
         }
-        
+        [Authorize]
         public ActionResult Listar()
         {
             LControllerUsuario controller = new LControllerUsuario();
             List<DtoUsuario> dto = controller.ListarFuncionarios();
             return View(dto);
         }
-        
+        [Authorize]
         public ActionResult ListarClientes()
         {
             LControllerUsuario controller = new LControllerUsuario();
             List<DtoUsuario> dto = controller.ListarUsuarios();
             return View(dto);
         }
-        
+        [Authorize]
         public ActionResult Delete(string NombreUsuario, string password)
         {
             DtoUsuario usuario = new DtoUsuario();
@@ -54,20 +55,20 @@ namespace MVCWeb.Controllers
 
         }
         
-        public ActionResult Edit(string NombreUsuario, string password)
-        {
-            LControllerUsuario context = new LControllerUsuario();
-            return View(context.ExtraerPorNyP(NombreUsuario, password));
-        }
+        //public ActionResult Edit(string NombreUsuario, string password)
+        //{
+        //    LControllerUsuario context = new LControllerUsuario();
+        //    return View(context.ExtraerPorNyP(NombreUsuario, password));
+        //}
         
-        [HttpPost]
-        public ActionResult Edit(DtoUsuario UppDateUser)
-        {
-            LControllerUsuario context = new LControllerUsuario();
-            context.Modificacion(UppDateUser);
+        //[HttpPost]
+        //public ActionResult Edit(DtoUsuario UppDateUser)
+        //{
+        //    LControllerUsuario context = new LControllerUsuario();
+        //    context.Modificacion(UppDateUser);
 
-            return Redirect("Listar");
-        }
+        //    return Redirect("Listar");
+        //}
 
         public JsonResult ValidarNombre(string NombreUsuario)
         {
@@ -96,7 +97,7 @@ namespace MVCWeb.Controllers
         {
             LControllerUsuario controller = new LControllerUsuario();
             DtoUsuario user = controller.getUserByMail(dto.Email);
-            if (user != null && (bool)!user.EsFuncionario)
+            if (user != null && (bool)user.EsFuncionario)
             {
                 this.EnviarMail(user);
             }

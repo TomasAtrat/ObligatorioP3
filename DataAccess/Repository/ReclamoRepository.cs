@@ -129,16 +129,6 @@ namespace DataAccess.Repository
             }
             return existe;
         }
-        public List<DtoReclamo> reclamoPorFecha(DateTime inicio, DateTime fin)
-        {
-            List<DtoReclamo> colreclamos = null;
-            using (Context contex = new Context())
-            {
-                colreclamos = this.reclamoMapper.mapToDto(contex.t_RECLAMO.AsNoTracking().Where(w => w.FechaHoraIngreso >= inicio && w.FechaHoraIngreso <= fin).ToList());
-            }
-            return colreclamos;
-
-        }
 
         public List<DtoReclamo> ListarPorEstado(string estado)
         {

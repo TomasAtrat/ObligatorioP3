@@ -26,6 +26,7 @@ namespace CommonSolution.Dto
         public long IDReclamo { get; set; }
         [DisplayName("Descripción del reclamo")]
         public string DescripcionReclamo { get; set; }
+        [DisplayName("Nombre del usuario")]
         public string nombreUsuario { get; set; }
     }
 }

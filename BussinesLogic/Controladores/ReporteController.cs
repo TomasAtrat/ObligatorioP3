@@ -94,5 +94,22 @@ namespace BussinesLogic.Controladores
             GeneradorHTML generador = new GeneradorHTML();
             return generador.GenerarHTML(folder, id);
         }
+
+        public List<DtoPunto> PuntosReclamos(DateTime inicio, DateTime fin)
+        {
+            List<DtoReclamo> colpuntos = this.repository.ReclamoRepository.getElements().Where(i => i.FechaHoraIngreso.Value.Date >= inicio && i.FechaHoraIngreso.Value.Date <= fin).ToList();
+            List<DtoPunto> puntos = new List<DtoPunto>();
+
+            foreach (DtoReclamo item in colpuntos)
+            {
+                DtoPunto punto = new DtoPunto();
+                punto.lat = item.Latitud.ToString();
+                punto.lng = item.Longitud.ToString();
+
+                puntos.Add(punto);
+            }
+
+            return puntos;
+        }
     }
 }
