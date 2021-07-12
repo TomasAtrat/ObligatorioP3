@@ -93,7 +93,7 @@ function Validate() {
     let nombre = document.getElementById("nombre").value;
     if (!(nombre == "" || nombre.length > 50 || locations == null || locations == 0)) {
         AgregarZona();
-    } else if (location == null) {
+    } else if (locations == null) {
         alert("Se debe ingresar al menos tres puntos para crear la zona");
     }
 }
