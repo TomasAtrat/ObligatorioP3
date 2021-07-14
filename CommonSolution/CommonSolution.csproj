@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constantes\CLogin.cs" />
+    <Compile Include="Constantes\CReclamo.cs" />
     <Compile Include="DTO\DtoCuadrilla.cs" />
     <Compile Include="DTO\DtoHistoricoReclamo.cs" />
     <Compile Include="DTO\DtoLogin.cs" />

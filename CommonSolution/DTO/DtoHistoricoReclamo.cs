@@ -11,7 +11,7 @@ namespace CommonSolution.Dto
     public class DtoHistoricoReclamo : IDto
     {
         public long ID { get; set; }
-        [DisplayName("Estado aneterior")]
+        [DisplayName("Estado anterior")]
         public string EstadoAnterior { get; set; }
         [DisplayName("Estado actual")]
         public string EstadoActual { get; set; }

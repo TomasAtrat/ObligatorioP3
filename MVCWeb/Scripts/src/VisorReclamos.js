@@ -13,7 +13,7 @@ function load() {
 
 function OpenLegend() {
     const legend = document.getElementById("legend");
-    legend.style = "font-family: Arial, sans - serif; background: #fff; padding: 10px; margin: 5px; border: 3px solid #000; width: 30%";
+    legend.style = "font-family: Arial, sans - serif; background: #fff; padding: 10px; margin: 5px; border: 3px solid #000; width: 22%";
     const div = document.createElement("div");
     const div2 = document.createElement("div");
     const div3 = document.createElement("div");
@@ -22,7 +22,7 @@ function OpenLegend() {
     legend.appendChild(title);
     div.innerHTML = '<img src="../../Content/IMG/green-dot.png"> Menor o igual a 24';
     legend.appendChild(div);
-    div2.innerHTML = '<img src="../../Content/IMG/yellow-dot.png"> Mayor a 24 y menor o igual a 32';
+    div2.innerHTML = '<img src="../../Content/IMG/yellow-dot.png">Entre 24 y 34';
     legend.appendChild(div2);
     div3.innerHTML = '<img src="../../Content/IMG/red-dot.png"> Mayor a 32';
     legend.appendChild(div3);

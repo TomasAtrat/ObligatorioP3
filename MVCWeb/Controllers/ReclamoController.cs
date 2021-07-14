@@ -109,7 +109,17 @@ namespace MVCWeb.Controllers
                 s = controller.ToHtml(dto.directorio, dto.ID);
             }
 
-            Process.Start(s);
+            try
+            {
+                Process.Start(s);
+                Session[CReclamo.KEY_ERROR] = "";
+            }
+            catch (Exception)
+            {
+                Session[CReclamo.KEY_ERROR] = "Ups... al parecer el directorio no es válido";
+                return RedirectToAction("NuevoReporte", dto.ID);
+            }
+           
             return RedirectToAction("Listar");
         }
 
