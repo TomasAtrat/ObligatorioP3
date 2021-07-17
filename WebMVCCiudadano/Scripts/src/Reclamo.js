@@ -18,6 +18,8 @@ function drawPolygons(path, color, name, id) {
         path: path,
         map: map,
         fillColor: color,
+        strokeWeight: 0,
+        fillOpacity: 0,
     });
     polygon.addListener("click", (mapsMouseEvent) => {
         addMarker(mapsMouseEvent.latLng.lat(), mapsMouseEvent.latLng.lng()),
